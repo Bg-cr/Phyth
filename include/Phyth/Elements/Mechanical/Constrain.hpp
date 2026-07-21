@@ -9,21 +9,20 @@
 #include "Phyth/Core/Unit.hpp"
 
 namespace Phyth::Mechanical {
-
     class DistanceConstrainer {
     public:
-        DistanceConstrainer(const Vector3<Quantity<Meter>> &ref_point, std::shared_ptr<Particle> particle)
-            : ref_(ref_point), particle_(std::move(particle)), interval_((ref_ - particle_->GetPosition()).Length()) {
+        DistanceConstrainer(std::shared_ptr<Particle> anchor, std::shared_ptr<Particle> particle)
+            : anchor_(std::move(anchor)), particle_(std::move(particle)), interval_((anchor_->GetPosition() - particle_->GetPosition()).Length()) {
             IntervalCheck();
         }
 
-        DistanceConstrainer(const Vector3<Quantity<Meter>> &ref_point, std::shared_ptr<Particle> particle, const Interval<Meter> &interval)
-            : ref_(ref_point), particle_(std::move(particle)), interval_(interval) {
+        DistanceConstrainer(std::shared_ptr<Particle> anchor, std::shared_ptr<Particle> particle, const Interval<Meter> &interval)
+            : anchor_(std::move(anchor)), particle_(std::move(particle)), interval_(interval) {
             IntervalCheck();
         }
 
         void Correct(const Quantity<Second> dt) const {
-            const Vector3<Quantity<Meter>> difference = particle_->GetPosition() - ref_;
+            const Vector3<Quantity<Meter>> difference = particle_->GetPosition() - anchor_->GetPosition();
             const Quantity<Meter> length = difference.Length();
             if (interval_.Contains(length))
                 return;
@@ -35,7 +34,7 @@ namespace Phyth::Mechanical {
         }
 
     private:
-        Vector3<Quantity<Meter>> ref_;
+        std::shared_ptr<Particle> anchor_;
         std::shared_ptr<Particle> particle_;
 
         Interval<Meter> interval_;

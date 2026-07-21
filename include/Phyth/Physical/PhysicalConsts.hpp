@@ -5,11 +5,10 @@
 #include "Constants.hpp"
 
 namespace Phyth::Consts {
-    constexpr double g = 9.80665;
-
     constexpr double G = 6.67430e-11;
     constexpr double ALPHA = 0.00729735256;
 
+    constexpr auto g = 9.80665_mps2;
     constexpr auto c = 299'792'458_mps;
     constexpr auto h = 6.62607015e-34_J * 1_s;
     constexpr auto hbar = h / TAU;
