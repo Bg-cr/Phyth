@@ -181,9 +181,13 @@ namespace Phyth {
         }
     };
 
-    template<typename T, typename U>
-    constexpr auto operator*(U scalar, const Vector3<T> &v) {
-        return v * scalar;
+    template<typename T>
+    constexpr auto operator*(double scalar, const Vector3<T> & v) {
+        return Vector3<decltype(scalar * v.x)>(
+            scalar * v.x,
+            scalar * v.y,
+            scalar * v.z
+        );
     }
 
     template<typename Dimension>

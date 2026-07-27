@@ -11,7 +11,7 @@ namespace Phyth {
     struct Interval {
         static_assert(is_unit_v<UnitT>, "Unit type cannot be a non-unit");
 
-        explicit Interval(Quantity<UnitT> value) noexcept
+        Interval(Quantity<UnitT> value) noexcept
             : min_(value), max_(value) {}
 
         Interval(Quantity<UnitT> min, Quantity<UnitT> max)

@@ -15,7 +15,10 @@ int main() {
     const DistanceConstrainer c2 {p1, p2};
     const DistanceConstrainer c3 {p2, p1};
 
-    for (int i = 0; i < 2.204_s / DELTA_TIME; ++i) {
+    constexpr auto total_time = 10000_s;
+    constexpr int steps = static_cast<int>((total_time / DELTA_TIME / 50).value);
+
+    for (int i = 0; i < total_time / DELTA_TIME; ++i) {
         p1->ApplyForce({0_N, -1_kg * Consts::g, 0_N});
         p2->ApplyForce({0_N, -1_kg * Consts::g, 0_N});
         c1.Correct(DELTA_TIME);
@@ -24,14 +27,14 @@ int main() {
         p1->Integrate(DELTA_TIME);
         p2->Integrate(DELTA_TIME);
 
-        if (i % static_cast<int>((0.2_s / DELTA_TIME).value) == 0) {
+        if (i % steps == 0) {
             // If we record the simulated data every moment, the final analysis will result in image 'DoublePendulumAnalysis.png'
             const auto t = i * DELTA_TIME;
 
             const auto pos1 = p1->GetPosition();
             const auto vel1 = p1->GetVelocity();
             const auto ke1 = 0.5_ * 1_kg * Utils::pow<2>(vel1.Length());
-            const auto pe1 = 1_kg * Consts::g * (pos1.y + 1_m);
+            const auto pe1 = 1_kg * Consts::g * (pos1.y + 2_m);
 
             const auto pos2 = p2->GetPosition();
             const auto vel2 = p2->GetVelocity();

@@ -12,10 +12,10 @@ namespace Phyth {
     template<typename UnitT>
     struct Quantity {
         double value;
-        explicit constexpr Quantity(const double v = 0.0) : value(v) {}
+        constexpr Quantity(const double v = 0.0) : value(v) {}
 
         template<typename OtherUnit>
-        explicit constexpr Quantity(Quantity<OtherUnit> other)
+        constexpr Quantity(Quantity<OtherUnit> other)
             : value(other.value * OtherUnit::scale / UnitT::scale) {
             static_assert(std::is_same_v<typename UnitT::Dimension, typename OtherUnit::Dimension>,
                           "Cannot convert between different dimensions!");
