@@ -1,10 +1,10 @@
-#ifndef PHYTH_VECTOR3_H
-#define PHYTH_VECTOR3_H
+#ifndef PHYTH_VECTOR3_HPP
+#define PHYTH_VECTOR3_HPP
 
-#include "Dimension.hpp"
-#include "Quantity.hpp"
-#include "Phyth/Physical/QuantityFuncs.hpp"
-#include "Units.hpp"
+#include "../Core/Dimension.hpp"
+#include "../Core/Quantity.hpp"
+#include "QuantityFuncs.hpp"
+#include "../Core/Units.hpp"
 
 #include <ostream>
 
@@ -98,7 +98,7 @@ namespace Phyth {
         }
 
         template<typename U>
-        constexpr Vector3& operator+=(const Vector3<U> &other) {
+        constexpr Vector3 &operator+=(const Vector3<U> &other) {
             x += other.x;
             y += other.y;
             z += other.z;
@@ -106,7 +106,7 @@ namespace Phyth {
         }
 
         template<typename U>
-        constexpr Vector3& operator-=(const Vector3<U> &other) {
+        constexpr Vector3 &operator-=(const Vector3<U> &other) {
             x -= other.x;
             y -= other.y;
             z -= other.z;
@@ -114,7 +114,7 @@ namespace Phyth {
         }
 
         template<typename U>
-        constexpr Vector3& operator*=(U scalar) {
+        constexpr Vector3 &operator*=(U scalar) {
             x *= scalar;
             y *= scalar;
             z *= scalar;
@@ -122,7 +122,7 @@ namespace Phyth {
         }
 
         template<typename U>
-        constexpr Vector3& operator/=(U scalar) {
+        constexpr Vector3 &operator/=(U scalar) {
             x /= scalar;
             y /= scalar;
             z /= scalar;
@@ -130,12 +130,12 @@ namespace Phyth {
         }
 
         template<typename U>
-        constexpr bool operator==(const Vector3<U>& other) const {
+        constexpr bool operator==(const Vector3<U> &other) const {
             return x == other.x && y == other.y && z == other.z;
         }
 
         template<typename U>
-        constexpr bool operator!=(const Vector3<U>& other) const {
+        constexpr bool operator!=(const Vector3<U> &other) const {
             return !(*this == other);
         }
 
@@ -170,7 +170,7 @@ namespace Phyth {
             );
         }
 
-        template <typename U>
+        template<typename U>
         [[nodiscard]] auto Project(const Vector3<U> &other) const {
             return Dot(other) / other.LengthSquared() * other;
         }
@@ -181,8 +181,18 @@ namespace Phyth {
         }
     };
 
-    template<typename T>
-    constexpr auto operator*(double scalar, const Vector3<T> & v) {
+    template <typename>
+    struct is_vector3 : std::false_type {};
+
+    template <typename QuantityT>
+    struct is_vector3<Vector3<QuantityT>> : std::true_type {};
+
+    template <typename VecT>
+    inline constexpr auto is_vector3_v = is_vector3<VecT>::value;
+
+    template<typename T, typename U,
+        typename = std::enable_if_t<!is_vector3_v<T>> >
+    constexpr auto operator*(T scalar, const Vector3<U> &v) {
         return Vector3<decltype(scalar * v.x)>(
             scalar * v.x,
             scalar * v.y,
@@ -196,7 +206,6 @@ namespace Phyth {
     using Vec3Len = Vec3<Meter>;
     using Vec3Vel = Vec3<MeterPerSecond>;
     using Vec3Acc = Vec3<MeterPerSecondSquared>;
-
 }
 
-#endif //PHYTH_VECTOR3_H
+#endif //PHYTH_VECTOR3_HPP

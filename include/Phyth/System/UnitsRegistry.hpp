@@ -1,5 +1,5 @@
-#ifndef PHYTH_UNIT_REGISTRY_H
-#define PHYTH_UNIT_REGISTRY_H
+#ifndef PHYTH_UNIT_REGISTRY_HPP
+#define PHYTH_UNIT_REGISTRY_HPP
 
 #include <string>
 #include <unordered_map>
@@ -15,19 +15,19 @@ namespace Phyth {
 
     class UnitRegistry {
     public:
-        static UnitRegistry& instance() {
+        static UnitRegistry& GetInstance() {
             static UnitRegistry registry;
             return registry;
         }
 
         template<typename UnitT>
-        void registerUnit(const std::string& name, const std::string& symbol) {
+        void RegisterUnit(const std::string& name, const std::string& symbol) {
             std::lock_guard lock(mutex_);
             registry_[std::type_index(typeid(UnitT))] = {.name = name, .symbol = symbol};
         }
 
         template<typename UnitT>
-        std::string name() const {
+        std::string Name() const {
             if (const auto it = registry_.find(std::type_index(typeid(UnitT))); it != registry_.end()) {
                 return it->second.name;
             }
@@ -35,7 +35,7 @@ namespace Phyth {
         }
 
         template<typename UnitT>
-        std::string symbol() const {
+        std::string Symbol() const {
             if (const auto it = registry_.find(std::type_index(typeid(UnitT))); it != registry_.end()) {
                 return it->second.symbol;
             }
@@ -51,10 +51,10 @@ namespace Phyth {
     template<typename UnitT>
     struct UnitRegistrar {
         UnitRegistrar(const std::string& name, const std::string& symbol) {
-            UnitRegistry::instance().registerUnit<UnitT>(name, symbol);
+            UnitRegistry::GetInstance().RegisterUnit<UnitT>(name, symbol);
         }
     };
 
 }
 
-#endif  //PHYTH_UNIT_REGISTRY_H
+#endif  //PHYTH_UNIT_REGISTRY_HPP

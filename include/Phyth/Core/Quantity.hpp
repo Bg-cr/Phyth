@@ -1,5 +1,5 @@
-#ifndef PHYTH_QUANTITY_H
-#define PHYTH_QUANTITY_H
+#ifndef PHYTH_QUANTITY_HPP
+#define PHYTH_QUANTITY_HPP
 
 #include "Dimension.hpp"
 #include "Unit.hpp"
@@ -11,8 +11,10 @@
 namespace Phyth {
     template<typename UnitT>
     struct Quantity {
-        double value;
-        constexpr Quantity(const double v = 0.0) : value(v) {}
+        static_assert(is_unit_v<UnitT>, "UnitT is not a unit!");
+
+        long double value;
+        constexpr Quantity(const long double v = 0.0) : value(v) {}
 
         template<typename OtherUnit>
         constexpr Quantity(Quantity<OtherUnit> other)
@@ -45,12 +47,12 @@ namespace Phyth {
             return *this;
         }
 
-        constexpr Quantity& operator*=(const double scalar) {
+        constexpr Quantity& operator*=(const long double scalar) {
             value *= scalar;
             return *this;
         }
 
-        constexpr Quantity& operator/=(const double scalar) {
+        constexpr Quantity& operator/=(const long double scalar) {
             value /= scalar;
             return *this;
         }
@@ -121,89 +123,89 @@ namespace Phyth {
         return !(a < b);
     }
 
-    template<typename UnitT>
-    constexpr bool operator==(Quantity<UnitT> a, double scalar) {
-        static_assert(is_dimensionless_v<UnitT>,
-                      "Cannot compare dimensionful quantity with scalar!");
-        return a.value == scalar;
-    }
-
-    template<typename UnitT>
-    constexpr bool operator==(double scalar, Quantity<UnitT> a) {
-        static_assert(is_dimensionless_v<UnitT>,
-                      "Cannot compare dimensionful quantity with scalar!");
-        return scalar == a.value;
-    }
-
-    template<typename UnitT>
-    constexpr bool operator!=(Quantity<UnitT> a, double scalar) {
-        static_assert(is_dimensionless_v<UnitT>,
-                      "Cannot compare dimensionful quantity with scalar!");
-        return a.value != scalar;
-    }
-
-    template<typename UnitT>
-    constexpr bool operator!=(double scalar, Quantity<UnitT> a) {
-        static_assert(is_dimensionless_v<UnitT>,
-                      "Cannot compare dimensionful quantity with scalar!");
-        return scalar != a.value;
-    }
-
-    template<typename UnitT>
-    constexpr bool operator<(Quantity<UnitT> a, double scalar) {
-        static_assert(is_dimensionless_v<UnitT>,
-                      "Cannot compare dimensionful quantity with scalar!");
-        return a.value < scalar;
-    }
-
-    template<typename UnitT>
-    constexpr bool operator<(double scalar, Quantity<UnitT> a) {
-        static_assert(is_dimensionless_v<UnitT>,
-                      "Cannot compare dimensionful quantity with scalar!");
-        return scalar < a.value;
-    }
-
-    template<typename UnitT>
-    constexpr bool operator>(Quantity<UnitT> a, double scalar) {
-        static_assert(is_dimensionless_v<UnitT>,
-                      "Cannot compare dimensionful quantity with scalar!");
-        return a.value > scalar;
-    }
-
-    template<typename UnitT>
-    constexpr bool operator>(double scalar, Quantity<UnitT> a) {
-        static_assert(is_dimensionless_v<UnitT>,
-                      "Cannot compare dimensionful quantity with scalar!");
-        return scalar > a.value;
-    }
-
-    template<typename UnitT>
-    constexpr bool operator<=(Quantity<UnitT> a, double scalar) {
-        static_assert(is_dimensionless_v<UnitT>,
-                      "Cannot compare dimensionful quantity with scalar!");
-        return a.value <= scalar;
-    }
-
-    template<typename UnitT>
-    constexpr bool operator<=(double scalar, Quantity<UnitT> a) {
-        static_assert(is_dimensionless_v<UnitT>,
-                      "Cannot compare dimensionful quantity with scalar!");
-        return scalar <= a.value;
-    }
-
-    template<typename UnitT>
-    constexpr bool operator>=(Quantity<UnitT> a, double scalar) {
-        static_assert(is_dimensionless_v<UnitT>,
-                      "Cannot compare dimensionful quantity with scalar!");
-        return a.value >= scalar;
-    }
-
-    template<typename UnitT>
-    constexpr bool operator>=(double scalar, Quantity<UnitT> a) {
-        static_assert(is_dimensionless_v<UnitT>,
-                      "Cannot compare dimensionful quantity with scalar!");
-        return scalar >= a.value;
-    }
+    // template<typename UnitT>
+    // constexpr bool operator==(Quantity<UnitT> a, long double scalar) {
+    //     static_assert(is_dimensionless_v<UnitT>,
+    //                   "Cannot compare dimensionful quantity with scalar!");
+    //     return a.value == scalar;
+    // }
+    //
+    // template<typename UnitT>
+    // constexpr bool operator==(long double scalar, Quantity<UnitT> a) {
+    //     static_assert(is_dimensionless_v<UnitT>,
+    //                   "Cannot compare dimensionful quantity with scalar!");
+    //     return scalar == a.value;
+    // }
+    //
+    // template<typename UnitT>
+    // constexpr bool operator!=(Quantity<UnitT> a, long double scalar) {
+    //     static_assert(is_dimensionless_v<UnitT>,
+    //                   "Cannot compare dimensionful quantity with scalar!");
+    //     return a.value != scalar;
+    // }
+    //
+    // template<typename UnitT>
+    // constexpr bool operator!=(long double scalar, Quantity<UnitT> a) {
+    //     static_assert(is_dimensionless_v<UnitT>,
+    //                   "Cannot compare dimensionful quantity with scalar!");
+    //     return scalar != a.value;
+    // }
+    //
+    // template<typename UnitT>
+    // constexpr bool operator<(Quantity<UnitT> a, long double scalar) {
+    //     static_assert(is_dimensionless_v<UnitT>,
+    //                   "Cannot compare dimensionful quantity with scalar!");
+    //     return a.value < scalar;
+    // }
+    //
+    // template<typename UnitT>
+    // constexpr bool operator<(long double scalar, Quantity<UnitT> a) {
+    //     static_assert(is_dimensionless_v<UnitT>,
+    //                   "Cannot compare dimensionful quantity with scalar!");
+    //     return scalar < a.value;
+    // }
+    //
+    // template<typename UnitT>
+    // constexpr bool operator>(Quantity<UnitT> a, long double scalar) {
+    //     static_assert(is_dimensionless_v<UnitT>,
+    //                   "Cannot compare dimensionful quantity with scalar!");
+    //     return a.value > scalar;
+    // }
+    //
+    // template<typename UnitT>
+    // constexpr bool operator>(long double scalar, Quantity<UnitT> a) {
+    //     static_assert(is_dimensionless_v<UnitT>,
+    //                   "Cannot compare dimensionful quantity with scalar!");
+    //     return scalar > a.value;
+    // }
+    //
+    // template<typename UnitT>
+    // constexpr bool operator<=(Quantity<UnitT> a, long double scalar) {
+    //     static_assert(is_dimensionless_v<UnitT>,
+    //                   "Cannot compare dimensionful quantity with scalar!");
+    //     return a.value <= scalar;
+    // }
+    //
+    // template<typename UnitT>
+    // constexpr bool operator<=(long double scalar, Quantity<UnitT> a) {
+    //     static_assert(is_dimensionless_v<UnitT>,
+    //                   "Cannot compare dimensionful quantity with scalar!");
+    //     return scalar <= a.value;
+    // }
+    //
+    // template<typename UnitT>
+    // constexpr bool operator>=(Quantity<UnitT> a, long double scalar) {
+    //     static_assert(is_dimensionless_v<UnitT>,
+    //                   "Cannot compare dimensionful quantity with scalar!");
+    //     return a.value >= scalar;
+    // }
+    //
+    // template<typename UnitT>
+    // constexpr bool operator>=(long double scalar, Quantity<UnitT> a) {
+    //     static_assert(is_dimensionless_v<UnitT>,
+    //                   "Cannot compare dimensionful quantity with scalar!");
+    //     return scalar >= a.value;
+    // }
 
     template<typename U1, typename U2>
     constexpr auto operator+(Quantity<U1> a, Quantity<U2> b) {
@@ -238,22 +240,22 @@ namespace Phyth {
     }
 
     template<typename UnitT>
-    constexpr auto operator*(Quantity<UnitT> a, double scalar) {
+    constexpr auto operator*(Quantity<UnitT> a, long double scalar) {
         return Quantity<UnitT>(a.value * scalar);
     }
 
     template<typename UnitT>
-    constexpr auto operator*(double scalar, Quantity<UnitT> a) {
+    constexpr auto operator*(long double scalar, Quantity<UnitT> a) {
         return Quantity<UnitT>(scalar * a.value);
     }
 
     template<typename UnitT>
-    constexpr auto operator/(Quantity<UnitT> a, double scalar) {
+    constexpr auto operator/(Quantity<UnitT> a, long double scalar) {
         return Quantity<UnitT>(a.value / scalar);
     }
 
     template<typename UnitT>
-    constexpr auto operator/(double scalar, Quantity<UnitT> a) {
+    constexpr auto operator/(long double scalar, Quantity<UnitT> a) {
         using DimT = typename UnitT::Dimension;
         using ResultDim = DimDivT<Dimensionless, DimT>;
         using ResultUnit = Unit<ResultDim>;
@@ -271,45 +273,59 @@ namespace Phyth {
     }
 
     template<typename UnitT>
-    std::string unitSymbol() {
-        return UnitRegistry::instance().symbol<UnitT>();
+    std::string UnitSymbol() {
+        return UnitRegistry::GetInstance().Symbol<UnitT>();
     }
 
     template<typename UnitT>
-    std::string unitName() {
-        return UnitRegistry::instance().name<UnitT>();
+    std::string UnitName() {
+        return UnitRegistry::GetInstance().Name<UnitT>();
     }
 
     template<typename>
-    std::string formatValue(const double value) {
+    std::string FormatValue(const long double value) {
         std::ostringstream oss;
         oss << value;
         return oss.str();
     }
 
     template<typename UnitT>
-    std::string quantityToString(const Quantity<UnitT>& q) {
-        if (Config::getOutputMode() == OutputMode::Raw) {
+    std::string QuantityToString(const Quantity<UnitT>& q) {
+        if (Config::output_mode == OutputMode::Raw) {
             using DimT = typename UnitT::Dimension;
-            return formatValue<UnitT>(q.value) + " " + DimToString<DimT>::value();
+            return FormatValue<UnitT>(q.value) + " " + DimToString<DimT>::value();
         }
-        const double display_value = q.value / UnitT::scale;
-        std::string unit = unitSymbol<UnitT>();
+        const long double display_value = q.value / UnitT::scale;
+        std::string unit = UnitSymbol<UnitT>();
         if (unit.empty()) {
-            unit = unitName<UnitT>();
+            unit = UnitName<UnitT>();
         }
         if (unit.empty()) {
-            return formatValue<UnitT>(display_value);
+            return FormatValue<UnitT>(display_value);
         }
-        return formatValue<UnitT>(display_value) + " " + unit;
+        return FormatValue<UnitT>(display_value) + " " + unit;
     }
 
     template<typename UnitT>
     std::ostream& operator<<(std::ostream& os, const Quantity<UnitT>& q) {
-        os << quantityToString(q);
+        os << QuantityToString(q);
         return os;
     }
-
 }
 
-#endif //PHYTH_QUANTITY_H
+template<typename U1, typename U2, typename = void>
+struct common_type_impl;
+
+template<typename U1, typename U2>
+struct common_type_impl<U1, U2, std::enable_if_t<Phyth::is_unit_v<U1> && Phyth::is_unit_v<U2>>> {
+    using type = Phyth::Quantity<U1>;
+};
+
+template<typename U1, typename U2>
+struct common_type_impl<U1, U2, void> {};
+
+template<typename U1, typename U2>
+struct std::common_type<Phyth::Quantity<U1>, Phyth::Quantity<U2>>
+    : common_type_impl<U1, U2> {};
+
+#endif //PHYTH_QUANTITY_HPP

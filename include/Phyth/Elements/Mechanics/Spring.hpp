@@ -8,7 +8,7 @@
 
 #include "Particle.hpp"
 
-namespace Phyth::Mechanical {
+namespace Phyth::Mechanics {
     class Spring {
     public:
         Spring(std::shared_ptr<Particle> p1, std::shared_ptr<Particle> p2,
@@ -18,18 +18,13 @@ namespace Phyth::Mechanical {
               stiffness_(stiffness),
               damping_(damping),
               rest_length_((p1_->GetPosition() - p2_->GetPosition()).Length()) {
-            validate_rest_length(rest_length_);
-            validate_stiffness(stiffness_);
-            validate_damping(damping_);
+            validateRestLength(rest_length_);
+            validateStiffness(stiffness_);
+            validateDamping(damping_);
         }
 
         void Constrain() const {
-            const Vector3<Quantity<Meter> > pos1 = p1_->GetPosition();
-            const Vector3<Quantity<Meter> > pos2 = p2_->GetPosition();
-            const Vector3<Quantity<MeterPerSecond> > vel1 = p1_->GetVelocity();
-            const Vector3<Quantity<MeterPerSecond> > vel2 = p2_->GetVelocity();
-
-            const Vector3<Quantity<Meter> > displacement = pos2 - pos1;
+            const Vector3<Quantity<Meter> > displacement = p2_->GetPosition() - p1_->GetPosition();
             const Quantity<Meter> current_length = displacement.Length();
             const Quantity<Meter> elongation = current_length - rest_length_;
 
@@ -40,7 +35,7 @@ namespace Phyth::Mechanical {
             const Vector3<Quantity<Newton> > spring_force2 = -direction * force_magnitude;
 
             if (damping_ > 0.0_kgps) {
-                const Vector3<Quantity<MeterPerSecond> > relative_velocity = vel2 - vel1;
+                const Vector3<Quantity<MeterPerSecond> > relative_velocity = p2_->GetVelocity() - p1_->GetVelocity();
                 const Quantity<Newton> damping_force_magnitude = damping_ * relative_velocity.Dot(direction);
                 const Vector3<Quantity<Newton> > damping_force1 = direction * damping_force_magnitude;
                 const Vector3<Quantity<Newton> > damping_force2 = -direction * damping_force_magnitude;
@@ -63,18 +58,27 @@ namespace Phyth::Mechanical {
         [[nodiscard]] Quantity<Meter> GetElongation() const { return GetCurrentLength() - rest_length_; }
 
         void SetRestLength(const Quantity<Meter> &rest_length) {
-            validate_rest_length(rest_length);
+            validateRestLength(rest_length);
             rest_length_ = rest_length;
         }
 
         void SetStiffness(const Quantity<NewtonPerMeter> &stiffness) {
-            validate_stiffness(stiffness);
+            validateStiffness(stiffness);
             stiffness_ = stiffness;
         }
 
         void SetDamping(const Quantity<KilogramPerSecond> &damping) {
-            validate_damping(damping);
+            validateDamping(damping);
             damping_ = damping;
+        }
+
+        [[nodiscard]] Quantity<Joule> GetElasticEnergy() const {
+            const auto elongation = GetElongation();
+            return 0.5 * stiffness_ * elongation * elongation;
+        }
+
+        [[nodiscard]] Quantity<Newton> GetEnergyDensity() const {
+            return GetElasticEnergy() / GetCurrentLength();
         }
 
     private:
@@ -85,19 +89,19 @@ namespace Phyth::Mechanical {
         Quantity<KilogramPerSecond> damping_;
         Quantity<Meter> rest_length_;
 
-        static void validate_rest_length(const Quantity<Meter> &length) {
+        static void validateRestLength(const Quantity<Meter> &length) {
             if (const auto len = length.value; !std::isfinite(len) || len <= 0.0) {
                 throw std::invalid_argument("Rest length must be a positive finite number");
             }
         }
 
-        static void validate_stiffness(const Quantity<NewtonPerMeter> &stiffness) {
+        static void validateStiffness(const Quantity<NewtonPerMeter> &stiffness) {
             if (stiffness.value < 0.0) {
                 throw std::invalid_argument("Stiffness must be non-negative");
             }
         }
 
-        static void validate_damping(const Quantity<KilogramPerSecond> &damping) {
+        static void validateDamping(const Quantity<KilogramPerSecond> &damping) {
             if (damping.value < 0.0) {
                 throw std::invalid_argument("Damping must be non-negative");
             }

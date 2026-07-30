@@ -1,5 +1,5 @@
-#ifndef PHYTH_CONFIG_H
-#define PHYTH_CONFIG_H
+#ifndef PHYTH_CONFIG_HPP
+#define PHYTH_CONFIG_HPP
 
 namespace Phyth {
     enum class OutputMode {
@@ -7,32 +7,21 @@ namespace Phyth {
         Raw
     };
 
-    class Config {
-    public:
-        static void setOutputMode(const OutputMode mode) {
-            output_mode_ = mode;
+
+    struct Config {
+        static void Reset() {
+            output_mode = OutputMode::Auto;
+            epsilon = 1e-6;
         }
 
-        static OutputMode getOutputMode() {
-            return output_mode_;
-        }
+        static OutputMode output_mode;
+        static long double epsilon;
 
-        static void reset() {
-            output_mode_ = OutputMode::Auto;
-        }
-
-    private:
-        static OutputMode output_mode_;
-        static bool show_unit_space_;
     };
 
-    inline OutputMode Config::output_mode_ = OutputMode::Auto;
-    inline bool Config::show_unit_space_ = true;
-
-    inline void setOutputMode(const OutputMode mode) {
-        Config::setOutputMode(mode);
-    }
+    inline OutputMode Config::output_mode = OutputMode::Auto;
+    inline long double Config::epsilon = 1e-6;
 
 }
 
-#endif  //PHYTH_CONFIG_H
+#endif  //PHYTH_CONFIG_HPP

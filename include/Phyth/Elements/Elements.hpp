@@ -1,6 +1,6 @@
-#ifndef PHYTH_ELEMENTS_H
-#define PHYTH_ELEMENTS_H
+#ifndef PHYTH_ELEMENTS_HPP
+#define PHYTH_ELEMENTS_HPP
 
-#include "Mechanical/Mechanical.hpp"
+#include "Mechanics/Mechanics.hpp"
 
-#endif //PHYTH_ELEMENTS_H
+#endif //PHYTH_ELEMENTS_HPP

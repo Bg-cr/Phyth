@@ -1,8 +1,7 @@
-#ifndef PHYTH_PHYSICAL_H
-#define PHYTH_PHYSICAL_H
+#ifndef PHYTH_PHYSICAL_HPP
+#define PHYTH_PHYSICAL_HPP
 
-#include "QuantityFuncs.hpp"
 #include "Constants.hpp"
 #include "PhysicalConsts.hpp"
 
-#endif //PHYTH_PHYSICAL_H
+#endif //PHYTH_PHYSICAL_HPP

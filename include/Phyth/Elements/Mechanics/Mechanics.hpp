@@ -3,6 +3,7 @@
 
 #include "Particle.hpp"
 #include "Spring.hpp"
-#include "Constrain.hpp"
+#include "Constrainer.hpp"
+#include "MechanicsFormulas.hpp"
 
 #endif //PHYTH_MECHANICAL_H

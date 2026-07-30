@@ -9,7 +9,7 @@
 #include "Phyth/Core/Interval.hpp"
 #include "Phyth/Core/Unit.hpp"
 
-namespace Phyth::Mechanical {
+namespace Phyth::Mechanics {
     class DistanceConstrainer {
     public:
         DistanceConstrainer(std::shared_ptr<Particle> anchor, std::shared_ptr<Particle> particle)
@@ -25,17 +25,17 @@ namespace Phyth::Mechanical {
         }
 
         void Correct(const Quantity<Second> dt) const {
-            const Vector3<Quantity<Meter> > difference = particle_->GetPosition() - anchor_->GetPosition();
-            const Quantity<Meter> length = difference.Length();
+            const Vector3<Quantity<Meter> > diff = particle_->GetPosition() - anchor_->GetPosition();
+            const Quantity<Meter> length = diff.Length();
             if (interval_.Contains(length))
                 return;
 
-            const Vector3<Quantity<Meter> > target_offset = difference.Normalized() *
+            const Vector3<Quantity<Meter> > target_offset = diff.Normalized() *
                                                             (length > interval_.GetMaximum()
                                                                  ? interval_.GetMaximum()
                                                                  : interval_.GetMinimum());
 
-            particle_->SetVelocity(particle_->GetVelocity() - (difference - target_offset) / dt);
+            particle_->SetVelocity(particle_->GetVelocity() - (diff - target_offset) / dt);
         }
 
     private:

@@ -1,5 +1,5 @@
-#ifndef PHYTH_UNITS_H
-#define PHYTH_UNITS_H
+#ifndef PHYTH_UNITS_HPP
+#define PHYTH_UNITS_HPP
 
 #include "Phyth/Core/Dimension.hpp"
 #include "Phyth/System/UnitsRegistry.hpp"
@@ -15,11 +15,11 @@ namespace Phyth {
         using unit_type = Unit<dim_type, std::ratio<scale_num, scale_den>>; \
         \
         constexpr auto operator""_##suffix(long double x) { \
-            return Quantity<unit_type>(static_cast<double>(x) * unit_type::scale); \
+            return Quantity<unit_type>(x); \
         } \
         \
         constexpr auto operator""_##suffix(unsigned long long x) { \
-            return Quantity<unit_type>(static_cast<double>(x) * unit_type::scale); \
+            return Quantity<unit_type>(x); \
         } \
         \
         static const Phyth::UnitRegistrar<unit_type> PHYTH_CONCAT(registrar_, unit_type)(#unit_type, #suffix);
@@ -28,38 +28,34 @@ namespace Phyth {
         using unit_type = Unit<dim_type, std::ratio<scale_num, scale_den>>; \
         \
         constexpr auto operator""_##suffix(long double x) { \
-            return Quantity<unit_type>(static_cast<double>(x) * unit_type::scale); \
+            return Quantity<unit_type>(x); \
         } \
         \
         constexpr auto operator""_##suffix(unsigned long long x) { \
-            return Quantity<unit_type>(static_cast<double>(x) * unit_type::scale); \
+            return Quantity<unit_type>(x); \
         } \
         \
         static const Phyth::UnitRegistrar<unit_type> PHYTH_CONCAT(registrar_, unit_type)(#unit_type, symbol);
 
-    // ScalarUnit & Radian, Dimensionless * 1.0
+    #define PHYTH_DEFINE_UNIT_WITH_TAG(dim_type, unit_type, suffix, scale_num, scale_den, symbol, tag) \
+            using unit_type = Unit<dim_type, std::ratio<scale_num, scale_den>, tag>; \
+            \
+            constexpr auto operator""_##suffix(long double x) { \
+                return Quantity<unit_type>(x); \
+            } \
+            \
+            constexpr auto operator""_##suffix(unsigned long long x) { \
+                return Quantity<unit_type>(x); \
+            } \
+            \
+            static const Phyth::UnitRegistrar<unit_type> PHYTH_CONCAT(registrar_, unit_type)(#unit_type, symbol);
 
     PHYTH_DEFINE_UNIT(Dimensionless, ScalarUnit, , 1, 1)
-
     struct RadianTag {};
-    using Radian = Unit<Dimensionless, std::ratio<1>, RadianTag>;
-    constexpr auto operator""_rad(long double x) {
-        return Quantity<Radian>(static_cast<double>(x));
-    }
-    constexpr auto operator""_rad(unsigned long long x) {
-        return Quantity<Radian>(static_cast<double>(x));
-    }
-    static const UnitRegistrar<Radian> registrar_Radian("radian", "rad");
+    PHYTH_DEFINE_UNIT_WITH_TAG(Dimensionless, Radian, rad, 1, 1, "rad", RadianTag)
 
     struct DegreeTag {};
-    using Degree = Unit<Dimensionless, std::ratio<1>, DegreeTag>;
-    constexpr auto operator""_deg(long double x) {
-        return Quantity<Degree>(static_cast<double>(x) * Consts::PI / 180.0);
-    }
-    constexpr auto operator""_deg(unsigned long long x) {
-        return Quantity<Degree>(static_cast<double>(x) * Consts::PI / 180.0);
-    }
-    static const UnitRegistrar<Degree> registrar_Degree("degree", "deg");
+    PHYTH_DEFINE_UNIT_WITH_TAG(Dimensionless, Degree, deg, 1, 1, "deg", DegreeTag)
 
     PHYTH_DEFINE_UNIT(Length, Meter, m, 1, 1)
     PHYTH_DEFINE_UNIT(Length, Kilometer, km, 1000, 1)
@@ -85,19 +81,10 @@ namespace Phyth {
     PHYTH_DEFINE_UNIT(Force, Newton, N, 1, 1)
     PHYTH_DEFINE_UNIT(Force, Kilonewton, kN, 1000, 1)
 
-    // Joule & NewtonMeter, Energy * 1.0
-
     PHYTH_DEFINE_UNIT(Energy, Joule, J, 1, 1)
 
     struct NewtonMeterTag {};
-    using NewtonMeter = Unit<Energy, std::ratio<1>, NewtonMeterTag>;
-    constexpr auto operator""_Nm(long double x) {
-        return Quantity<NewtonMeter>(static_cast<double>(x));
-    }
-    constexpr auto operator""_Nm(unsigned long long x) {
-        return Quantity<NewtonMeter>(static_cast<double>(x));
-    }
-    static const UnitRegistrar<NewtonMeter> registrar_NewtonMeter("NewtonMeter", "N*m");
+    PHYTH_DEFINE_UNIT_WITH_TAG(Energy, NewtonMeter, Nm, 1, 1, "N*m", NewtonMeterTag)
 
     PHYTH_DEFINE_UNIT(Energy, Kilojoule, kJ, 1000, 1)
     PHYTH_DEFINE_UNIT(Energy, ElectronVolt, eV, 160217663, 1000000000000000000LL)
@@ -140,9 +127,17 @@ namespace Phyth {
     PHYTH_DEFINE_UNIT_WITH_NAME(DampingCoefficient, KilogramPerSecond, kgps, 1, 1, "kg/s")
     PHYTH_DEFINE_UNIT_WITH_NAME(MassDensity, KilogramPerMeter, kgpm, 1, 1, "kg/m")
 
+    PHYTH_DEFINE_UNIT_WITH_NAME(ElectricFieldIntensity, NewtonPerCoulomb, NpC, 1, 1, "N/C")
+    struct VoltagePerMeterTag {};
+    PHYTH_DEFINE_UNIT_WITH_TAG(ElectricFieldIntensity, VoltagePerMeter, Vpm, 1, 1, "V/m", VoltagePerMeterTag)
+
+    PHYTH_DEFINE_UNIT_WITH_NAME(ChargeDensity, CoulombPerCubicMeter, Cpm3, 1, 1, "C/m^3")
+
+    PHYTH_DEFINE_UNIT_WITH_NAME(ElectricPotential, FaradPerMeter, Fpm, 1, 1, "F/m")
+
+
     #undef PHYTH_DEFINE_UNIT
     #undef PHYTH_DEFINE_UNIT_WITH_NAME
-
 }
 
-#endif  //PHYTH_UNITS_H
+#endif  //PHYTH_UNITS_HPP

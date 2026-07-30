@@ -2,7 +2,7 @@
 #include <iostream>
 
 using namespace Phyth;
-using namespace Phyth::Mechanical;
+using namespace Phyth::Mechanics;
 
 constexpr Quantity<Second> DELTA_TIME = 1_s / 300;
 
@@ -23,23 +23,15 @@ int main() {
         if (i % steps == 0) {
             // If we record the simulated data every moment, the final analysis will result in image 'SinglePendulumAnalysis.png'
 
-            // If we record 5000 simulated data on average during a 200 000 second simulation,
-            // the final analysis will generate the image 'SinglePendulum Analysis 2. png'
+            // If we record 5000 simulated data on average during a 200'000 second simulation,
+            // the final analysis will generate the image 'SinglePendulumAnalysis2.png'
 
-            const auto t = i * DELTA_TIME;
-            const auto pos = particle->GetPosition();
-            const auto vel = particle->GetVelocity();
-
-            const auto ke = 0.5_ * 1_kg * Utils::pow<2>(vel.Length());
-            const auto pe = 1_kg * Consts::g * (pos.y + 1_m);
-            const auto te = ke + pe;
-
-            std::cout << "Time: " << t << "\n"
-                      << "  Position:" << pos << "\n"
-                      << "  Velocity: " << vel << "\n"
-                      << "  KE: " << ke << "\n"
-                      << "  PE: " << pe << "\n"
-                      << "  TE: " << te << "\n"
+            std::cout << "Time: " << i * DELTA_TIME << "\n"
+                      << "  Position:" << particle->GetPosition() << "\n"
+                      << "  Velocity: " << particle->GetVelocity() << "\n"
+                      << "  KE: " << particle->GetKineticEnergy() << "\n"
+                      << "  PE: " << particle->GetPotentialEnergy(-1_m) << "\n"
+                      << "  TE: " << particle->GetTotalEnergy(-1_m) << "\n"
                       << std::endl;
         }
     }

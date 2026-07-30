@@ -1,6 +1,6 @@
-#ifndef PHYTH_SYSTEM_H
-#define PHYTH_SYSTEM_H
+#ifndef PHYTH_SYSTEM_HPP
+#define PHYTH_SYSTEM_HPP
 
 #include "Config.hpp"
 
-#endif //PHYTH_SYSTEM_H
+#endif //PHYTH_SYSTEM_HPP

@@ -1,5 +1,5 @@
-#ifndef PHYTH_QUANTITY_FUNCS_H
-#define PHYTH_QUANTITY_FUNCS_H
+#ifndef PHYTH_QUANTITY_FUNCS_HPP
+#define PHYTH_QUANTITY_FUNCS_HPP
 
 #include "Phyth/Core/Quantity.hpp"
 #include "Phyth/Core/Quantities.hpp"
@@ -157,4 +157,4 @@ namespace Phyth::Utils {
 
 }
 
-#endif //PHYTH_QUANTITY_FUNCS_H
+#endif //PHYTH_QUANTITY_FUNCS_HPP

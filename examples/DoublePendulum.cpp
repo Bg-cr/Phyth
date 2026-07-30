@@ -2,9 +2,9 @@
 #include <iostream>
 
 using namespace Phyth;
-using namespace Phyth::Mechanical;
+using namespace Phyth::Mechanics;
 
-constexpr Quantity<Second> DELTA_TIME = 1_s / 300;
+constexpr Quantity<Second> DELTA_TIME = 1_s / 1000;
 
 int main() {
     const auto anchor_point = std::make_shared<Particle>(1_kg, Vector3{0_m, 0_m, 0_m});
@@ -31,28 +31,14 @@ int main() {
             // If we record the simulated data every moment, the final analysis will result in image 'DoublePendulumAnalysis.png'
             const auto t = i * DELTA_TIME;
 
-            const auto pos1 = p1->GetPosition();
-            const auto vel1 = p1->GetVelocity();
-            const auto ke1 = 0.5_ * 1_kg * Utils::pow<2>(vel1.Length());
-            const auto pe1 = 1_kg * Consts::g * (pos1.y + 2_m);
-
-            const auto pos2 = p2->GetPosition();
-            const auto vel2 = p2->GetVelocity();
-            const auto ke2 = 0.5_ * 1_kg * Utils::pow<2>(vel2.Length());
-            const auto pe2 = 1_kg * Consts::g * (pos2.y + 2_m);
-
-            const auto ke_total = ke1 + ke2;
-            const auto pe_total = pe1 + pe2;
-            const auto te_total = ke_total + pe_total;
-
-            std::cout << "Time: " << t << "\n"
-                      << "  P1 Position:" << pos1 << "\n"
-                      << "  P1 Velocity: " << vel1 << "\n"
-                      << "  P2 Position:" << pos2 << "\n"
-                      << "  P2 Velocity: " << vel2 << "\n"
-                      << "  KE: " << ke_total << "\n"
-                      << "  PE: " << pe_total << "\n"
-                      << "  TE: " << te_total << "\n"
+            std::cout << "Time: " << i * DELTA_TIME << "\n"
+                      << "  P1 Position:" << p1->GetPosition() << "\n"
+                      << "  P1 Velocity: " << p1->GetVelocity() << "\n"
+                      << "  P2 Position:" << p2->GetPosition() << "\n"
+                      << "  P2 Velocity: " << p2->GetVelocity() << "\n"
+                      << "  KE: " <<  p1->GetKineticEnergy() + p2->GetKineticEnergy() << "\n"
+                      << "  PE: " << p1->GetPotentialEnergy(-2_m) + p2->GetPotentialEnergy(-2_m) << "\n"
+                      << "  TE: " << p1->GetTotalEnergy() + p2->GetTotalEnergy() << "\n"
                       << std::endl;
         }
     }

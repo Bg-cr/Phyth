@@ -1,5 +1,5 @@
-#ifndef PHYTH_CONSTANTS_H
-#define PHYTH_CONSTANTS_H
+#ifndef PHYTH_CONSTANTS_HPP
+#define PHYTH_CONSTANTS_HPP
 
 namespace Phyth::Consts {
     constexpr double PI = 3.14159265358979323846;
@@ -10,4 +10,4 @@ namespace Phyth::Consts {
     constexpr double E = 2.718281828459045;
 }
 
-#endif //PHYTH_CONSTANTS_H
+#endif //PHYTH_CONSTANTS_HPP

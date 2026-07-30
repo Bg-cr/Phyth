@@ -1,5 +1,5 @@
-#ifndef PHYTH_DIMENSION_H
-#define PHYTH_DIMENSION_H
+#ifndef PHYTH_DIMENSION_HPP
+#define PHYTH_DIMENSION_HPP
 
 #include <ratio>
 #include <type_traits>
@@ -211,6 +211,7 @@ namespace Phyth {
     using Pressure = DimDivT<Force, DimMulT<Length, Length>>;
     using Frequency = DimDivT<Dimensionless, Time>;
     using Charge = DimMulT<Time, ElectricCurrent>;
+    using ElectricFieldIntensity = DimDivT<Force, Charge>;
     using Voltage = DimDivT<Power, ElectricCurrent>;
     using Resistance = DimDivT<Voltage, ElectricCurrent>;
     using Capacitance = DimDivT<Charge, Voltage>;
@@ -222,6 +223,9 @@ namespace Phyth {
     using TranslationalStiffness = DimDivT<Force, Length>;
     using DampingCoefficient = DimDivT<Mass, Time>;
     using MassDensity = DimDivT<Mass, Length>;
+    using ElectricPotential = DimDivT<Capacitance, Length>;
+    using EnergyDensity = DimDivT<Energy, Length>;
+    using ChargeDensity = DimDivT<ElectricCurrent, Volume>;
 
     template<typename UnitT>
     struct is_dimensionless {
@@ -265,4 +269,4 @@ namespace Phyth {
 
 }
 
-#endif //PHYTH_DIMENSION_H
+#endif //PHYTH_DIMENSION_HPP
