@@ -1,0 +1,79 @@
+name: Bug Report
+description: Create a report to help us improve
+labels: ["bug", "needs-triage"]
+body:
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before reporting the issue
+      options:
+      - label: I have already searched through the existing issues and discussions
+        required: true
+      - label: I have read all the content in the README file except for the version history, in any language
+        required: true
+      - label: I spent at least 5 minutes thinking and preparing before raising the question
+        required: true
+      - label: This problem has occurred at least 3 times
+        required: false
+      - label: This problem can be stably reproduced
+        required: false
+      - label: I have read the relevant documents, but still cannot solve the problem
+        required: false
+
+  - type: textarea
+    id: describe
+    attributes:
+      label: Describe the problem
+      description: Briefly describe your problem
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce the problem
+      description: Reproduce the code and steps for this behavior
+      value: |
+        1. Call methods ...
+        2. input parameters ...
+        3. The problem occurs ...
+
+        4. Submit your codes.
+        If you can't reproduce the problem, please provide the following information:
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Briefly describe what you expect to happen
+    validations:
+      required: false
+
+  - type: textarea
+    id: others
+    attributes:
+      label: Others
+      description: |
+        Operating environment/related configurations/reference materials
+        Anything that can give us a better understanding of the problems you have encountered
+      value: |
+        Your operating system:
+    validations:
+      required: false
+
+  - type: input
+    id: confidence
+    attributes:
+      label: Confidence in this report
+      description: |
+        Please evaluate your level of understanding of the problem description:
+        5- Very certain, with sufficient evidence
+        4- Comparatively certain, with relevant experience
+        3- Basic certainty, but there may be errors in the details
+        2- Not quite sure, mainly speculated
+        1- Completely uncertain, just a conjecture
+
+    validations:
+      required: true

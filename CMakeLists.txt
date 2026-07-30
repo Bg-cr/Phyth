@@ -12,6 +12,8 @@ target_include_directories(Phyth INTERFACE
 
 file(GLOB EXAMPLE_SOURCES "examples/*.cpp")
 
+set(CMAKE_CONFIGURE_DEPENDS ${EXAMPLE_SOURCES})
+
 foreach(EXAMPLE_SOURCE ${EXAMPLE_SOURCES})
     get_filename_component(TEST_NAME ${EXAMPLE_SOURCE} NAME_WE)
     add_executable(${TEST_NAME} ${EXAMPLE_SOURCE})
