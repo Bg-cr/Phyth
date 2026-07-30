@@ -123,89 +123,89 @@ namespace Phyth {
         return !(a < b);
     }
 
-    // template<typename UnitT>
-    // constexpr bool operator==(Quantity<UnitT> a, long double scalar) {
-    //     static_assert(is_dimensionless_v<UnitT>,
-    //                   "Cannot compare dimensionful quantity with scalar!");
-    //     return a.value == scalar;
-    // }
-    //
-    // template<typename UnitT>
-    // constexpr bool operator==(long double scalar, Quantity<UnitT> a) {
-    //     static_assert(is_dimensionless_v<UnitT>,
-    //                   "Cannot compare dimensionful quantity with scalar!");
-    //     return scalar == a.value;
-    // }
-    //
-    // template<typename UnitT>
-    // constexpr bool operator!=(Quantity<UnitT> a, long double scalar) {
-    //     static_assert(is_dimensionless_v<UnitT>,
-    //                   "Cannot compare dimensionful quantity with scalar!");
-    //     return a.value != scalar;
-    // }
-    //
-    // template<typename UnitT>
-    // constexpr bool operator!=(long double scalar, Quantity<UnitT> a) {
-    //     static_assert(is_dimensionless_v<UnitT>,
-    //                   "Cannot compare dimensionful quantity with scalar!");
-    //     return scalar != a.value;
-    // }
-    //
-    // template<typename UnitT>
-    // constexpr bool operator<(Quantity<UnitT> a, long double scalar) {
-    //     static_assert(is_dimensionless_v<UnitT>,
-    //                   "Cannot compare dimensionful quantity with scalar!");
-    //     return a.value < scalar;
-    // }
-    //
-    // template<typename UnitT>
-    // constexpr bool operator<(long double scalar, Quantity<UnitT> a) {
-    //     static_assert(is_dimensionless_v<UnitT>,
-    //                   "Cannot compare dimensionful quantity with scalar!");
-    //     return scalar < a.value;
-    // }
-    //
-    // template<typename UnitT>
-    // constexpr bool operator>(Quantity<UnitT> a, long double scalar) {
-    //     static_assert(is_dimensionless_v<UnitT>,
-    //                   "Cannot compare dimensionful quantity with scalar!");
-    //     return a.value > scalar;
-    // }
-    //
-    // template<typename UnitT>
-    // constexpr bool operator>(long double scalar, Quantity<UnitT> a) {
-    //     static_assert(is_dimensionless_v<UnitT>,
-    //                   "Cannot compare dimensionful quantity with scalar!");
-    //     return scalar > a.value;
-    // }
-    //
-    // template<typename UnitT>
-    // constexpr bool operator<=(Quantity<UnitT> a, long double scalar) {
-    //     static_assert(is_dimensionless_v<UnitT>,
-    //                   "Cannot compare dimensionful quantity with scalar!");
-    //     return a.value <= scalar;
-    // }
-    //
-    // template<typename UnitT>
-    // constexpr bool operator<=(long double scalar, Quantity<UnitT> a) {
-    //     static_assert(is_dimensionless_v<UnitT>,
-    //                   "Cannot compare dimensionful quantity with scalar!");
-    //     return scalar <= a.value;
-    // }
-    //
-    // template<typename UnitT>
-    // constexpr bool operator>=(Quantity<UnitT> a, long double scalar) {
-    //     static_assert(is_dimensionless_v<UnitT>,
-    //                   "Cannot compare dimensionful quantity with scalar!");
-    //     return a.value >= scalar;
-    // }
-    //
-    // template<typename UnitT>
-    // constexpr bool operator>=(long double scalar, Quantity<UnitT> a) {
-    //     static_assert(is_dimensionless_v<UnitT>,
-    //                   "Cannot compare dimensionful quantity with scalar!");
-    //     return scalar >= a.value;
-    // }
+    template<typename UnitT>
+    constexpr bool operator==(Quantity<UnitT> a, long double scalar) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot compare dimensionful quantity with scalar!");
+        return a.value == scalar;
+    }
+
+    template<typename UnitT>
+    constexpr bool operator==(long double scalar, Quantity<UnitT> a) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot compare dimensionful quantity with scalar!");
+        return scalar == a.value;
+    }
+
+    template<typename UnitT>
+    constexpr bool operator!=(Quantity<UnitT> a, long double scalar) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot compare dimensionful quantity with scalar!");
+        return a.value != scalar;
+    }
+
+    template<typename UnitT>
+    constexpr bool operator!=(long double scalar, Quantity<UnitT> a) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot compare dimensionful quantity with scalar!");
+        return scalar != a.value;
+    }
+
+    template<typename UnitT>
+    constexpr bool operator<(Quantity<UnitT> a, long double scalar) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot compare dimensionful quantity with scalar!");
+        return a.value < scalar;
+    }
+
+    template<typename UnitT>
+    constexpr bool operator<(long double scalar, Quantity<UnitT> a) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot compare dimensionful quantity with scalar!");
+        return scalar < a.value;
+    }
+
+    template<typename UnitT>
+    constexpr bool operator>(Quantity<UnitT> a, long double scalar) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot compare dimensionful quantity with scalar!");
+        return a.value > scalar;
+    }
+
+    template<typename UnitT>
+    constexpr bool operator>(long double scalar, Quantity<UnitT> a) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot compare dimensionful quantity with scalar!");
+        return scalar > a.value;
+    }
+
+    template<typename UnitT>
+    constexpr bool operator<=(Quantity<UnitT> a, long double scalar) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot compare dimensionful quantity with scalar!");
+        return a.value <= scalar;
+    }
+
+    template<typename UnitT>
+    constexpr bool operator<=(long double scalar, Quantity<UnitT> a) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot compare dimensionful quantity with scalar!");
+        return scalar <= a.value;
+    }
+
+    template<typename UnitT>
+    constexpr bool operator>=(Quantity<UnitT> a, long double scalar) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot compare dimensionful quantity with scalar!");
+        return a.value >= scalar;
+    }
+
+    template<typename UnitT>
+    constexpr bool operator>=(long double scalar, Quantity<UnitT> a) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot compare dimensionful quantity with scalar!");
+        return scalar >= a.value;
+    }
 
     template<typename U1, typename U2>
     constexpr auto operator+(Quantity<U1> a, Quantity<U2> b) {
