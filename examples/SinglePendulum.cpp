@@ -12,13 +12,14 @@ int main() {
     const auto particle = std::make_shared<Particle>(1_kg, Vector3{1_m, 0_m, 0_m});
     const DistanceConstrainer c1 {anchor_point, particle};
 
+    particle->SetComputeForcesFunction([](Particle *p){p->ApplyForce({0_N, -1_kg * Consts::g, 0_N});});
+
     constexpr auto total_time = 2.73_s;
     constexpr int steps = static_cast<int>((total_time / DELTA_TIME / 20).value);
 
     for (int i = 0; i < total_time / DELTA_TIME; ++i) {
-        particle->ApplyForce({0_N, -1_kg * Consts::g, 0_N});
-        c1.Correct(DELTA_TIME);
         particle->Integrate(DELTA_TIME);
+        c1.Correct(DELTA_TIME);
 
         if (i % steps == 0) {
             // If we record the simulated data every moment, the final analysis will result in image 'SinglePendulumAnalysis.png'

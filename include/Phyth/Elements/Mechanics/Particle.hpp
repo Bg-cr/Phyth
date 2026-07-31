@@ -1,6 +1,8 @@
 #ifndef PHYTH_PARTICLE_H
 #define PHYTH_PARTICLE_H
 
+#include <functional>
+
 #include "Phyth/Physical/PhysicalConsts.hpp"
 #include "Phyth/Core/Units.hpp"
 #include "Phyth/Tools/Vector3.hpp"
@@ -21,10 +23,16 @@ namespace Phyth::Mechanics {
                 external_force_ = Vector3<Quantity<Newton>>();
                 return;
             }
+            compute_forces_func_(this);
 
-            const auto acc = external_force_ / mass_;
-            position_ = position_ + velocity_ * dt + 0.5 * acc * dt * dt;
-            velocity_ = velocity_ + acc * dt;
+            const auto acc_old = external_force_ / mass_;
+            position_ = position_ + velocity_ * dt + 0.5 * acc_old * dt * dt;
+
+            external_force_ = Vector3<Quantity<Newton>>();
+            compute_forces_func_(this);
+
+            const auto acc_new = external_force_ / mass_;
+            velocity_ = velocity_ + 0.5 * (acc_old + acc_new) * dt;
 
             external_force_ = Vector3<Quantity<Newton>>();
         }
@@ -43,6 +51,8 @@ namespace Phyth::Mechanics {
 
         [[nodiscard]] constexpr const auto &GetExternalForce() const noexcept { return external_force_; }
         void SetExternalForce(const Vector3<Quantity<Newton>> &external_force) noexcept { external_force_ = external_force; }
+
+        void SetComputeForcesFunction(const std::function<void(Particle *)>& func) noexcept { compute_forces_func_ = func; }
 
         [[nodiscard]] Quantity<Joule> GetPotentialEnergy(const Quantity<Meter> y_ref = 0) const {
             return mass_ * Consts::g * (position_.y - y_ref);
@@ -68,6 +78,8 @@ namespace Phyth::Mechanics {
 
         Vector3<Quantity<Newton>> external_force_ {};
         Vector3<Quantity<Meter>> position_;
+
+        std::function<void(Particle *)> compute_forces_func_ = [](Particle *){};
     };
 }
 
