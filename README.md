@@ -146,6 +146,7 @@ int main() {
 0.015 s Particle{pos=(0.999999 m, -0.00125525 m, 0 m), mass=1 kg} 9.80665 J
 ...
 ```
+> *Note: The above output is formatted for readability. Actual raw output may show slight variations in the last 3–4 significant digits due to floating-point rounding.*
 
 **Verification method**
 If the above code is run, the total energy at each moment should be approximately `9.80665 J`.
