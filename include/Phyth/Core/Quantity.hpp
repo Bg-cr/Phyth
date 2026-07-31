@@ -291,8 +291,8 @@ namespace Phyth {
 
     template<typename UnitT>
     std::string QuantityToString(const Quantity<UnitT>& q) {
+        using DimT = typename UnitT::Dimension;
         if (Config::output_mode == OutputMode::Raw) {
-            using DimT = typename UnitT::Dimension;
             return FormatValue<UnitT>(q.value) + " " + DimToString<DimT>::value();
         }
         const long double display_value = q.value / UnitT::scale;
@@ -301,7 +301,7 @@ namespace Phyth {
             unit = UnitName<UnitT>();
         }
         if (unit.empty()) {
-            return FormatValue<UnitT>(display_value);
+            return FormatValue<UnitT>(display_value) + " " + DimToString<DimT>::value();
         }
         return FormatValue<UnitT>(display_value) + " " + unit;
     }
