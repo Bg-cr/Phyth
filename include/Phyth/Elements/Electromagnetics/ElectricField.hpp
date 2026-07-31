@@ -1,10 +1,11 @@
 #ifndef PHYTH_ELECTRIC_FIELD_HPP
 #define PHYTH_ELECTRIC_FIELD_HPP
+
 #include <algorithm>
 #include <memory>
 #include <vector>
 
-#include "ChargeSources.hpp"
+#include "ChargeSources/ChargeSources.hpp"
 #include "Phyth/Elements/Field.hpp"
 
 namespace Phyth::Electromagnetics {

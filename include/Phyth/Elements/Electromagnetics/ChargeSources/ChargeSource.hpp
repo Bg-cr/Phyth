@@ -4,13 +4,11 @@
 #include "Phyth/Tools/Vector3.hpp"
 #include "Phyth/Core/Quantity.hpp"
 #include "Phyth/Core/Units.hpp"
-#include "ChargeParticle.hpp"
+#include "../ChargeParticle.hpp"
 
 namespace Phyth::Electromagnetics {
-    class ChargeSource : public ChargeParticle {
+    class ChargeSource {
     public:
-        ChargeSource(const Quantity<Kilogram> mass, const Vector3<Quantity<Meter>> &position, const Quantity<Coulomb> charge)
-            : ChargeParticle(mass, position, charge) {}
         virtual ~ChargeSource() = default;
 
         [[nodiscard]] virtual Vector3<Quantity<NewtonPerCoulomb>>
@@ -28,10 +26,6 @@ namespace Phyth::Electromagnetics {
 
         [[nodiscard]] virtual Quantity<Meter>
         GetMinimumDistanceTo(const Vector3<Quantity<Meter>>& point) const = 0;
-
-    protected:
-        using ChargeParticle::GetChargeValue;
-        using ChargeParticle::SetChargeValue;
     };
 
 

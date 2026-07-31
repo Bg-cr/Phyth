@@ -1,6 +1,8 @@
 #ifndef PHYTH_QUANTITY_FUNCS_HPP
 #define PHYTH_QUANTITY_FUNCS_HPP
 
+#include <algorithm>
+
 #include "Phyth/Core/Quantity.hpp"
 #include "Phyth/Core/Quantities.hpp"
 #include <cmath>
@@ -17,7 +19,6 @@ namespace Phyth::Utils {
     inline Scalar tan(Scalar q) {
         return Scalar(std::tan(q.value));
     }
-
 
     inline Scalar asin(Scalar q) {
         return Scalar(std::asin(q.value));
@@ -155,6 +156,23 @@ namespace Phyth::Utils {
         return {std::fmod(x.value, y.value)};
     }
 
+    template<typename UnitT>
+    constexpr Quantity<UnitT> max(Quantity<UnitT> x, Quantity<UnitT> y) {
+        static_assert(is_unit_v<UnitT>, "Unit type cannot be a non-unit");
+        return Quantity<UnitT>(std::max(x.value, y.value));
+    }
+
+    template <typename UnitT>
+    constexpr Quantity<UnitT> min(Quantity<UnitT> x, Quantity<UnitT> y) {
+        static_assert(is_unit_v<UnitT>, "Unit type cannot be a non-unit");
+        return Quantity<UnitT>(std::min(x.value, y.value));
+    }
+
+    template <typename UnitT>
+    constexpr Quantity<UnitT> clamp(Quantity<UnitT> x, Quantity<UnitT> min, Quantity<UnitT> max) {
+        static_assert(is_unit_v<UnitT>, "Unit type cannot be a non-unit");
+        return Quantity<UnitT>(std::clamp(x.value, min.value, max.value));
+    }
 }
 
 #endif //PHYTH_QUANTITY_FUNCS_HPP

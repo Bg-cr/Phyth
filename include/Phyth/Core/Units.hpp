@@ -131,7 +131,9 @@ namespace Phyth {
     struct VoltagePerMeterTag {};
     PHYTH_DEFINE_UNIT_WITH_TAG(ElectricFieldIntensity, VoltagePerMeter, Vpm, 1, 1, "V/m", VoltagePerMeterTag)
 
-    PHYTH_DEFINE_UNIT_WITH_NAME(ChargeDensity, CoulombPerCubicMeter, Cpm3, 1, 1, "C/m^3")
+    PHYTH_DEFINE_UNIT_WITH_NAME(LinearChargeDensity, CoulombPerMeter, Cpm, 1, 1, "C/m")
+    PHYTH_DEFINE_UNIT_WITH_NAME(SurfaceChargeDensity, CoulombPerSquareMeter, Cpm2, 1, 1, "C/m^3")
+    PHYTH_DEFINE_UNIT_WITH_NAME(BulkChargeDensity, CoulombPerCubicMeter, Cpm3, 1, 1, "C/m^3")
 
     PHYTH_DEFINE_UNIT_WITH_NAME(ElectricPotential, FaradPerMeter, Fpm, 1, 1, "F/m")
 

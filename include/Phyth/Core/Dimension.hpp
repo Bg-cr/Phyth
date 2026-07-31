@@ -225,7 +225,9 @@ namespace Phyth {
     using MassDensity = DimDivT<Mass, Length>;
     using ElectricPotential = DimDivT<Capacitance, Length>;
     using EnergyDensity = DimDivT<Energy, Length>;
-    using ChargeDensity = DimDivT<ElectricCurrent, Volume>;
+    using LinearChargeDensity = DimDivT<Charge, Length>;
+    using SurfaceChargeDensity = DimDivT<Charge, Area>;
+    using BulkChargeDensity = DimDivT<Charge, Volume>;
 
     template<typename UnitT>
     struct is_dimensionless {
