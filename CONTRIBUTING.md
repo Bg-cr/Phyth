@@ -163,8 +163,6 @@ Open a [Discussion](https://github.com/Bg-cr/Phyth/discussions) for questions
 
 Tag `@Bg-cr` in issues for maintainer attention
 
-For urgent issues, email: `[your-email]`
-
 ---
 
 ## License
