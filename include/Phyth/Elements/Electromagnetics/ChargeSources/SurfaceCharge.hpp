@@ -4,6 +4,7 @@
 #include <cassert>
 
 #include "ChargeSource.hpp"
+#include "Phyth/Physical/PhysicalConsts.hpp"
 
 namespace Phyth::Electromagnetics {
     class SurfaceCharge : public ChargeSource {

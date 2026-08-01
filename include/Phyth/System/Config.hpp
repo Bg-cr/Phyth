@@ -15,12 +15,12 @@ namespace Phyth {
         }
 
         static OutputMode output_mode;
-        static long double epsilon;
+        static double epsilon;
 
     };
 
     inline OutputMode Config::output_mode = OutputMode::Auto;
-    inline long double Config::epsilon = 1e-6;
+    inline double Config::epsilon = 1e-6;
 
 }
 

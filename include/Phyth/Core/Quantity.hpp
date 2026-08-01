@@ -13,8 +13,8 @@ namespace Phyth {
     struct Quantity {
         static_assert(is_unit_v<UnitT>, "UnitT is not a unit!");
 
-        long double value;
-        constexpr Quantity(const long double v = 0.0) : value(v) {}
+        double value;
+        constexpr Quantity(const double v = 0.0) : value(v) {}
 
         template<typename OtherUnit>
         constexpr Quantity(Quantity<OtherUnit> other)
@@ -47,12 +47,12 @@ namespace Phyth {
             return *this;
         }
 
-        constexpr Quantity& operator*=(const long double scalar) {
+        constexpr Quantity& operator*=(const double scalar) {
             value *= scalar;
             return *this;
         }
 
-        constexpr Quantity& operator/=(const long double scalar) {
+        constexpr Quantity& operator/=(const double scalar) {
             value /= scalar;
             return *this;
         }
@@ -124,84 +124,84 @@ namespace Phyth {
     }
 
     template<typename UnitT>
-    constexpr bool operator==(Quantity<UnitT> a, long double scalar) {
+    constexpr bool operator==(Quantity<UnitT> a, double scalar) {
         static_assert(is_dimensionless_v<UnitT>,
                       "Cannot compare dimensionful quantity with scalar!");
         return a.value == scalar;
     }
 
     template<typename UnitT>
-    constexpr bool operator==(long double scalar, Quantity<UnitT> a) {
+    constexpr bool operator==(double scalar, Quantity<UnitT> a) {
         static_assert(is_dimensionless_v<UnitT>,
                       "Cannot compare dimensionful quantity with scalar!");
         return scalar == a.value;
     }
 
     template<typename UnitT>
-    constexpr bool operator!=(Quantity<UnitT> a, long double scalar) {
+    constexpr bool operator!=(Quantity<UnitT> a, double scalar) {
         static_assert(is_dimensionless_v<UnitT>,
                       "Cannot compare dimensionful quantity with scalar!");
         return a.value != scalar;
     }
 
     template<typename UnitT>
-    constexpr bool operator!=(long double scalar, Quantity<UnitT> a) {
+    constexpr bool operator!=(double scalar, Quantity<UnitT> a) {
         static_assert(is_dimensionless_v<UnitT>,
                       "Cannot compare dimensionful quantity with scalar!");
         return scalar != a.value;
     }
 
     template<typename UnitT>
-    constexpr bool operator<(Quantity<UnitT> a, long double scalar) {
+    constexpr bool operator<(Quantity<UnitT> a, double scalar) {
         static_assert(is_dimensionless_v<UnitT>,
                       "Cannot compare dimensionful quantity with scalar!");
         return a.value < scalar;
     }
 
     template<typename UnitT>
-    constexpr bool operator<(long double scalar, Quantity<UnitT> a) {
+    constexpr bool operator<(double scalar, Quantity<UnitT> a) {
         static_assert(is_dimensionless_v<UnitT>,
                       "Cannot compare dimensionful quantity with scalar!");
         return scalar < a.value;
     }
 
     template<typename UnitT>
-    constexpr bool operator>(Quantity<UnitT> a, long double scalar) {
+    constexpr bool operator>(Quantity<UnitT> a, double scalar) {
         static_assert(is_dimensionless_v<UnitT>,
                       "Cannot compare dimensionful quantity with scalar!");
         return a.value > scalar;
     }
 
     template<typename UnitT>
-    constexpr bool operator>(long double scalar, Quantity<UnitT> a) {
+    constexpr bool operator>(double scalar, Quantity<UnitT> a) {
         static_assert(is_dimensionless_v<UnitT>,
                       "Cannot compare dimensionful quantity with scalar!");
         return scalar > a.value;
     }
 
     template<typename UnitT>
-    constexpr bool operator<=(Quantity<UnitT> a, long double scalar) {
+    constexpr bool operator<=(Quantity<UnitT> a, double scalar) {
         static_assert(is_dimensionless_v<UnitT>,
                       "Cannot compare dimensionful quantity with scalar!");
         return a.value <= scalar;
     }
 
     template<typename UnitT>
-    constexpr bool operator<=(long double scalar, Quantity<UnitT> a) {
+    constexpr bool operator<=(double scalar, Quantity<UnitT> a) {
         static_assert(is_dimensionless_v<UnitT>,
                       "Cannot compare dimensionful quantity with scalar!");
         return scalar <= a.value;
     }
 
     template<typename UnitT>
-    constexpr bool operator>=(Quantity<UnitT> a, long double scalar) {
+    constexpr bool operator>=(Quantity<UnitT> a, double scalar) {
         static_assert(is_dimensionless_v<UnitT>,
                       "Cannot compare dimensionful quantity with scalar!");
         return a.value >= scalar;
     }
 
     template<typename UnitT>
-    constexpr bool operator>=(long double scalar, Quantity<UnitT> a) {
+    constexpr bool operator>=(double scalar, Quantity<UnitT> a) {
         static_assert(is_dimensionless_v<UnitT>,
                       "Cannot compare dimensionful quantity with scalar!");
         return scalar >= a.value;
@@ -240,22 +240,22 @@ namespace Phyth {
     }
 
     template<typename UnitT>
-    constexpr auto operator*(Quantity<UnitT> a, long double scalar) {
+    constexpr auto operator*(Quantity<UnitT> a, double scalar) {
         return Quantity<UnitT>(a.value * scalar);
     }
 
     template<typename UnitT>
-    constexpr auto operator*(long double scalar, Quantity<UnitT> a) {
+    constexpr auto operator*(double scalar, Quantity<UnitT> a) {
         return Quantity<UnitT>(scalar * a.value);
     }
 
     template<typename UnitT>
-    constexpr auto operator/(Quantity<UnitT> a, long double scalar) {
+    constexpr auto operator/(Quantity<UnitT> a, double scalar) {
         return Quantity<UnitT>(a.value / scalar);
     }
 
     template<typename UnitT>
-    constexpr auto operator/(long double scalar, Quantity<UnitT> a) {
+    constexpr auto operator/(double scalar, Quantity<UnitT> a) {
         using DimT = typename UnitT::Dimension;
         using ResultDim = DimDivT<Dimensionless, DimT>;
         using ResultUnit = Unit<ResultDim>;
@@ -283,7 +283,7 @@ namespace Phyth {
     }
 
     template<typename>
-    std::string FormatValue(const long double value) {
+    std::string FormatValue(const double value) {
         std::ostringstream oss;
         oss << value;
         return oss.str();
@@ -295,7 +295,7 @@ namespace Phyth {
         if (Config::output_mode == OutputMode::Raw) {
             return FormatValue<UnitT>(q.value) + " " + DimToString<DimT>::value();
         }
-        const long double display_value = q.value / UnitT::scale;
+        const double display_value = q.value / UnitT::scale;
         std::string unit = UnitSymbol<UnitT>();
         if (unit.empty()) {
             unit = UnitName<UnitT>();

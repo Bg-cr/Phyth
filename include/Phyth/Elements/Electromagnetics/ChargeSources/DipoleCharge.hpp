@@ -2,6 +2,7 @@
 #define PHYTH_DIPOLE_CHARGE_HPP
 
 #include "ChargeSource.hpp"
+#include "Phyth/Physical/PhysicalConsts.hpp"
 
 namespace Phyth::Electromagnetics {
     class DipoleCharge : public ChargeSource {

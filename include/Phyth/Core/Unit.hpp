@@ -7,7 +7,7 @@ namespace Phyth {
     template<typename DimT, typename Scale = std::ratio<1>, typename = void>
     struct Unit {
         using Dimension = DimT;
-        static constexpr long double scale = static_cast<long double>(Scale::num) / Scale::den;
+        static constexpr double scale = static_cast<double>(Scale::num) / Scale::den;
 
         Unit() = default;
     };
