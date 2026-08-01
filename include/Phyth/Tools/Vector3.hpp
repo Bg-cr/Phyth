@@ -1,10 +1,10 @@
 #ifndef PHYTH_VECTOR3_HPP
 #define PHYTH_VECTOR3_HPP
 
-#include "../Core/Dimension.hpp"
-#include "../Core/Quantity.hpp"
+#include "Phyth/Core/Dimension.hpp"
+#include "Phyth/Core/Quantity.hpp"
 #include "QuantityFuncs.hpp"
-#include "../Core/Units.hpp"
+#include "Phyth/Core/Units.hpp"
 
 #include <ostream>
 

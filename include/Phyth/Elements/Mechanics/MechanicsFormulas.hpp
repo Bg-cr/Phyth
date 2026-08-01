@@ -1,7 +1,7 @@
 #ifndef PHYTH_MECHANICS_FORMULAS_HPP
 #define PHYTH_MECHANICS_FORMULAS_HPP
 
-#include "Phyth/Core/FormulaSolver.hpp"
+#include "Phyth/Tools/FormulaSolver.hpp"
 #include "Phyth/System/Config.hpp"
 
 namespace Phyth {

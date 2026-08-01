@@ -4,7 +4,7 @@
 using namespace Phyth;
 using namespace Phyth::Mechanics;
 
-constexpr Quantity<Second> DELTA_TIME = 1_s / 300;
+constexpr Quantity<Second> DELTA_TIME = 1_s / 1000;
 
 int main() {
     const auto anchor_point = std::make_shared<Particle>(1_kg, Vector3{0_m, 0_m, 0_m});

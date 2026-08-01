@@ -12,8 +12,15 @@
 - [Description](#description)
 - [Features](#features)
 - [Positioning](#positioning)
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
+- [Accuracy Verification](#accuracy-verification)
+- [Project Struct](#project-struct)
+- [FAQ](#faq)
+- [Known Limitations](#known-limitations)
+- [Contributing](#contributing)
+- [Acknowledgments](#acknowledgments)
 
 ## Description
 Phyth is a C++ simulation library designed for numerical method researchers. 
@@ -45,13 +52,13 @@ making it easy to verify physical conservation laws during simulation and simpli
 
 Existing physics engines sit at two extremes:
 
-|                   | Industrial Engines            | Scientific Engines                |
-|-------------------|-------------------------------|-----------------------------------|
-| **Speed**         | ✅ Fast                       | ⚠️ Slow                           |
-| **Robustness**    | ✅ Battle-tested              | ⚠️ Academic                       |
-| **Transparency**  | ❌ Black box (stages fused)   | ✅ Exposed internals              |
-| **Modifiability** | ❌ Fixed solver, hard to swap | ⚠️ Heavy codebase, hard to modify |
-| **Dependencies**  | ✅ Minimal                    | ❌ Heavy dependency graph         |
+|                   | Industrial Engines            | Scientific Engines                 |
+|-------------------|-------------------------------|------------------------------------|
+| **Speed**         | ✅ Fast                       | ⚠️ Slow                            |
+| **Robustness**    | ✅ Battle-tested              | ⚠️ Academic                        |
+| **Transparency**  | ❌ Black box (stages fused)   | ✅ Exposed internals               |
+| **Modifiability** | ❌ Fixed solver, hard to swap | ⚠️ Heavy codebase, hard to modify  |
+| **Dependencies**  | ✅ Minimal                    | ❌ Heavy dependency graph          |
 
 **Phyth sits right in the middle:**
 
@@ -65,11 +72,26 @@ easy to build, modify, and experiment with.
 **In short**, Phyth gives researchers the freedom to develop new numerical methods, 
 without the friction of production-level complexity or academic-level baggage.
 
+## Requirements
+
+- **C++17** or higher
+- **Compiler**: GCC 9+, Clang 10+, MSVC 19.20+ (Visual Studio 2019+)
+
+### Platform Support
+
+Phyth is a header-only library with **no third-party dependencies** and **no platform-specific system calls**.
+It relies exclusively on the C++ standard library, making it portable across platforms.
+
+| Platform | Compiler           | Status                |
+|----------|--------------------|-----------------------|
+| Linux    | GCC 9+, Clang 10+  | ✅ CI-tested          |
+| Windows  | MSVC 19.20+, MinGW | ✅ Verified           |
+| macOS    | Apple Clang 13+    | ⚠️ Expected to work   |
+
+> **Note**: If you use Phyth on an untested platform and encounter issues,
+> please [file an issue](https://github.com/Bg-cr/Phyth/issues/new) — we'll help investigate.
+
 ## Installation
-
-### Prerequisites
-
-- C++17 or higher
 
 #### Clone the Repository
 
@@ -154,4 +176,97 @@ If the above code is run, the total energy at each moment should be approximatel
 In fact, after running and analysis the data, it can be concluded that the relative fluctuation within `2.73s` is approximately `1.32e-5`, 
 which confirms that the integrator and constraint solver are working properly.
 
+## Accuracy Verification
 
+The first [image](examples/SinglePendulumAnalysis.png) is the analysis
+(based on the [Quick Start](#quick-start) code with detailed output): 
+
+![SinglePendulumAnalysis.png](examples/SinglePendulumAnalysis.png)
+
+The latest [image](examples/DoublePendulumAnalysisDt5e-3.png) below shows the data analysis of the double pendulum simulation
+(dt=5e-3 s and sample 1000 points), and the calculated relative fluctuation is about 1.37e-3%(1.37e-5):
+
+![DoublePendulumAnalysisDt5e-3.png](examples/DoublePendulumAnalysisDt5e-3.png)
+
+## Project Struct
+Below is the project tree diagram and introduction: 
+```
+F:.
+├─examples
+├─include
+│  └─Phyth
+│      ├─Core
+│      ├─Elements
+│      │  ├─Electromagnetics
+│      │  │  └─ChargeSources
+│      │  └─Mechanics
+│      ├─Physical
+│      ├─System
+│      └─Tools
+└─Phyth
+```
+
+- `example/` — Examples, like `SinglePendulum.cpp`
+- `Phyth/include/`
+  - `Core/` — Compile-time dimensional analysis system
+  - `Elements/` — Physics building blocks (mechanics + electromagnetics)
+  - `Physical/` — Constants like `g`, `G`, `epsilon_0`
+  - `Tools/` — Tools such as `Vector3` and helper functions
+
+## FAQ
+**Q: Is dimensionality checking performed during compilation or at runtime? Is it zero-cost?**
+
+A: Compile-time. In Release mode, `Quantity<T, Dim>` has a memory layout identical to that of a native `double`, with zero runtime overhead.
+
+**Q: Can units in a parallel relationship be transformed into each other?**
+
+A: Yes. For example, for `N*m` and `J`, the dimensional system will automatically deduce the units, 
+while the unit labels will retain the original semantics.
+The display format is managed by `UnitsRegistry` to ensure that the physical meaning is not lost during output.
+
+**Q: Is electromagnetic field an analytical solution or a numerical solution?**
+
+Numerical integration. The electric field and potential are approximately calculated by dividing 
+a rectangular prism into volume elements and superimposing Coulomb fields on each volume element. 
+The accuracy is comparable to the analytical formula, but the speed is not very fast. 
+This is the implementation decision of the current version - prioritizing code clarity over computational efficiency.
+
+**Q: What physics can be considered at present?**
+
+- Mechanics: Particle, Spring, Distance Constraint (Single/Double Pendulum Verified)
+- Electromagnetics: Calculation of point/line/surface/bulk charges, electric dipoles, and electrostatic fields
+> Note: Thermodynamics and time-varying electromagnetic fields are not supported in the current version of the roadmap.
+
+## Known Limitations
+
+- **Performance**: Electromagnetic field calculations use direct summation over volume elements . For large-scale 3D simulations, this may be slow.
+- **No GPU acceleration**: All computations are CPU-bound in the current version.
+- **No collision detection**: Phyth focuses on dynamics and field calculations, not contact mechanics.
+- **No automatic differentiation**: Gradients must be computed manually if needed for optimization.
+
+
+## Contributing
+
+We welcome contributions from researchers, students, and developers!
+
+### How to Contribute
+
+1. **Report bugs or request features** → Use our [Issue Templates](https://github.com/Bg-cr/Phyth/issues/new/choose)
+2. **Submit code changes** → Fork the repo, create a branch, and open a Pull Request
+3. **Suggest new physics modules** → Start a Discussion
+
+### Guidelines
+
+- All new formulas must include validation tests (compare against analytical solutions)
+- Follow [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
+- Write descriptive commit messages
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for full details.
+
+## Acknowledgments
+
+Phyth's dimensional analysis system draws inspiration from:
+- [Boost.Units](https://www.boost.org/doc/libs/1_85_0/doc/html/boost_units.html) — compile-time dimensional analysis in C++
+- The foundational work on dimensional analysis by Buckingham and Bridgman
+
+The validation framework was inspired by best practices in computational physics education.
