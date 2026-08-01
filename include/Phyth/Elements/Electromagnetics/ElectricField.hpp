@@ -3,7 +3,6 @@
 
 #include <algorithm>
 #include <memory>
-#include <vector>
 
 #include "ChargeSources/ChargeSources.hpp"
 #include "Phyth/Elements/Field.hpp"
@@ -51,7 +50,7 @@ namespace Phyth::Electromagnetics {
             return total;
         }
 
-        template <typename T, std::enable_if<is_charge_source_v<T>>>
+        template <typename T, typename = std::enable_if<is_charge_source_v<T>>>
         [[nodiscard]] std::unordered_set<std::shared_ptr<T>>
         GetChargeSources() const {
             std::unordered_set<std::shared_ptr<T> > sources;
