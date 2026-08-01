@@ -33,14 +33,15 @@ Phyth uses a **lightweight** set of conventions (no need to memorize a 100-page 
 
 ### Naming
 
-| Type                    | Style               | Example                                            |
-|-------------------------|---------------------|----------------------------------------------------|
-| **Classes / Structs**   | `PascalCase`        | `Particle`, `DistanceConstrainer`, `ElectricField` |
-| **Functions / Methods** | `PascalCase`        | `GetTotalEnergy()`, `ApplyForce()`, `Integrate()`  |
-| **Variables**           | `snake_case`        | `delta_time`, `anchor`, `pendulum_mass`            |
-| **Constants**           | `k` + `PascalCase`  | `kSpeedOfLight`, `kGravitationalConstant`          |
-| **Files**               | `PascalCase.hpp`    | `Quantity.hpp`, `Spring.hpp`, `ElectricField.hpp`  |
-| **Namespaces**          | `lowercase`         | `Phyth::Mechanics`, `Phyth::Electromagnetics`      |
+| Type                              | Style            | Example                                                            |
+|-----------------------------------|------------------|--------------------------------------------------------------------|
+| **Classes / Structs**             | `PascalCase`     | `Particle`, `DistanceConstrainer`, `ElectricField`                 |
+| **Functions / Methods**           | `PascalCase`     | `GetTotalEnergy()`, `ApplyForce()`, `Integrate()`                  |
+| **(Const) Variable**              | `snake_case`     | `delta_time`, `anchor`, `pendulum_mass`                            |
+| **Files**                         | `PascalCase.hpp` | `Quantity.hpp`, `Spring.hpp`, `ElectricField.hpp`                  |
+| **Namespaces**                    | `PascalCase`     | `Phyth::Mechanics`, `Phyth::Electromagnetics`                      |
+| **English proprietary terms**     | original text    | gravity acceleration → `g`, universal gravitational constant → `G` |
+| **non-English proprietary terms** | translation      | ε₀ → `epsilon_0`, φ → `phi`, coulomb constant → `k_E`              |
 
 ### Headers
 
@@ -151,9 +152,13 @@ Fixes #100
 5. **Merge**: Squash and merge (or rebase)
 
 ### PR Checklist
+
 □ Code follows style guidelines
+
 □ Added validation tests (if new physics)
+
 □ Updated documentation (if API changed)
+
 □ All CI checks pass
 
 ---

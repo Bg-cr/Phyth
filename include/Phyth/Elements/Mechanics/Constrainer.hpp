@@ -86,8 +86,8 @@ namespace Phyth::Mechanics {
             Quantity<Radian> theta = std::get<1>(spherical);
             Quantity<Radian> phi = std::get<2>(spherical);
 
-            theta = Utils::fmod(theta + Quantity<Radian>(Consts::TAU), Quantity<Radian>(Consts::VARPI)) - Quantity<Radian>(Consts::TAU);
-            phi = Utils::fmod(phi + Quantity<Radian>(Consts::TAU), Quantity<Radian>(Consts::VARPI)) - Quantity<Radian>(Consts::TAU);
+            theta = Utils::fmod(theta + Quantity<Radian>(Consts::tau), Quantity<Radian>(Consts::varpi)) - Quantity<Radian>(Consts::tau);
+            phi = Utils::fmod(phi + Quantity<Radian>(Consts::tau), Quantity<Radian>(Consts::varpi)) - Quantity<Radian>(Consts::tau);
 
             const Quantity<Radian> target_theta = theta_interval_.Contains(theta)
                                             ? theta
@@ -123,16 +123,16 @@ namespace Phyth::Mechanics {
         Interval<Radian> phi_interval_;
 
         void IntervalCheck() const {
-            if (theta_interval_.GetMinimum() < Quantity<Radian>(-Consts::TAU)) {
+            if (theta_interval_.GetMinimum() < Quantity<Radian>(-Consts::tau)) {
                 throw std::invalid_argument("The minimum of theta interval must be greater than 2pi.");
             }
-            if (phi_interval_.GetMinimum() < Quantity<Radian>(-Consts::TAU)) {
+            if (phi_interval_.GetMinimum() < Quantity<Radian>(-Consts::tau)) {
                 throw std::invalid_argument("The minimum of phi interval must be greater than 2pi.");
             }
-            if (theta_interval_.GetMaximum() > Quantity<Radian>(Consts::TAU)) {
+            if (theta_interval_.GetMaximum() > Quantity<Radian>(Consts::tau)) {
                 throw std::invalid_argument("The maximum of theta interval must be less than 2pi.");
             }
-            if (phi_interval_.GetMaximum() > Quantity<Radian>(Consts::TAU)) {
+            if (phi_interval_.GetMaximum() > Quantity<Radian>(Consts::tau)) {
                 throw std::invalid_argument("The maximum of phi interval must be less than 2pi.");
             }
         }
