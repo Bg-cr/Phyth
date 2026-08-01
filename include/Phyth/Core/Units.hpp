@@ -4,7 +4,6 @@
 #include "Phyth/Core/Dimension.hpp"
 #include "Phyth/System/UnitsRegistry.hpp"
 #include "Unit.hpp"
-#include "Phyth/Physical/Constants.hpp"
 #include "Phyth/Core/Quantity.hpp"
 
 namespace Phyth {
