@@ -7,7 +7,7 @@ namespace Phyth::Electromagnetics {
     class DipoleCharge : public ChargeSource {
     public:
         DipoleCharge(const Vector3<Quantity<Meter>> &position,
-                     Vector3<Quantity<CoulombMeter>> dipole_moment)
+                     const Vector3<Quantity<CoulombMeter>> &dipole_moment)
             : position_(position), p_(dipole_moment) {}
 
         [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb>>

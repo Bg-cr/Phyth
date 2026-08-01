@@ -4,7 +4,6 @@
 #include "Phyth/Tools/Vector3.hpp"
 #include "Phyth/Core/Quantity.hpp"
 #include "Phyth/Core/Units.hpp"
-#include "../ChargeParticle.hpp"
 
 namespace Phyth::Electromagnetics {
     class ChargeSource {
