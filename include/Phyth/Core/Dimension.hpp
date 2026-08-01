@@ -228,6 +228,7 @@ namespace Phyth {
     using LinearChargeDensity = DimDivT<Charge, Length>;
     using SurfaceChargeDensity = DimDivT<Charge, Area>;
     using BulkChargeDensity = DimDivT<Charge, Volume>;
+    using ElectricDipoleMoment = DimMulT<Charge, Length>;
 
     template<typename UnitT>
     struct is_dimensionless {

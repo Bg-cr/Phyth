@@ -135,7 +135,7 @@ namespace Phyth {
     PHYTH_DEFINE_UNIT_WITH_NAME(BulkChargeDensity, CoulombPerCubicMeter, Cpm3, 1, 1, "C/m^3")
 
     PHYTH_DEFINE_UNIT_WITH_NAME(ElectricPotential, FaradPerMeter, Fpm, 1, 1, "F/m")
-
+    PHYTH_DEFINE_UNIT_WITH_NAME(ElectricDipoleMoment, CoulombMeter, Cm, 1, 1, "C*m")
 
     #undef PHYTH_DEFINE_UNIT
     #undef PHYTH_DEFINE_UNIT_WITH_NAME
