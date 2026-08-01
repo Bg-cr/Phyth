@@ -41,7 +41,7 @@ Phyth uses a **lightweight** set of conventions (no need to memorize a 100-page 
 | **Files**                         | `PascalCase.hpp` | `Quantity.hpp`, `Spring.hpp`, `ElectricField.hpp`                  |
 | **Namespaces**                    | `PascalCase`     | `Phyth::Mechanics`, `Phyth::Electromagnetics`                      |
 | **English proprietary terms**     | original text    | gravity acceleration → `g`, universal gravitational constant → `G` |
-| **non-English proprietary terms** | translation      | ε₀ → `epsilon_0`, φ → `phi`, coulomb constant → `k_E`              |
+| **non-English proprietary terms** | translation      | ε₀ → `epsilon_0`, φ → `phi`                                        |
 
 ### Headers
 
