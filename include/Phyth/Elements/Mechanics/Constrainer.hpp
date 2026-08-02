@@ -10,6 +10,13 @@
 #include "Phyth/Core/Unit.hpp"
 
 namespace Phyth::Mechanics {
+
+    /**
+     * @brief Constrains a particle's distance from an anchor within an interval by corrct velocity
+     *
+     * If the particle moves outside [min, max], corrects its position
+     * back to the nearest bound and adjusts velocity accordingly.
+     */
     class DistanceConstrainer {
     public:
         DistanceConstrainer(std::shared_ptr<Particle> anchor, std::shared_ptr<Particle> particle)
@@ -19,18 +26,22 @@ namespace Phyth::Mechanics {
         }
 
         DistanceConstrainer(std::shared_ptr<Particle> anchor, std::shared_ptr<Particle> particle,
-                            const Interval<Meter> &interval)
+                            const Interval<Meter>& interval)
             : anchor_(std::move(anchor)), particle_(std::move(particle)), interval_(interval) {
             IntervalCheck();
         }
 
+        /**
+         * @brief Corrects position and velocity to satisfy the distance constraint
+         * @param dt Time step used for velocity correction
+         */
         void Correct(const Quantity<Second> dt) const {
-            const Vector3<Quantity<Meter> > diff = particle_->GetPosition() - anchor_->GetPosition();
+            const Vector3<Quantity<Meter>> diff = particle_->GetPosition() - anchor_->GetPosition();
             const Quantity<Meter> length = diff.Length();
             if (interval_.Contains(length))
                 return;
 
-            const Vector3<Quantity<Meter> > target_offset = diff.Normalized() *
+            const Vector3<Quantity<Meter>> target_offset = diff.Normalized() *
                                                             (length > interval_.GetMaximum()
                                                                  ? interval_.GetMaximum()
                                                                  : interval_.GetMinimum());
@@ -51,6 +62,13 @@ namespace Phyth::Mechanics {
         }
     };
 
+    /**
+     * @brief Constrains a particle's angular position around an anchor
+     *
+     * Restricts theta (polar angle from Z axis) and phi (azimuthal angle from X axis)
+     * within specified intervals. Corrects position back to nearest valid angle.
+     * Angles are wrapped to [-2pi, 2pi] before validation.
+     */
     class AngleConstrainer {
     public:
         AngleConstrainer(std::shared_ptr<Particle> anchor, std::shared_ptr<Particle> particle)
@@ -61,19 +79,23 @@ namespace Phyth::Mechanics {
         }
 
         AngleConstrainer(std::shared_ptr<Particle> anchor, std::shared_ptr<Particle> particle,
-                         const Interval<Radian> &theta_interval)
+                         const Interval<Radian>& theta_interval)
             : anchor_(std::move(anchor)), particle_(std::move(particle)), theta_interval_(theta_interval),
               phi_interval_(std::get<2>((particle_->GetPosition() - anchor_->GetPosition()).ToSpherical())) {
             IntervalCheck();
         }
 
         AngleConstrainer(std::shared_ptr<Particle> anchor, std::shared_ptr<Particle> particle,
-                         const Interval<Radian> &theta_interval, const Interval<Radian> &phi_interval)
+                         const Interval<Radian>& theta_interval, const Interval<Radian>& phi_interval)
             : anchor_(std::move(anchor)), particle_(std::move(particle)), theta_interval_(theta_interval),
               phi_interval_(phi_interval) {
             IntervalCheck();
         }
 
+        /**
+         * @brief Corrects position and velocity to satisfy angular constraints
+         * @param dt Time step used for velocity correction
+         */
         void Correct(const Quantity<Second> dt) const {
             const Vector3<Quantity<Meter>> diff = particle_->GetPosition() - anchor_->GetPosition();
             const Quantity<Meter> length = diff.Length();
@@ -137,6 +159,7 @@ namespace Phyth::Mechanics {
             }
         }
     };
+
 }
 
 #endif //PHYTH_CONSTRAINER_HPP

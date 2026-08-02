@@ -7,11 +7,18 @@
 #include "Phyth/Physical/PhysicalConsts.hpp"
 
 namespace Phyth::Electromagnetics {
+
+    /**
+     * @brief Uniform surface charge distribution on a rectangular patch
+     *
+     * Field and potential are computed by numerical integration over the surface.
+     * Default integration resolution is 32×32 segments.
+     */
     class SurfaceCharge : public ChargeSource {
     public:
-        SurfaceCharge(const Vector3<Quantity<Meter> > &center,
-                      const Vector3<Scalar> &u_axis,
-                      const Vector3<Scalar> &v_axis,
+        SurfaceCharge(const Vector3<Quantity<Meter>>& center,
+                      const Vector3<Scalar>& u_axis,
+                      const Vector3<Scalar>& v_axis,
                       const Quantity<Meter> width,
                       const Quantity<Meter> height,
                       const Quantity<CoulombPerSquareMeter> sigma)
@@ -21,13 +28,13 @@ namespace Phyth::Electromagnetics {
             assert(Utils::abs(u_axis_.Dot(v_axis_)) < Config::epsilon);
         }
 
-        [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb> >
-        GetElectricFieldAt(const Vector3<Quantity<Meter> > &point) const override {
+        [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb>>
+        GetElectricFieldAt(const Vector3<Quantity<Meter>>& point) const override {
             return NumericalIntegrateField(point, 32, 32);
         }
 
         [[nodiscard]] Quantity<Volt>
-        GetElectricPotentialAt(const Vector3<Quantity<Meter> > &point) const override {
+        GetElectricPotentialAt(const Vector3<Quantity<Meter>>& point) const override {
             return NumericalIntegratePotential(point, 32, 32);
         }
 
@@ -36,7 +43,7 @@ namespace Phyth::Electromagnetics {
         }
 
         [[nodiscard]] Quantity<Meter>
-        GetMinimumDistanceTo(const Vector3<Quantity<Meter> > &point) const override {
+        GetMinimumDistanceTo(const Vector3<Quantity<Meter>>& point) const override {
             const auto local = point - center_;
             auto u_proj = local.Dot(u_axis_);
             auto v_proj = local.Dot(v_axis_);
@@ -52,13 +59,18 @@ namespace Phyth::Electromagnetics {
         GetSurfaceDensity() const { return sigma_; }
 
     private:
-        Vector3<Quantity<Meter> > center_;
+        Vector3<Quantity<Meter>> center_;
         Vector3<Scalar> u_axis_, v_axis_;
         Quantity<Meter> width_, height_;
         Quantity<CoulombPerSquareMeter> sigma_;
 
-        [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb> >
-        NumericalIntegrateField(const Vector3<Quantity<Meter> > &point,
+        /**
+         * @brief Numerical integration of electric field over the surface
+         * @param point Evaluation point
+         * @param nu, nv Number of segments along u and v axes
+         */
+        [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb>>
+        NumericalIntegrateField(const Vector3<Quantity<Meter>>& point,
                                 const int nu, const int nv) const {
             Vector3 E{0_NpC, 0_NpC, 0_NpC};
             const auto du = width_ / nu;
@@ -82,8 +94,13 @@ namespace Phyth::Electromagnetics {
             return E;
         }
 
+        /**
+         * @brief Numerical integration of electric potential over the surface
+         * @param point Evaluation point
+         * @param nu, nv Number of segments along u and v axes
+         */
         [[nodiscard]] Quantity<Volt>
-        NumericalIntegratePotential(const Vector3<Quantity<Meter> > &point,
+        NumericalIntegratePotential(const Vector3<Quantity<Meter>>& point,
                                     const int nu, const int nv) const {
             auto V = 0_V;
             const auto du = width_ / nu;
@@ -106,6 +123,7 @@ namespace Phyth::Electromagnetics {
             return V;
         }
     };
+
 }
 
 #endif //PHYTH_SURFACE_CHARGE_HPP

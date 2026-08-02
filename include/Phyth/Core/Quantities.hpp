@@ -5,7 +5,9 @@
 #include "Units.hpp"
 
 namespace Phyth {
+
     using Scalar = Quantity<ScalarUnit>;
+
 }
 
 #endif //PHYTH_QUANTITIES_HPP

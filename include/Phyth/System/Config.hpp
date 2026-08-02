@@ -8,20 +8,14 @@ namespace Phyth {
     };
 
 
-    struct Config {
-        static void Reset() {
+    namespace Config {
+        static inline auto output_mode = OutputMode::Auto;
+        static inline double epsilon = 1e-6;
+
+        inline void Reset() noexcept {
             output_mode = OutputMode::Auto;
             epsilon = 1e-6;
         }
-
-        static OutputMode output_mode;
-        static double epsilon;
-
-    };
-
-    inline OutputMode Config::output_mode = OutputMode::Auto;
-    inline double Config::epsilon = 1e-6;
-
+    }
 }
-
 #endif  //PHYTH_CONFIG_HPP

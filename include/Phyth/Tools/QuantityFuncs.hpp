@@ -8,85 +8,85 @@
 #include <cmath>
 
 namespace Phyth::Utils {
-    inline Scalar sin(Scalar q) {
-        return Scalar(std::sin(q.value));
+    inline Scalar sin(const Scalar q) {
+        return {std::sin(q.value)};
     }
 
-    inline Scalar cos(Scalar q) {
-        return Scalar(std::cos(q.value));
+    inline Scalar cos(const Scalar q) {
+        return {std::cos(q.value)};
     }
 
-    inline Scalar tan(Scalar q) {
-        return Scalar(std::tan(q.value));
+    inline Scalar tan(const Scalar q) {
+        return {std::tan(q.value)};
     }
 
-    inline Scalar asin(Scalar q) {
-        return Scalar(std::asin(q.value));
+    inline Scalar asin(const Scalar q) {
+        return {std::asin(q.value)};
     }
 
-    inline Scalar acos(Scalar q) {
-        return Scalar(std::acos(q.value));
+    inline Scalar acos(const Scalar q) {
+        return {std::acos(q.value)};
     }
 
-    inline Scalar atan(Scalar q) {
-        return Scalar(std::atan(q.value));
+    inline Scalar atan(const Scalar q) {
+        return {std::atan(q.value)};
     }
 
-    inline Scalar atan2(Scalar y, Scalar x) {
-        return Scalar(std::atan2(y.value, x.value));
+    inline Scalar atan2(const Scalar y, Scalar x) {
+        return {std::atan2(y.value, x.value)};
     }
 
-    inline Scalar sinh(Scalar q) {
-        return Scalar(std::sinh(q.value));
+    inline Scalar sinh(const Scalar q) {
+        return {std::sinh(q.value)};
     }
 
-    inline Scalar cosh(Scalar q) {
-        return Scalar(std::cosh(q.value));
+    inline Scalar cosh(const Scalar q) {
+        return {std::cosh(q.value)};
     }
 
-    inline Scalar tanh(Scalar q) {
-        return Scalar(std::tanh(q.value));
+    inline Scalar tanh(const Scalar q) {
+        return {std::tanh(q.value)};
     }
 
-    inline Scalar asinh(Scalar q) {
-        return Scalar(std::asinh(q.value));
+    inline Scalar asinh(const Scalar q) {
+        return {std::asinh(q.value)};
     }
 
-    inline Scalar acosh(Scalar q) {
-        return Scalar(std::acosh(q.value));
+    inline Scalar acosh(const Scalar q) {
+        return {std::acosh(q.value)};
     }
 
-    inline Scalar atanh(Scalar q) {
-        return Scalar(std::atanh(q.value));
+    inline Scalar atanh(const Scalar q) {
+        return {std::atanh(q.value)};
     }
 
 
-    inline Scalar log(Scalar q) {
-        return Scalar(std::log(q.value));
+    inline Scalar log(const Scalar q) {
+        return {std::log(q.value)};
     }
 
-    inline Scalar log10(Scalar q) {
-        return Scalar(std::log10(q.value));
+    inline Scalar log10(const Scalar q) {
+        return {std::log10(q.value)};
     }
 
-    inline Scalar log2(Scalar q) {
-        return Scalar(std::log2(q.value));
+    inline Scalar log2(const Scalar q) {
+        return {std::log2(q.value)};
     }
 
-    inline Scalar log1p(Scalar q) {
-        return Scalar(std::log1p(q.value));
+    inline Scalar log1p(const Scalar q) {
+        return {std::log1p(q.value)};
     }
 
-    inline Scalar exp(Scalar q) {
-        return Scalar(std::exp(q.value));
+    inline Scalar exp(const Scalar q) {
+        return {std::exp(q.value)};
     }
 
-    inline Scalar expm1(Scalar q) {
-        return Scalar(std::expm1(q.value));
+    inline Scalar expm1(const Scalar q) {
+        return {std::expm1(q.value)};
     }
 
-    inline Scalar exp2(Scalar q) {
-        return Scalar(std::exp2(q.value));
+    inline Scalar exp2(const Scalar q) {
+        return {std::exp2(q.value)};
     }
 
     template<int Power, typename UnitT>
@@ -94,40 +94,40 @@ namespace Phyth::Utils {
         if constexpr (Power == 0) {
             return Scalar(1.0);
         } else if constexpr (Power > 0) {
-            using DimT = typename UnitT::Dimension;
+            using DimT = typename UnitT::DimensionT;
             using ResultDim = DimPowerTypeT<Power, DimT>;
-            using ResultUnit = Unit<ResultDim, std::ratio<1>>;
+            using ResultUnit = Unit<ResultDim>;
             return Quantity<ResultUnit>(std::pow(q.value, Power));
         } else {
-            using DimT = typename UnitT::Dimension;
-            using ResultDim = DimNegT<DimPowerTypeT<-Power, DimT>>;
-            using ResultUnit = Unit<ResultDim, std::ratio<1>>;
+            using DimT = typename UnitT::DimensionT;
+            using ResultDim = DimRcpT<DimPowerTypeT<-Power, DimT>>;
+            using ResultUnit = Unit<ResultDim>;
             return Quantity<ResultUnit>(std::pow(q.value, Power));
         }
     }
 
     template<typename UnitT>
     constexpr auto square(Quantity<UnitT> q) {
-        using DimT = typename UnitT::Dimension;
+        using DimT = typename UnitT::DimensionT;
         using ResultDim = DimMulT<DimT, DimT>;
-        using ResultUnit = Unit<ResultDim, std::ratio<1>>;
+        using ResultUnit = Unit<ResultDim>;
         return Quantity<ResultUnit>(q.value * q.value);
     }
 
     template<typename UnitT>
     constexpr auto cube(Quantity<UnitT> q) {
-        using DimT = typename UnitT::Dimension;
+        using DimT = typename UnitT::DimensionT;
         using ResultDim = DimMulT<DimMulT<DimT, DimT>, DimT>;
-        using ResultUnit = Unit<ResultDim, std::ratio<1>>;
+        using ResultUnit = Unit<ResultDim>;
         return Quantity<ResultUnit>(q.value * q.value * q.value);
     }
 
     template<int N, typename UnitT>
     constexpr auto root(Quantity<UnitT> q) {
         static_assert(N > 0, "Root index must be positive");
-        using DimT = typename UnitT::Dimension;
+        using DimT = typename UnitT::DimensionT;
         using ResultDim = DimRootT<N, DimT>;
-        using ResultUnit = Unit<ResultDim, std::ratio<1>>;
+        using ResultUnit = Unit<ResultDim>;
         return Quantity<ResultUnit>(std::pow(q.value, 1.0 / N));
     }
 
@@ -152,7 +152,7 @@ namespace Phyth::Utils {
         return Quantity<UnitT>(std::fmod(x.value, y.value));
     }
 
-    constexpr Scalar fmod(Scalar x, Scalar y) {
+    constexpr Scalar fmod(const Scalar x, const Scalar y) {
         return {std::fmod(x.value, y.value)};
     }
 

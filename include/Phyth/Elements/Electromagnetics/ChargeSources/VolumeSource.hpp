@@ -7,12 +7,19 @@
 #include "Phyth/Physical/PhysicalConsts.hpp"
 
 namespace Phyth::Electromagnetics {
+
+    /**
+     * @brief Uniform volume charge distribution in a rectangular box
+     *
+     * Field and potential are computed by numerical integration over the volume.
+     * Default integration resolution is 16×16×16 segments.
+     */
     class VolumeCharge : public ChargeSource {
     public:
-        VolumeCharge(const Vector3<Quantity<Meter> > &center,
-                     const Vector3<Scalar> &axis_x,
-                     const Vector3<Scalar> &axis_y,
-                     const Vector3<Scalar> &axis_z,
+        VolumeCharge(const Vector3<Quantity<Meter>>& center,
+                     const Vector3<Scalar>& axis_x,
+                     const Vector3<Scalar>& axis_y,
+                     const Vector3<Scalar>& axis_z,
                      const Quantity<Meter> size_x,
                      const Quantity<Meter> size_y,
                      const Quantity<Meter> size_z,
@@ -25,13 +32,13 @@ namespace Phyth::Electromagnetics {
             assert(Utils::abs(axis_z_.Dot(axis_x_)) < Config::epsilon);
         }
 
-        [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb> >
-        GetElectricFieldAt(const Vector3<Quantity<Meter> > &point) const override {
+        [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb>>
+        GetElectricFieldAt(const Vector3<Quantity<Meter>>& point) const override {
             return NumericalIntegrateField(point, 16, 16, 16);
         }
 
         [[nodiscard]] Quantity<Volt>
-        GetElectricPotentialAt(const Vector3<Quantity<Meter> > &point) const override {
+        GetElectricPotentialAt(const Vector3<Quantity<Meter>>& point) const override {
             return NumericalIntegratePotential(point, 16, 16, 16);
         }
 
@@ -40,7 +47,7 @@ namespace Phyth::Electromagnetics {
         }
 
         [[nodiscard]] Quantity<Meter>
-        GetMinimumDistanceTo(const Vector3<Quantity<Meter> > &point) const override {
+        GetMinimumDistanceTo(const Vector3<Quantity<Meter>>& point) const override {
             const auto local = point - center_;
             auto px = local.Dot(axis_x_);
             auto py = local.Dot(axis_y_);
@@ -55,7 +62,7 @@ namespace Phyth::Electromagnetics {
         }
 
         [[nodiscard]] Quantity<CoulombPerCubicMeter>
-        GetChargeDensityAt(const Vector3<Quantity<Meter> > &point) const override {
+        GetChargeDensityAt(const Vector3<Quantity<Meter>>& point) const override {
             const auto local = point - center_;
             const auto px = Utils::abs(local.Dot(axis_x_));
             const auto py = Utils::abs(local.Dot(axis_y_));
@@ -68,13 +75,18 @@ namespace Phyth::Electromagnetics {
         }
 
     private:
-        Vector3<Quantity<Meter> > center_;
+        Vector3<Quantity<Meter>> center_;
         Vector3<Scalar> axis_x_, axis_y_, axis_z_;
         Quantity<Meter> size_x_, size_y_, size_z_;
         Quantity<CoulombPerCubicMeter> rho_;
 
-        [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb> >
-        NumericalIntegrateField(const Vector3<Quantity<Meter> > &point,
+        /**
+         * @brief Numerical integration of electric field over the volume
+         * @param point Evaluation point
+         * @param nx, ny, nz Number of segments along each axis
+         */
+        [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb>>
+        NumericalIntegrateField(const Vector3<Quantity<Meter>>& point,
                                 const int nx, const int ny, const int nz) const {
             Vector3 E{0_NpC, 0_NpC, 0_NpC};
             const auto dx = size_x_ / nx;
@@ -103,8 +115,13 @@ namespace Phyth::Electromagnetics {
             return E;
         }
 
+        /**
+         * @brief Numerical integration of electric potential over the volume
+         * @param point Evaluation point
+         * @param nx, ny, nz Number of segments along each axis
+         */
         [[nodiscard]] Quantity<Volt>
-        NumericalIntegratePotential(const Vector3<Quantity<Meter> > &point,
+        NumericalIntegratePotential(const Vector3<Quantity<Meter>>& point,
                                     const int nx, const int ny, const int nz) const {
             auto V = 0_V;
             const auto dx = size_x_ / nx;
@@ -131,6 +148,7 @@ namespace Phyth::Electromagnetics {
             return V;
         }
     };
+
 }
 
 #endif //PHYTH_VOLUME_SOURCE_HPP

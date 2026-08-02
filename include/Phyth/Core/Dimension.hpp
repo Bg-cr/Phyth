@@ -8,12 +8,21 @@
 #include <cmath>
 
 namespace Phyth {
+    /**
+     * @brief Compile-time physical dimension with 7 SI base exponents
+     * @tparam Ratios std::ratio sequence for [m, kg, s, A, K, mol, cd]
+     */
     template<typename... Ratios>
     struct Dimension {
         static constexpr int size = sizeof...(Ratios);
         using ratio_tuple = std::tuple<Ratios...>;
     };
 
+    /**
+     * @brief Extracts the N-th ratio type from a Dimension
+     * @tparam N Index of the ratio to extract (0-based)
+     * @tparam D The Dimension type
+     */
     template<int N, typename D>
     struct DimComponent;
 
@@ -30,7 +39,7 @@ namespace Phyth {
     struct DimMul;
 
     template<typename... R1, typename... R2>
-    struct DimMul<Dimension<R1...>, Dimension<R2...>> {
+    struct DimMul<Dimension<R1...>, Dimension<R2...> > {
         static_assert(sizeof...(R1) == sizeof...(R2), "Dimension count mismatch");
         using type = Dimension<std::ratio_add<R1, R2>...>;
     };
@@ -42,7 +51,7 @@ namespace Phyth {
     struct DimDiv;
 
     template<typename... R1, typename... R2>
-    struct DimDiv<Dimension<R1...>, Dimension<R2...>> {
+    struct DimDiv<Dimension<R1...>, Dimension<R2...> > {
         static_assert(sizeof...(R1) == sizeof...(R2), "Dimension count mismatch");
         using type = Dimension<std::ratio_subtract<R1, R2>...>;
     };
@@ -54,30 +63,30 @@ namespace Phyth {
     struct DimRoot;
 
     template<int N, typename... Ratios>
-    struct DimRoot<N, Dimension<Ratios...>> {
+    struct DimRoot<N, Dimension<Ratios...> > {
         static_assert(N > 0, "Root index must be positive");
-        using type = Dimension<std::ratio_divide<Ratios, std::ratio<N>>...>;
+        using type = Dimension<std::ratio_divide<Ratios, std::ratio<N> >...>;
     };
 
     template<int N, typename D>
     using DimRootT = typename DimRoot<N, D>::type;
 
     template<typename D>
-    struct DimNeg;
+    struct DimRcp;
 
     template<typename... Ratios>
-    struct DimNeg<Dimension<Ratios...>> {
-        using type = Dimension<std::ratio_multiply<Ratios, std::ratio<-1>>...>;
+    struct DimRcp<Dimension<Ratios...> > {
+        using type = Dimension<std::ratio_multiply<Ratios, std::ratio<-1> >...>;
     };
 
     template<typename D>
-    using DimNegT = typename DimNeg<D>::type;
+    using DimRcpT = typename DimRcp<D>::type;
 
     template<typename D1, typename D2>
     struct DimEqual;
 
     template<typename... R1, typename... R2>
-    struct DimEqual<Dimension<R1...>, Dimension<R2...>> {
+    struct DimEqual<Dimension<R1...>, Dimension<R2...> > {
         static constexpr bool value = (std::is_same_v<R1, R2> && ...);
     };
 
@@ -85,16 +94,19 @@ namespace Phyth {
     inline constexpr bool dim_equal_v = DimEqual<D1, D2>::value;
 
     template<typename>
-    struct is_dim : std::false_type {};
+    struct is_dim : std::false_type {
+    };
 
     template<typename... Ratios>
-    struct is_dim<Dimension<Ratios...>> : std::true_type {};
+    struct is_dim<Dimension<Ratios...> > : std::true_type {
+    };
 
     template<typename T>
     inline constexpr bool is_dim_v = is_dim<T>::value;
 
     inline std::string formatPower(const double power) {
         if (std::floor(power + 0.5) == power) {
+            // floor(power + 0.5) avoids floating point artifacts like 1.000000 -> 1
             return std::to_string(static_cast<int>(power));
         }
         return std::to_string(power);
@@ -104,7 +116,7 @@ namespace Phyth {
     struct DimToString;
 
     template<typename... Ratios>
-    struct DimToString<Dimension<Ratios...>> {
+    struct DimToString<Dimension<Ratios...> > {
         static std::string value() {
             const std::string names[] = {"m", "kg", "s", "A", "K", "mol", "cd"};
 
@@ -112,7 +124,7 @@ namespace Phyth {
             bool has_num = false, has_den = false;
             int idx = 0;
 
-            ((void)[&] {
+            ((void) [&] {
                 const double power = static_cast<double>(Ratios::num) / Ratios::den;
                 if (power == 0) {
                     ++idx;
@@ -146,7 +158,7 @@ namespace Phyth {
             std::string result;
             if (has_num) {
                 result += numerator;
-            } else if (has_den){
+            } else if (has_den) {
                 result += '1';
             }
 
@@ -208,23 +220,23 @@ namespace Phyth {
     using Force = DimMulT<Mass, Acceleration>;
     using Energy = DimMulT<Force, Length>;
     using Power = DimDivT<Energy, Time>;
-    using Pressure = DimDivT<Force, DimMulT<Length, Length>>;
+    using Pressure = DimDivT<Force, DimMulT<Length, Length> >;
     using Frequency = DimDivT<Dimensionless, Time>;
     using Charge = DimMulT<Time, ElectricCurrent>;
     using ElectricFieldIntensity = DimDivT<Force, Charge>;
     using Voltage = DimDivT<Power, ElectricCurrent>;
     using Resistance = DimDivT<Voltage, ElectricCurrent>;
     using Capacitance = DimDivT<Charge, Voltage>;
-    using Inductance = DimDivT<Voltage, DimDivT<ElectricCurrent, Time>>;
+    using Inductance = DimDivT<Voltage, DimDivT<ElectricCurrent, Time> >;
     using MagneticFlux = DimMulT<Voltage, Time>;
-    using MagneticFluxDensity = DimDivT<MagneticFlux, DimMulT<Length, Length>>;
+    using MagneticFluxDensity = DimDivT<MagneticFlux, DimMulT<Length, Length> >;
     using Area = DimMulT<Length, Length>;
     using Volume = DimMulT<Length, Area>;
     using TranslationalStiffness = DimDivT<Force, Length>;
     using DampingCoefficient = DimDivT<Mass, Time>;
-    using MassDensity = DimDivT<Mass, Length>;
+    using MassDensity = DimDivT<Mass, Volume>;
     using ElectricPotential = DimDivT<Capacitance, Length>;
-    using EnergyDensity = DimDivT<Energy, Length>;
+    using EnergyDensity = DimDivT<Energy, Volume>;
     using LinearChargeDensity = DimDivT<Charge, Length>;
     using SurfaceChargeDensity = DimDivT<Charge, Area>;
     using BulkChargeDensity = DimDivT<Charge, Volume>;
@@ -232,7 +244,7 @@ namespace Phyth {
 
     template<typename UnitT>
     struct is_dimensionless {
-        static constexpr bool value = std::is_same_v<typename UnitT::Dimension, Dimensionless>;
+        static constexpr bool value = std::is_same_v<typename UnitT::DimensionT, Dimensionless>;
     };
 
     template<typename UnitT>
@@ -242,10 +254,10 @@ namespace Phyth {
     struct DimPower;
 
     template<int N, typename... Ratios>
-    struct DimPower<N, Dimension<Ratios...>> {
+    struct DimPower<N, Dimension<Ratios...> > {
         static constexpr double value = static_cast<double>(
-            std::tuple_element_t<N, std::tuple<Ratios...>>::num
-        ) / std::tuple_element_t<N, std::tuple<Ratios...>>::den;
+                                            std::tuple_element_t<N, std::tuple<Ratios...> >::num
+                                        ) / std::tuple_element_t<N, std::tuple<Ratios...> >::den;
     };
 
     template<int N, typename D>
@@ -253,7 +265,7 @@ namespace Phyth {
 
     template<int P, typename D>
     struct DimPowerHelper {
-        using type = DimMulT<D, typename DimPowerHelper<P-1, D>::type>;
+        using type = DimMulT<D, typename DimPowerHelper<P - 1, D>::type>;
     };
 
     template<typename D>
@@ -268,8 +280,6 @@ namespace Phyth {
 
     template<int Power, typename D>
     using DimPowerTypeT = typename DimPowerType<Power, D>::type;
-
-
 }
 
 #endif //PHYTH_DIMENSION_HPP

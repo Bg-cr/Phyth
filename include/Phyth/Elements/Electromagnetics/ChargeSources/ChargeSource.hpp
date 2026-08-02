@@ -6,6 +6,13 @@
 #include "Phyth/Core/Units.hpp"
 
 namespace Phyth::Electromagnetics {
+
+    /**
+     * @brief Abstract base class for all charge distributions
+     *
+     * Defines interface for electric field, potential, total charge,
+     * charge density, and minimum distance queries.
+     */
     class ChargeSource {
     public:
         virtual ~ChargeSource() = default;
@@ -18,6 +25,11 @@ namespace Phyth::Electromagnetics {
 
         [[nodiscard]] virtual Quantity<Coulomb> GetTotalChargeValue() const = 0;
 
+        /**
+         * @brief Returns charge density at point
+         *
+         * Default returns zero.
+         */
         [[nodiscard]] virtual Quantity<CoulombPerCubicMeter>
         GetChargeDensityAt(const Vector3<Quantity<Meter>>& point) const {
             return 0_Cpm3;
@@ -27,9 +39,9 @@ namespace Phyth::Electromagnetics {
         GetMinimumDistanceTo(const Vector3<Quantity<Meter>>& point) const = 0;
     };
 
-
     template <typename T>
     inline constexpr bool is_charge_source_v = std::is_base_of_v<ChargeSource, T>;
+
 }
 
 #endif //PHYTH_CHARGE_SOURCE_HPP

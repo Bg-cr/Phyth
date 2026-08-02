@@ -7,6 +7,11 @@
 #include "Unit.hpp"
 
 namespace Phyth {
+
+    /**
+     * @brief Closed interval [min, max] of physical quantities
+     * @tparam UnitT The unit type of the bounds
+     */
     template <typename UnitT>
     struct Interval {
         static_assert(is_unit_v<UnitT>, "Unit type cannot be a non-unit");
@@ -21,7 +26,7 @@ namespace Phyth {
             }
         }
 
-        bool Contains(Quantity<UnitT> x)  const noexcept {
+        bool Contains(Quantity<UnitT> x) const noexcept {
             return min_ <= x && x <= max_;
         }
 

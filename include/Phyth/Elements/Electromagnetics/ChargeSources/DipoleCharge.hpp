@@ -5,12 +5,15 @@
 #include "Phyth/Physical/PhysicalConsts.hpp"
 
 namespace Phyth::Electromagnetics {
+
+    /** @brief Ideal electric dipole with zero net charge */
     class DipoleCharge : public ChargeSource {
     public:
-        DipoleCharge(const Vector3<Quantity<Meter>> &position,
-                     const Vector3<Quantity<CoulombMeter>> &dipole_moment)
+        DipoleCharge(const Vector3<Quantity<Meter>>& position,
+                     const Vector3<Quantity<CoulombMeter>>& dipole_moment)
             : position_(position), p_(dipole_moment) {}
 
+        /** @return k_E * (3 * (p dot hat_r) * hat_r - p) / r^3 */
         [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb>>
         GetElectricFieldAt(const Vector3<Quantity<Meter>>& point) const override {
             const auto r = point - position_;
@@ -19,12 +22,11 @@ namespace Phyth::Electromagnetics {
                 throw std::runtime_error("Field diverges at dipole location");
             }
 
-            const auto r_hat = r.Normalized();
-            const auto p_dot_r = p_.Dot(r_hat);
-            const auto E = Consts::k_E * (3 * p_dot_r * r_hat - p_) / (dist * dist * dist);
-            return E;
+            const auto hat_r = r.Normalized();
+            return Consts::k_E * (3 * p_.Dot(hat_r) * hat_r - p_) / (dist * dist * dist);
         }
 
+        /** @return k_E * (p dot hat_r) / r^2 */
         [[nodiscard]] Quantity<Volt>
         GetElectricPotentialAt(const Vector3<Quantity<Meter>>& point) const override {
             const auto r = point - position_;
@@ -33,11 +35,11 @@ namespace Phyth::Electromagnetics {
                 throw std::runtime_error("Potential diverges at dipole location");
             }
 
-            const auto r_hat = r.Normalized();
-            return Consts::k_E * p_.Dot(r_hat) / (dist * dist);
+            const auto hat_r = r.Normalized();
+            return Consts::k_E * p_.Dot(hat_r) / (dist * dist);
         }
 
-        [[nodiscard]] static Quantity<Coulomb> GetTotalChargeValue() override {
+        [[nodiscard]] Quantity<Coulomb> GetTotalChargeValue() const override {
             return 0_C;
         }
 

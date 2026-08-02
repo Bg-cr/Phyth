@@ -145,11 +145,28 @@ namespace Phyth::Consts {
 
 - Document public APIs with `///` or `/** ... */`
 
-- Focus on why, not what (the code already says what it does)
+- Never use character annotations other than ASSCI, instead use combinations with the same effect, like m² → m^2
+
+**Scope of Application**
+
+For all non-obvious code, comments must be used.
+
+| Scenario                   | Comment?              | How                                 |
+|----------------------------|-----------------------|-------------------------------------|
+| Public class / struct      | Yes (`@brief`)        | Describe **what** it is             |
+| Template parameters        | Yes (`@tparam`)       | Explain **what** is each parameter. |
+| Macros                     | Yes (`@def` + params) | Describe **what** it is.            |
+| Complex / non-obvius logic | Yes (`//`)            | Explan **why** use the logic.       |
+| Type aliases (`using`)     | No                    | —                                   |
+| Type traits (`is_xxx`)     | No                    | —                                   |
 
 ```cpp
 /// Computes gravitational force between two particles.
-/// Uses Newton's law of universal gravitation: F = G * m1 * m2 / r^2
+Force ComputeGravity(const Particle& a, const Particle& b);
+```
+
+```cpp
+/** @brief Computes gravitational force between two particles. */
 Force ComputeGravity(const Particle& a, const Particle& b);
 ```
 

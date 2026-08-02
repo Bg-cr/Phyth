@@ -13,6 +13,12 @@ namespace Phyth {
         std::string symbol;
     };
 
+    /**
+     * @brief Singleton registry for unit names and symbols
+     *
+     * Stores display information for unit types. Used by QuantityToString()
+     * to print human-readable unit names instead of dimension strings.
+     */
     class UnitRegistry {
     public:
         static UnitRegistry& GetInstance() {
@@ -27,7 +33,7 @@ namespace Phyth {
         }
 
         template<typename UnitT>
-        std::string Name() const {
+        std::string GetName() const {
             if (const auto it = registry_.find(std::type_index(typeid(UnitT))); it != registry_.end()) {
                 return it->second.name;
             }
@@ -35,7 +41,7 @@ namespace Phyth {
         }
 
         template<typename UnitT>
-        std::string Symbol() const {
+        std::string GetSymbol() const {
             if (const auto it = registry_.find(std::type_index(typeid(UnitT))); it != registry_.end()) {
                 return it->second.symbol;
             }
@@ -48,13 +54,17 @@ namespace Phyth {
         mutable std::mutex mutex_;
     };
 
+    /**
+     * @brief Registers a unit with the registry at static initialization time
+     *
+     * @tparam UnitT The unit type to register
+     */
     template<typename UnitT>
     struct UnitRegistrar {
         UnitRegistrar(const std::string& name, const std::string& symbol) {
             UnitRegistry::GetInstance().RegisterUnit<UnitT>(name, symbol);
         }
     };
-
 }
 
 #endif  //PHYTH_UNIT_REGISTRY_HPP

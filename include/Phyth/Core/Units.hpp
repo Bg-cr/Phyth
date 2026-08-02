@@ -7,24 +7,67 @@
 #include "Phyth/Core/Quantity.hpp"
 
 namespace Phyth {
-    #define PHYTH_CONCAT_IMPL(a, b) a##b
-    #define PHYTH_CONCAT(a, b) PHYTH_CONCAT_IMPL(a, b)
+#define PHYTH_CONCAT_IMPL(a, b) a##b
+#define PHYTH_CONCAT(a, b) PHYTH_CONCAT_IMPL(a, b)
 
-    #define PHYTH_DEFINE_UNIT(dim_type, unit_type, suffix, scale_num, scale_den) \
-        using unit_type = Unit<dim_type, std::ratio<scale_num, scale_den>>; \
-        \
-        constexpr auto operator""_##suffix(long double x) { \
-            return Quantity<unit_type>(x); \
-        } \
-        \
-        constexpr auto operator""_##suffix(unsigned long long x) { \
-            return Quantity<unit_type>(x); \
-        } \
-        \
-        static const Phyth::UnitRegistrar<unit_type> PHYTH_CONCAT(registrar_, unit_type)(#unit_type, #suffix);
+    /**
+     * @def PHYTH_DEFINE_UNIT
+     * @brief Define a unit, literal operator, and registry entry
+     * @param dim_type Dimension type
+     * @param unit_type Unit type name
+     * @param suffix Literal suffix
+     * @param scale_num Scale numerator
+     * @param scale_den Scale denominator
+     */
+#define PHYTH_DEFINE_UNIT(dim_type, unit_type, suffix, scale_num, scale_den) \
+    using unit_type = Unit<dim_type, std::ratio<scale_num, scale_den>>; \
+    \
+    constexpr auto operator""_##suffix(long double x) { \
+        return Quantity<unit_type>(x); \
+    } \
+    \
+    constexpr auto operator""_##suffix(unsigned long long x) { \
+        return Quantity<unit_type>(x); \
+    } \
+    \
+    static const Phyth::UnitRegistrar<unit_type> PHYTH_CONCAT(registrar_, unit_type)(#unit_type, #suffix);
 
-    #define PHYTH_DEFINE_UNIT_WITH_NAME(dim_type, unit_type, suffix, scale_num, scale_den, symbol) \
-        using unit_type = Unit<dim_type, std::ratio<scale_num, scale_den>>; \
+    /**
+     * @def PHYTH_DEFINE_UNIT_WITH_NAME
+     * @brief Same as DEFINE_UNIT with custom display symbol
+     * @param dim_type Dimension type
+     * @param unit_type Unit type name
+     * @param suffix Literal suffix
+     * @param scale_num Scale numerator
+     * @param scale_den Scale denominator
+     * @param symbol Display symbol
+     */
+#define PHYTH_DEFINE_UNIT_WITH_NAME(dim_type, unit_type, suffix, scale_num, scale_den, symbol) \
+    using unit_type = Unit<dim_type, std::ratio<scale_num, scale_den>>; \
+    \
+    constexpr auto operator""_##suffix(long double x) { \
+        return Quantity<unit_type>(x); \
+    } \
+    \
+    constexpr auto operator""_##suffix(unsigned long long x) { \
+        return Quantity<unit_type>(x); \
+    } \
+    \
+    static const Phyth::UnitRegistrar<unit_type> PHYTH_CONCAT(registrar_, unit_type)(#unit_type, symbol);
+
+    /**
+     * @def PHYTH_DEFINE_UNIT_WITH_TAG
+     * @brief Define a unit with a tag type for type-safe differentiation
+     * @param dim_type Dimension type
+     * @param unit_type Unit type name
+     * @param suffix Literal suffix
+     * @param scale_num Scale numerator
+     * @param scale_den Scale denominator
+     * @param symbol Display symbol
+     * @param tag Tag type
+     */
+#define PHYTH_DEFINE_UNIT_WITH_TAG(dim_type, unit_type, suffix, scale_num, scale_den, symbol, tag) \
+        using unit_type = Unit<dim_type, std::ratio<scale_num, scale_den>, tag>; \
         \
         constexpr auto operator""_##suffix(long double x) { \
             return Quantity<unit_type>(x); \
@@ -36,24 +79,16 @@ namespace Phyth {
         \
         static const Phyth::UnitRegistrar<unit_type> PHYTH_CONCAT(registrar_, unit_type)(#unit_type, symbol);
 
-    #define PHYTH_DEFINE_UNIT_WITH_TAG(dim_type, unit_type, suffix, scale_num, scale_den, symbol, tag) \
-            using unit_type = Unit<dim_type, std::ratio<scale_num, scale_den>, tag>; \
-            \
-            constexpr auto operator""_##suffix(long double x) { \
-                return Quantity<unit_type>(x); \
-            } \
-            \
-            constexpr auto operator""_##suffix(unsigned long long x) { \
-                return Quantity<unit_type>(x); \
-            } \
-            \
-            static const Phyth::UnitRegistrar<unit_type> PHYTH_CONCAT(registrar_, unit_type)(#unit_type, symbol);
-
     PHYTH_DEFINE_UNIT(Dimensionless, ScalarUnit, , 1, 1)
-    struct RadianTag {};
+
+    struct RadianTag {
+    };
+
     PHYTH_DEFINE_UNIT_WITH_TAG(Dimensionless, Radian, rad, 1, 1, "rad", RadianTag)
 
-    struct DegreeTag {};
+    struct DegreeTag {
+    };
+
     PHYTH_DEFINE_UNIT_WITH_TAG(Dimensionless, Degree, deg, 1, 1, "deg", DegreeTag)
 
     PHYTH_DEFINE_UNIT(Length, Meter, m, 1, 1)
@@ -82,7 +117,9 @@ namespace Phyth {
 
     PHYTH_DEFINE_UNIT(Energy, Joule, J, 1, 1)
 
-    struct NewtonMeterTag {};
+    struct NewtonMeterTag {
+    };
+
     PHYTH_DEFINE_UNIT_WITH_TAG(Energy, NewtonMeter, Nm, 1, 1, "N*m", NewtonMeterTag)
 
     PHYTH_DEFINE_UNIT(Energy, Kilojoule, kJ, 1000, 1)
@@ -124,21 +161,24 @@ namespace Phyth {
     PHYTH_DEFINE_UNIT_WITH_NAME(Volume, MeterCubed, m3, 1, 1, "m^3")
     PHYTH_DEFINE_UNIT_WITH_NAME(TranslationalStiffness, NewtonPerMeter, Npm, 1, 1, "N/m")
     PHYTH_DEFINE_UNIT_WITH_NAME(DampingCoefficient, KilogramPerSecond, kgps, 1, 1, "kg/s")
-    PHYTH_DEFINE_UNIT_WITH_NAME(MassDensity, KilogramPerMeter, kgpm, 1, 1, "kg/m")
+    PHYTH_DEFINE_UNIT_WITH_NAME(MassDensity, KilogramPerMeter, kgpm, 1, 1, "kg/m^3")
 
     PHYTH_DEFINE_UNIT_WITH_NAME(ElectricFieldIntensity, NewtonPerCoulomb, NpC, 1, 1, "N/C")
-    struct VoltagePerMeterTag {};
+
+    struct VoltagePerMeterTag {
+    };
+
     PHYTH_DEFINE_UNIT_WITH_TAG(ElectricFieldIntensity, VoltagePerMeter, Vpm, 1, 1, "V/m", VoltagePerMeterTag)
 
     PHYTH_DEFINE_UNIT_WITH_NAME(LinearChargeDensity, CoulombPerMeter, Cpm, 1, 1, "C/m")
-    PHYTH_DEFINE_UNIT_WITH_NAME(SurfaceChargeDensity, CoulombPerSquareMeter, Cpm2, 1, 1, "C/m^3")
+    PHYTH_DEFINE_UNIT_WITH_NAME(SurfaceChargeDensity, CoulombPerSquareMeter, Cpm2, 1, 1, "C/m^2")
     PHYTH_DEFINE_UNIT_WITH_NAME(BulkChargeDensity, CoulombPerCubicMeter, Cpm3, 1, 1, "C/m^3")
 
     PHYTH_DEFINE_UNIT_WITH_NAME(ElectricPotential, FaradPerMeter, Fpm, 1, 1, "F/m")
     PHYTH_DEFINE_UNIT_WITH_NAME(ElectricDipoleMoment, CoulombMeter, Cm, 1, 1, "C*m")
 
-    #undef PHYTH_DEFINE_UNIT
-    #undef PHYTH_DEFINE_UNIT_WITH_NAME
+#undef PHYTH_DEFINE_UNIT
+#undef PHYTH_DEFINE_UNIT_WITH_NAME
 }
 
 #endif  //PHYTH_UNITS_HPP

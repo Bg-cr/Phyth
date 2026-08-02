@@ -5,15 +5,21 @@
 #include "Phyth/System/Config.hpp"
 
 namespace Phyth {
-    enum class GravityFormulaVariables {
-        APP_POS,
-        APP_MASS,
-        REF_POS,
-        REF_MASS,
 
-        GRAVITY
+    enum class GravityFormulaVariables {
+        APP_POS,    ///< Application particle position
+        APP_MASS,   ///< Application particle mass
+        REF_POS,    ///< Reference particle position
+        REF_MASS,   ///< Reference particle mass
+        GRAVITY     ///< Gravitational force vector on application particle
     };
 
+    /**
+     * @brief Newton's law of gravitation
+     *
+     * Solves for any missing variable in F = G * m1 * m2 / r^2.
+     * Variables: positions, masses, and gravitational force vector.
+     */
     class GravityFormula : public FormulaSolver<GravityFormulaVariables> {
     public:
         GravityFormula() {
@@ -29,12 +35,12 @@ namespace Phyth {
                 1_N);
         }
     protected:
-        GravityFormula &SolveImpl() override {
-            const auto app_pos = Get<Vector3<Quantity<Meter> > >(GravityFormulaVariables::APP_POS);
-            const auto app_mass = Get<Quantity<Kilogram> >(GravityFormulaVariables::APP_MASS);
-            const auto ref_pos = Get<Vector3<Quantity<Meter> > >(GravityFormulaVariables::REF_POS);
-            const auto ref_mass = Get<Quantity<Kilogram> >(GravityFormulaVariables::REF_MASS);
-            const auto gravity = Get<Vector3<Quantity<Newton> > >(GravityFormulaVariables::GRAVITY);
+        GravityFormula& SolveImpl() override {
+            const auto app_pos = Get<Vector3<Quantity<Meter>>>(GravityFormulaVariables::APP_POS);
+            const auto app_mass = Get<Quantity<Kilogram>>(GravityFormulaVariables::APP_MASS);
+            const auto ref_pos = Get<Vector3<Quantity<Meter>>>(GravityFormulaVariables::REF_POS);
+            const auto ref_mass = Get<Quantity<Kilogram>>(GravityFormulaVariables::REF_MASS);
+            const auto gravity = Get<Vector3<Quantity<Newton>>>(GravityFormulaVariables::GRAVITY);
 
             const auto r = ref_pos - app_pos;
 
@@ -70,15 +76,20 @@ namespace Phyth {
     };
 
     enum class SpringFormulaVariables {
-        APP_POS,
-        REF_POS,
-        STIFFNESS,
-        DAMPING,
-        VELOCITY,
-
-        FORCE
+        APP_POS,    ///< Application particle position
+        REF_POS,    ///< Reference particle position (anchor)
+        STIFFNESS,  ///< Spring constant (k)
+        DAMPING,    ///< Damping coefficient (c)
+        VELOCITY,   ///< Application particle velocity
+        FORCE       ///< Spring force on application particle
     };
 
+    /**
+     * @brief Hooke's law with linear damping
+     *
+     * Solves for any missing variable in F = -k * x - c * v.
+     * Variables: positions, stiffness, damping, velocity, force.
+     */
     class SpringFormula : public FormulaSolver<SpringFormulaVariables> {
     public:
         SpringFormula() {
@@ -90,7 +101,7 @@ namespace Phyth {
             .Set(SpringFormulaVariables::FORCE, Vector3{0_N, 0_N, 0_N});
         }
     protected:
-        SpringFormula &SolveImpl() override {
+        SpringFormula& SolveImpl() override {
             const auto app_pos = Get<Vector3<Quantity<Meter>>>(SpringFormulaVariables::APP_POS);
             const auto ref_pos = Get<Vector3<Quantity<Meter>>>(SpringFormulaVariables::REF_POS);
             const auto stiffness = Get<Quantity<NewtonPerMeter>>(SpringFormulaVariables::STIFFNESS);
@@ -120,6 +131,7 @@ namespace Phyth {
             return *this;
         }
     };
+
 }
 
 #endif //PHYTH_MECHANICS_FORMULAS_HPP

@@ -4,14 +4,18 @@
 #include "Phyth/Core/Dimension.hpp"
 #include "Phyth/Core/Quantity.hpp"
 #include "QuantityFuncs.hpp"
-#include "Phyth/Core/Units.hpp"
 
 #include <ostream>
 
 namespace Phyth {
+    /**
+     * @brief 3D vector with Quantity components
+     * @tparam T Component type (must be Quantity)
+     */
     template<typename T>
     struct Vector3 {
-        static_assert(is_quantity_v<T>, "Vector3 only supports Quantity or arithmetic types!");
+        static_assert(is_quantity_v<T>, "Vector3 only supports Quantity types!");
+
         T x, y, z;
 
         constexpr Vector3() : x(0), y(0), z(0) {
@@ -181,13 +185,15 @@ namespace Phyth {
         }
     };
 
-    template <typename>
-    struct is_vector3 : std::false_type {};
+    template<typename>
+    struct is_vector3 : std::false_type {
+    };
 
-    template <typename QuantityT>
-    struct is_vector3<Vector3<QuantityT>> : std::true_type {};
+    template<typename QuantityT>
+    struct is_vector3<Vector3<QuantityT> > : std::true_type {
+    };
 
-    template <typename VecT>
+    template<typename VecT>
     inline constexpr auto is_vector3_v = is_vector3<VecT>::value;
 
     template<typename T, typename U,
@@ -199,13 +205,6 @@ namespace Phyth {
             scalar * v.z
         );
     }
-
-    template<typename Dimension>
-    using Vec3 = Vector3<Quantity<Dimension> >;
-
-    using Vec3Len = Vec3<Meter>;
-    using Vec3Vel = Vec3<MeterPerSecond>;
-    using Vec3Acc = Vec3<MeterPerSecondSquared>;
 }
 
 #endif //PHYTH_VECTOR3_HPP
