@@ -9,16 +9,10 @@ body:
       options:
       - label: I have already searched through the existing issues and discussions
         required: true
-      - label: I have read all the content in the README file except for the version history, in any language
+      - label: I have read the README and relevant documentation (including version history) to understand current capabilities
         required: true
       - label: I spent at least 5 minutes thinking and preparing before raising the question
         required: true
-      - label: This problem has occurred at least 3 times
-        required: false
-      - label: This problem can be stably reproduced
-        required: false
-      - label: I have read the relevant documents, but still cannot solve the problem
-        required: false
 
   - type: textarea
     id: describe
@@ -35,7 +29,7 @@ body:
       description: Reproduce the code and steps for this behavior
       value: |
         1. Call methods ...
-        2. input parameters ...
+        2. Give parameters ...
         3. The problem occurs ...
 
         4. Submit your codes.
@@ -51,6 +45,15 @@ body:
     validations:
       required: false
 
+  - type: input
+    id: version
+    attributes:
+      label: Version / Commit Hash
+      description: Which version or commit are you using?
+      placeholder: e.g., v0.1.0 or 1a2b3c4d
+    validations:
+      required: true
+
   - type: textarea
     id: others
     attributes:
@@ -63,17 +66,17 @@ body:
     validations:
       required: false
 
-  - type: input
+  - type: dropdown
     id: confidence
     attributes:
       label: Confidence in this report
       description: |
         Please evaluate your level of understanding of the problem description:
-        5- Very certain, with sufficient evidence
-        4- Comparatively certain, with relevant experience
-        3- Basic certainty, but there may be errors in the details
-        2- Not quite sure, mainly speculated
-        1- Completely uncertain, just a conjecture
-
+      options:
+        - "5 - Very certain, with sufficient evidence"
+        - "4 - Comparatively certain, with relevant experience"
+        - "3 - Basic certainty, but there may be errors in the details"
+        - "2 - Not quite sure, mainly speculated"
+        - "1 - Completely uncertain, just a conjecture"
     validations:
       required: true

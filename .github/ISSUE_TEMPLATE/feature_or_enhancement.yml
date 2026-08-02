@@ -44,6 +44,17 @@ body:
       label: Additional Context
       description: Add any other context, screenshots, or examples about the feature request here
 
+  - type: textarea
+    id: impact
+    attributes:
+      label: Academic or Scientific Impact
+      description: How would this feature enable new research or improve reproducibility?
+      placeholder: "This would allow us to simulate..."
+
+  - type: markdown
+    attributes:
+      value: "> Even if you're not sure about the implementation, we welcome discussion."
+
   - type: dropdown
     id: intention
     attributes:
