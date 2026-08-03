@@ -7,6 +7,8 @@
 #include "Phyth/Core/Quantities.hpp"
 #include <cmath>
 
+#include "Vector3.hpp"
+
 namespace Phyth::Utils {
     inline Scalar sin(const Scalar q) {
         return {std::sin(q.value)};
