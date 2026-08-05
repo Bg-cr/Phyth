@@ -17,6 +17,8 @@ namespace Phyth::Mechanics {
         Particle(const Quantity<Kilogram>& mass, const Vector3<Quantity<Meter>>& position) noexcept
             : mass_(mass), position_(position) {}
 
+        virtual ~Particle() = default;
+
         /**
          * @brief Accumulates external force (cleared each integration step)
          */
@@ -28,7 +30,7 @@ namespace Phyth::Mechanics {
         /**
          * @brief Integrates equations of motion using velocity Verlet.
          */
-        void Integrate(const Quantity<Second>& dt) noexcept {
+        virtual void Integrate(const Quantity<Second> dt) noexcept {
             if (fixed_) {
                 external_force_ = Vector3<Quantity<Newton>>();
                 return;

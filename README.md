@@ -12,10 +12,10 @@
 - [Description](#description)
 - [Features](#features)
 - [Positioning](#positioning)
+- [Accuracy Verification](#accuracy-verification)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
-- [Accuracy Verification](#accuracy-verification)
 - [Project Struct](#project-struct)
 - [FAQ](#faq)
 - [Known Limitations](#known-limitations)
@@ -60,9 +60,11 @@ Existing physics engines sit at two extremes:
 | **Modifiability** | ❌ Fixed solver, hard to swap | ⚠️ Heavy codebase, hard to modify  |
 | **Dependencies**  | ✅ Minimal                    | ❌ Heavy dependency graph          |
 
-**Phyth sits right in the middle:**
-
+> Phyth sits right in the middle:
+> 
 > **Transparent like a scientific engine, lightweight like an industrial one.**
+>
+> It gives researchers the freedom to develop new numerical methods, without the friction of production-level complexity or academic-level baggage.
 
 - **More transparent** than industrial engines — simulation stages are exposed as replaceable components, 
 so you can swap integrators or constraint solvers without fighting the framework.
@@ -71,6 +73,18 @@ easy to build, modify, and experiment with.
 
 **In short**, Phyth gives researchers the freedom to develop new numerical methods, 
 without the friction of production-level complexity or academic-level baggage.
+
+## Accuracy Verification
+
+The first [image](examples/SinglePendulumAnalysis.png) is the analysis
+(based on the [Quick Start](#quick-start) code with detailed output):
+
+![SinglePendulumAnalysis.png](examples/SinglePendulumAnalysis.png)
+
+The latest [image](examples/DoublePendulumAnalysisDt2e-4.png) below shows the data analysis of the double pendulum simulation
+(dt=2e-4 s and sample 1000 points), and the calculated relative fluctuation is about 1.37e-3%(1.37e-5):
+
+![DoublePendulumAnalysisDt2e-4.png](examples/DoublePendulumAnalysisDt2e-4.png)
 
 ## Requirements
 
@@ -176,17 +190,7 @@ If the above code is run, the total energy at each moment should be approximatel
 In fact, after running and analysis the data, it can be concluded that the relative fluctuation within `2.73s` is approximately `1.32e-5`, 
 which confirms that the integrator and constraint solver are working properly.
 
-## Accuracy Verification
-
-The first [image](examples/SinglePendulumAnalysis.png) is the analysis
-(based on the [Quick Start](#quick-start) code with detailed output): 
-
-![SinglePendulumAnalysis.png](examples/SinglePendulumAnalysis.png)
-
-The latest [image](examples/DoublePendulumAnalysisDt5e-3.png) below shows the data analysis of the double pendulum simulation
-(dt=5e-3 s and sample 1000 points), and the calculated relative fluctuation is about 1.37e-3%(1.37e-5):
-
-![DoublePendulumAnalysisDt5e-3.png](examples/DoublePendulumAnalysisDt5e-3.png)
+> For specific analysis of the above program, see [Accuracy Verification](#accuracy-verification).
 
 ## Project Struct
 Below is the project tree diagram and introduction: 

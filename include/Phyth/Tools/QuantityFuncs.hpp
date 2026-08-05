@@ -154,8 +154,9 @@ namespace Phyth::Utils {
         return Quantity<UnitT>(std::fmod(x.value, y.value));
     }
 
-    constexpr Scalar fmod(const Scalar x, const Scalar y) {
-        return {std::fmod(x.value, y.value)};
+    template <typename UnitT>
+    constexpr Quantity<UnitT> modf(Quantity<UnitT> x, Quantity<UnitT>& y) {
+        return Quantity<UnitT>(std::modf(x.value, &y.value));
     }
 
     template<typename UnitT>
@@ -174,6 +175,11 @@ namespace Phyth::Utils {
     constexpr Quantity<UnitT> clamp(Quantity<UnitT> x, Quantity<UnitT> min, Quantity<UnitT> max) {
         static_assert(is_unit_v<UnitT>, "Unit type cannot be a non-unit");
         return Quantity<UnitT>(std::clamp(x.value, min.value, max.value));
+    }
+
+    template <typename UnitT>
+    constexpr Quantity<UnitT> floor(Quantity<UnitT> x) {
+        return Quantity<UnitT>(std::floor(x.value));
     }
 }
 

@@ -4,7 +4,7 @@
 #include <algorithm>
 #include <memory>
 
-#include "FieldSources/ChargeSources.hpp"
+#include "FieldSources/ChargeSource.hpp"
 #include "Phyth/Elements/Field.hpp"
 
 namespace Phyth::Electromagnetics {

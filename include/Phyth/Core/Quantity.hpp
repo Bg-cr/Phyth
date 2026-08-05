@@ -44,6 +44,14 @@ namespace Phyth {
         }
 
         /**
+         * @brief Convert value to another type.
+         */
+        template<typename TargetType>
+        constexpr auto to() const {
+            return static_cast<TargetType>(value);
+        }
+
+        /**
          * @brief Adds another quantity of the same dimension
          *
          * @return Unit: Quantity<UnitT>
