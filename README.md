@@ -238,8 +238,7 @@ This is the implementation decision of the current version - prioritizing code c
 **Q: What physics can be considered at present?**
 
 - Mechanics: Particle, Spring, Distance Constraint (Single/Double Pendulum Verified)
-- Electromagnetics: Calculation of point/line/surface/bulk charges, electric dipoles, and electrostatic fields
-> Note: Thermodynamics and time-varying electromagnetic fields are not supported in the current version of the roadmap.
+- Electromagnetics: Calculation of point/line/surface/bulk charges, electric dipoles, and electrostatic fields, etc.
 
 ## Known Limitations
 
