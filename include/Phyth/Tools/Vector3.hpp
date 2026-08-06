@@ -83,7 +83,7 @@ namespace Phyth {
             return Vector3(-x, -y, -z);
         }
 
-        template<typename U>
+        template<typename U, typename = std::enable_if_t<!std::is_same_v<std::decay_t<U>, Vector3>>>
         constexpr auto operator*(U scalar) const {
             return Vector3<decltype(x * scalar)>(
                 x * scalar,
