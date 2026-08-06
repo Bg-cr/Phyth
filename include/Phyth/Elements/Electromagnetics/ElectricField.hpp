@@ -8,13 +8,6 @@
 #include "Phyth/Elements/Field.hpp"
 
 namespace Phyth::Electromagnetics {
-
-    /**
-     * @brief Electric field composed of multiple charge sources
-     *
-     * Superimposes electric fields and potentials from all added ChargeSource objects.
-     * Supports point charges, line charges, surface charges, and volume sources.
-     */
     class ElectricField : public Field<Vector3<Quantity<NewtonPerCoulomb>>> {
     public:
         ElectricField() = default;

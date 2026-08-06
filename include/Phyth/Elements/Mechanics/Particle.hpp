@@ -93,7 +93,6 @@ namespace Phyth::Mechanics {
 
         std::function<void(Particle*)> compute_forces_func_ = [](Particle*) {};
     };
-
 }
 
 #endif //PHYTH_PARTICLE_H

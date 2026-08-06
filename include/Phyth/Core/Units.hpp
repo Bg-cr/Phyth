@@ -89,7 +89,7 @@ namespace Phyth {
     struct DegreeTag {
     };
 
-    PHYTH_DEFINE_UNIT_WITH_TAG(Dimensionless, Degree, deg, 1, 1, "deg", DegreeTag)
+    PHYTH_DEFINE_UNIT_WITH_TAG(Dimensionless, Degree, deg, 3141592653589793, 18000000000000000, "deg", DegreeTag)
 
     PHYTH_DEFINE_UNIT(Length, Meter, m, 1, 1)
     PHYTH_DEFINE_UNIT(Length, Kilometer, km, 1000, 1)
@@ -176,6 +176,14 @@ namespace Phyth {
 
     PHYTH_DEFINE_UNIT_WITH_NAME(ElectricPotential, FaradPerMeter, Fpm, 1, 1, "F/m")
     PHYTH_DEFINE_UNIT_WITH_NAME(ElectricDipoleMoment, CoulombMeter, Cm, 1, 1, "C*m")
+    PHYTH_DEFINE_UNIT_WITH_NAME(MagneticDipoleMoment, AmpereMeterSquared, Am2, 1, 1, "A*m^2")
+    PHYTH_DEFINE_UNIT_WITH_NAME(MomentOfInertia, KilogramMeterSquared, kgm2, 1, 1, "kg*m^2")
+
+    PHYTH_DEFINE_UNIT_WITH_NAME(AngularVelocity, RadianPerSecond, radps, 1, 1, "rad/s");
+
+    struct DegreePerSecondTag {
+    };
+    PHYTH_DEFINE_UNIT_WITH_TAG(AngularVelocity, DegreePerSecond, degps, 3141592653589793, 18000000000000000, "deg/m", DegreePerSecondTag)
 
 #undef PHYTH_DEFINE_UNIT
 #undef PHYTH_DEFINE_UNIT_WITH_NAME

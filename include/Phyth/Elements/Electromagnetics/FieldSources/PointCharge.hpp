@@ -16,8 +16,20 @@ namespace Phyth::Electromagnetics {
                         public ChargeSource,
                         public MagneticSource {
     public:
-        explicit PointCharge(const Quantity<Kilogram> mass, const Vector3<Quantity<Meter>> &position, const Quantity<Coulomb> charge_value)
-            : Particle(mass, position), charge_value_(charge_value) {
+        explicit PointCharge(const Quantity<Kilogram> mass,
+                             const Vector3<Quantity<Meter> > &position,
+                             const Quantity<Coulomb> charge_value)
+            : Particle(mass, position),
+              charge_value_(charge_value) {
+            position_history_.Register(position_);
+            velocity_history_.Register({});
+            acceleration_history_.Register({});
+        }
+
+        void SetComputeForcesFunction(const std::function<void(PointCharge *)> &func) noexcept {
+            Particle::SetComputeForcesFunction([func](Particle *p) {
+                func(dynamic_cast<PointCharge *>(p));
+            });
         }
 
         /**
@@ -31,20 +43,36 @@ namespace Phyth::Electromagnetics {
             if (r.Length() < Quantity<Meter>(Config::epsilon)) {
                 throw std::runtime_error("Field diverges at charge location");
             }
-            const Quantity<Second> retarded_dt = SolveRetardedTimeOffset(r, position_history_.GetDeltaTime());
-            const auto retarded_pos = position_history_.GetValueByOffset(retarded_dt);
-            const auto retarded_v = velocity_history_.GetValueByOffset(retarded_dt);
-            const auto retarded_a = acceleration_history_.GetValueByOffset(retarded_dt);
+
+            if (fixed_) {
+                return Consts::k_E * charge_value_ / r.LengthSquared() * r.Normalized();
+            }
+            Quantity<Second> retarded_dt;
+            try {
+                retarded_dt = SolveRetardedTimeOffset(point);
+            } catch (std::runtime_error &) {
+                return Consts::k_E * charge_value_ / r.LengthSquared() * r.Normalized();
+            }
+
+            const auto retarded_pos = GetPositionAtOffset(retarded_dt);
+            const auto retarded_v = GetVelocityAtOffset(retarded_dt);
+            const auto retarded_a = GetAccelerationAtOffset(retarded_dt);
+
             const auto R = point - retarded_pos;
             const auto hat_R = R.Normalized();
             const auto beta = retarded_v / Consts::c;
             const auto beta_a = retarded_a / Consts::c;
             const auto gamma = 1 / Utils::sqrt(1_ - Utils::square(beta.Length()));
 
+            const auto velocity_field = Consts::k_E * charge_value_ * (hat_R - beta)
+                                        / Utils::square(gamma * R.Length())
+                                        / Utils::cube(1_ - hat_R.Dot(beta));
 
-            const auto velocity_field = Consts::k_E * charge_value_ * (hat_R - beta) / Utils::square(gamma * R.Length()) / Utils::cube(1_ - hat_R.Dot(beta));
-            const auto acceleration_field = Consts::k_E * charge_value_ * hat_R.Cross((hat_R - beta).Cross(beta_a)) / Consts::c / Utils::cube(1_ - hat_R.Dot(beta)) / R.Length();
-
+            const auto acceleration_field = Consts::k_E * charge_value_
+                                            * hat_R.Cross((hat_R - beta).Cross(beta_a))
+                                            / Consts::c
+                                            / Utils::cube(1_ - hat_R.Dot(beta))
+                                            / R.Length();
             return velocity_field + acceleration_field;
         }
 
@@ -53,11 +81,20 @@ namespace Phyth::Electromagnetics {
          *
          * @return magnetic field obtained from Liénard-Wiechert formulas
          */
-        [[nodiscard]] Vector3<Quantity<Tesla>>
-        GetMagneticFieldAt(const Vector3<Quantity<Meter>>& point) const override {
+        [[nodiscard]] Vector3<Quantity<Tesla> >
+        GetMagneticFieldAt(const Vector3<Quantity<Meter> > &point) const override {
+            if (fixed_) {
+                return {};
+            }
             const auto r = point - position_;
-            const Quantity<Second> retarded_dt = SolveRetardedTimeOffset(r, position_history_.GetDeltaTime());
-            const auto R = point - position_history_.GetValueByOffset(retarded_dt);
+            Quantity<Second> retarded_dt;
+            try {
+                retarded_dt = SolveRetardedTimeOffset(point);
+            } catch (std::runtime_error &) {
+                return Consts::mu_0 / Consts::varpi * charge_value_ * velocity_.Cross(r.Normalized()) / r.
+                       LengthSquared();
+            }
+            const auto R = point - GetPositionAtOffset(retarded_dt);
             const auto hat_R = R.Normalized();
 
             return (hat_R / Consts::c).Cross(GetElectricFieldAt(point));
@@ -72,45 +109,49 @@ namespace Phyth::Electromagnetics {
         GetElectricPotentialAt(const Vector3<Quantity<Meter> > &point) const override {
             const auto r = point - position_;
             const auto dist = r.Length();
+
             if (dist < Quantity<Meter>(Config::epsilon)) {
                 throw std::runtime_error("Potential diverges at charge location");
             }
 
-            Quantity<Second> retarded_dt;
-            try {
-                retarded_dt = SolveRetardedTimeOffset(r, position_history_.GetDeltaTime());
-            } catch (std::runtime_error&) {
+            if (fixed_ || position_history_.IsEmpty()) {
                 return Consts::k_E * charge_value_ / dist;
             }
 
-            const auto retarded_pos = position_history_.GetValueByOffset(retarded_dt);
-            const auto retarded_v = velocity_history_.GetValueByOffset(retarded_dt);
+            Quantity<Second> retarded_dt;
+            try {
+                retarded_dt = SolveRetardedTimeOffset(point);
+            } catch (std::runtime_error &) {
+                return Consts::k_E * charge_value_ / dist;
+            }
+
+            const auto retarded_pos = GetPositionAtOffset(retarded_dt);
+            const auto retarded_v = GetVelocityAtOffset(retarded_dt);
 
             const auto R_vec = point - retarded_pos;
             const auto R = R_vec.Length();
             const auto hat_R = R_vec.Normalized();
-
             const auto beta = retarded_v / Consts::c;
 
             const auto denominator = R - hat_R.Dot(beta) * R;
 
             if (denominator < Quantity<Meter>(Config::epsilon)) {
-                throw std::runtime_error("Potential diverges at R = R·β");
+                throw std::runtime_error("Line-of-sight aligns with charge velocity at light speed");
             }
 
             return Consts::k_E * charge_value_ / denominator;
         }
 
-        void ApplyElectricFieldForce(const Vector3<Quantity<NewtonPerCoulomb> >& field) {
+        void ApplyElectricFieldForce(const Vector3<Quantity<NewtonPerCoulomb> > &field) {
             ApplyForce(charge_value_ * field);
         }
 
-        void ApplyMagneticFieldForce(const Vector3<Quantity<Tesla> >& field) {
+        void ApplyMagneticFieldForce(const Vector3<Quantity<Tesla> > &field) {
             ApplyForce(charge_value_ * velocity_.Cross(field));
         }
 
-        void ApplyLorentzForce(const Vector3<Quantity<NewtonPerCoulomb> >& electric_field,
-            const Vector3<Quantity<Tesla> >& magnetic_field) {
+        void ApplyLorentzForce(const Vector3<Quantity<NewtonPerCoulomb> > &electric_field,
+                               const Vector3<Quantity<Tesla> > &magnetic_field) {
             ApplyElectricFieldForce(electric_field);
             ApplyMagneticFieldForce(magnetic_field);
         }
@@ -125,34 +166,67 @@ namespace Phyth::Electromagnetics {
         }
 
         void Integrate(const Quantity<Second> dt) noexcept override {
-            position_history_.Register(position_);
-            velocity_history_.Register(velocity_);
-            acceleration_history_.Register(external_force_ / mass_);
             position_history_.SetDeltaTime(dt);
             velocity_history_.SetDeltaTime(dt);
             acceleration_history_.SetDeltaTime(dt);
+
             Particle::Integrate(dt);
+
+            position_history_.Register(position_);
+            velocity_history_.Register(velocity_);
+            acceleration_history_.Register(external_force_ / mass_);
         }
 
     private:
         Quantity<Coulomb> charge_value_;
 
-        TimeHistory<Vector3<Quantity<Meter>>> position_history_;
-        TimeHistory<Vector3<Quantity<MeterPerSecond>>> velocity_history_;
-        TimeHistory<Vector3<Quantity<MeterPerSecondSquared>>> acceleration_history_;
+        TimeHistory<Vector3<Quantity<Meter> > > position_history_{};
+        TimeHistory<Vector3<Quantity<MeterPerSecond> > > velocity_history_{};
+        TimeHistory<Vector3<Quantity<MeterPerSecondSquared> > > acceleration_history_{};
 
-        [[nodiscard]] Quantity<Second> SolveRetardedTimeOffset(const Vector3<Quantity<Meter>>& r, const Quantity<Second> dt) const {
-            const Quantity<Meter> R0 = (r - position_).Length();
+        [[nodiscard]] Vector3<Quantity<Meter> >
+        GetPositionAtOffset(const Quantity<Second> &offset) const {
+            if (offset == 0_s) {
+                return position_;
+            }
+            return position_history_.GetValueByOffset(offset);
+        }
+
+        [[nodiscard]] Vector3<Quantity<MeterPerSecond> >
+        GetVelocityAtOffset(const Quantity<Second> &offset) const {
+            if (offset == 0_s) {
+                return velocity_;
+            }
+            return velocity_history_.GetValueByOffset(offset);
+        }
+
+        [[nodiscard]] Vector3<Quantity<MeterPerSecondSquared> >
+        GetAccelerationAtOffset(const Quantity<Second> &offset) const {
+            if (offset == 0_s) {
+                return external_force_ / mass_;
+            }
+            return acceleration_history_.GetValueByOffset(offset);
+        }
+
+
+        [[nodiscard]] Quantity<Second>
+        SolveRetardedTimeOffset(const Vector3<Quantity<Meter> > &point) const {
+            if (position_history_.IsEmpty()) {
+                return 0_s;
+            }
+
+            const Quantity<Meter> R0 = (point - position_).Length();
             Quantity<Second> dt_delay = R0 / Consts::c;
 
-            const Quantity<Second> max_dt = static_cast<double>(position_history_.GetSize()) * dt;
+            const Quantity<Second> max_dt = static_cast<double>(position_history_.GetSize())
+                                            * position_history_.GetDeltaTime();
             dt_delay = std::clamp(dt_delay, Quantity<Second>(0.0), max_dt);
 
             for (int iter = 0; iter < Config::max_iterations; ++iter) {
-                const Vector3<Quantity<Meter>> pos_r = position_history_.GetValueByOffset(dt_delay);
-                const Vector3<Quantity<MeterPerSecond>> v_r = velocity_history_.GetValueByOffset(dt_delay);
+                const Vector3<Quantity<Meter> > pos_r = GetPositionAtOffset(dt_delay);
+                const Vector3<Quantity<MeterPerSecond> > v_r = GetVelocityAtOffset(dt_delay);
 
-                const Vector3<Quantity<Meter>> R_vec = r - pos_r;
+                const Vector3<Quantity<Meter> > R_vec = point - pos_r;
                 const Quantity<Meter> R = R_vec.Length();
                 const Vector3<Scalar> hat_R = R_vec.Normalized();
 
@@ -170,21 +244,19 @@ namespace Phyth::Electromagnetics {
 
                 const Quantity<Second> delta = f / df;
                 dt_delay = dt_delay - delta;
-
                 dt_delay = std::clamp(dt_delay, Quantity<Second>(0.0), max_dt);
             }
 
-            return SolveRetardedTimeOffsetBisection(r, Quantity<Second>(0.0), max_dt);
+            return SolveRetardedTimeOffsetBisection(point, Quantity<Second>(0.0), max_dt);
         }
 
-        [[nodiscard]] Quantity<Second> SolveRetardedTimeOffsetBisection(
-            const Vector3<Quantity<Meter>>& r,
-            Quantity<Second> dt_low,
-            Quantity<Second> dt_high) const {
-
+        [[nodiscard]] Quantity<Second>
+        SolveRetardedTimeOffsetBisection(const Vector3<Quantity<Meter> > &point,
+                                         Quantity<Second> dt_low,
+                                         Quantity<Second> dt_high) const {
             auto ComputeResidual = [&](const Quantity<Second> dt) -> Quantity<Meter> {
-                const Vector3<Quantity<Meter>> pos_r = position_history_.GetValueByOffset(dt);
-                const Quantity<Meter> R = (r - pos_r).Length();
+                const Vector3<Quantity<Meter> > pos_r = GetPositionAtOffset(dt);
+                const Quantity<Meter> R = (point - pos_r).Length();
                 return R - Consts::c * dt;
             };
 

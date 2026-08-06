@@ -179,6 +179,11 @@ namespace Phyth {
             return Dot(other) / other.LengthSquared() * other;
         }
 
+        template <typename UnitT>
+        [[nodiscard]] Vector3<Quantity<UnitT>> as() const {
+            return {x.template as<UnitT>(), y.template as<UnitT>(), z.template as<UnitT>()};
+        }
+
         friend std::ostream &operator<<(std::ostream &os, const Vector3 &v) {
             os << "(" << v.x << ", " << v.y << ", " << v.z << ")";
             return os;

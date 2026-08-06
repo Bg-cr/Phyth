@@ -241,6 +241,9 @@ namespace Phyth {
     using SurfaceChargeDensity = DimDivT<Charge, Area>;
     using BulkChargeDensity = DimDivT<Charge, Volume>;
     using ElectricDipoleMoment = DimMulT<Charge, Length>;
+    using MagneticDipoleMoment = DimMulT<ElectricCurrent, Area>;
+    using MomentOfInertia = DimMulT<Mass, Area>;
+    using AngularVelocity = DimDivT<Dimensionless, Time>;
 
     template<typename UnitT>
     struct is_dimensionless {

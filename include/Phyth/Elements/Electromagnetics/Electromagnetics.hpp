@@ -3,5 +3,6 @@
 
 #include "FieldSources/ChargeSources.hpp"
 #include "ElectricField.hpp"
+#include "MagneticField.hpp"
 
 #endif //PHYTH_ELECTROMAGNETICS_HPP
