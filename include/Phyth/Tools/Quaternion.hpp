@@ -182,8 +182,8 @@ namespace Phyth {
             return Quaternion(-w, -x, -y, -z);
         }
 
-        template<typename U, typename = std::enable_if_t<!std::is_same_v<std::decay_t<U>, Quaternion>>>
-        constexpr auto operator*(U scalar) const {
+        template<typename U>
+        constexpr auto operator*(Quantity<U> scalar) const {
             return Quaternion<decltype(w * scalar)>(
                 w * scalar,
                 x * scalar,
@@ -310,8 +310,8 @@ namespace Phyth {
     template<typename T>
     inline constexpr auto is_quaternion_v = is_quaternion<T>::value;
 
-    template<typename T, typename U, typename = std::enable_if<!is_quaternion_v<T>>>
-    constexpr auto operator*(const T scalar, const Quaternion<U>& q) {
+    template<typename T, typename U>
+    constexpr auto operator*(const Quantity<T> scalar, const Quaternion<U>& q) {
         return Quaternion<decltype(scalar * q.w)>(
             scalar * q.w,
             scalar * q.x,
