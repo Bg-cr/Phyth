@@ -301,17 +301,6 @@ namespace Phyth {
         }
     };
 
-    template<typename T, typename U,
-        typename = std::enable_if_t<!is_quantity_v<T> && !std::is_same_v<T, Scalar>>>
-    constexpr auto operator*(T scalar, const Quaternion<U>& q) {
-        return Quaternion<decltype(scalar * q.w)>(
-            scalar * q.w,
-            scalar * q.x,
-            scalar * q.y,
-            scalar * q.z
-        );
-    }
-
     template<typename>
     struct is_quaternion : std::false_type {};
 
@@ -321,7 +310,7 @@ namespace Phyth {
     template<typename T>
     inline constexpr auto is_quaternion_v = is_quaternion<T>::value;
 
-    template<typename T, typename U>
+    template<typename T, typename U, typename = std::enable_if<!is_quaternion_v<T>>>
     constexpr auto operator*(const T scalar, const Quaternion<U>& q) {
         return Quaternion<decltype(scalar * q.w)>(
             scalar * q.w,
