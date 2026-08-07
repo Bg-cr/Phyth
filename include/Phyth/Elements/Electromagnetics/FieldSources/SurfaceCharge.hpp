@@ -12,7 +12,7 @@ namespace Phyth::Electromagnetics {
      * @brief Uniform surface charge distribution on a rectangular patch
      *
      * Field and potential are computed by numerical integration over the surface.
-     * Default integration resolution is 32×32 segments.
+     * Default integration resolution is 32*32 segments.
      */
     class SurfaceCharge : public ChargeSource {
     public:

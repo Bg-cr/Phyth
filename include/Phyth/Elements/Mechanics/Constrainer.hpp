@@ -33,9 +33,8 @@ namespace Phyth::Mechanics {
 
         /**
          * @brief Corrects position and velocity to satisfy the distance constraint
-         * @param dt Time step used for velocity correction
          */
-        void Correct(const Quantity<Second> dt) const {
+        void Correct() const {
             const Vector3<Quantity<Meter>> diff = particle_->GetPosition() - anchor_->GetPosition();
             const Quantity<Meter> length = diff.Length();
             if (interval_.Contains(length))
@@ -46,7 +45,7 @@ namespace Phyth::Mechanics {
                                                                  ? interval_.GetMaximum()
                                                                  : interval_.GetMinimum());
 
-            particle_->SetVelocity(particle_->GetVelocity() - (diff - target_offset) / dt);
+            particle_->SetVelocity(particle_->GetVelocity() - (diff - target_offset) / Config::dt);
         }
 
     private:

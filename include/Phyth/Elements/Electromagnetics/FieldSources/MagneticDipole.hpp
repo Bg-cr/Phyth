@@ -215,20 +215,14 @@ namespace Phyth::Electromagnetics {
             external_torque_ += torque;
         }
 
-        void Integrate(const Quantity<Second> dt) noexcept override {
-            position_history_.SetDeltaTime(dt);
-            velocity_history_.SetDeltaTime(dt);
-            acceleration_history_.SetDeltaTime(dt);
-            moment_history_.SetDeltaTime(dt);
-            electric_dipole_history_.SetDeltaTime(dt);
-
-            Particle::Integrate(dt);
+        void Integrate() noexcept override {
+            Particle::Integrate();
 
             if (moment_of_inertia_ > 0_kgm2) {
                 const auto alpha = external_torque_ / moment_of_inertia_;
-                angular_velocity_ += alpha * dt;
+                angular_velocity_ += alpha * Config::dt;
 
-                if (const auto delta_angle = angular_velocity_ * dt; delta_angle.Length() > 0_rad) {
+                if (const auto delta_angle = angular_velocity_ * Config::dt; delta_angle.Length() > 0_rad) {
                     const auto axis = delta_angle.Normalized();
                     const auto angle = delta_angle.Length();
 
@@ -360,7 +354,7 @@ namespace Phyth::Electromagnetics {
             Quantity<Second> dt_delay = R0 / Consts::c;
 
             const Quantity<Second> max_dt = static_cast<double>(position_history_.GetSize())
-                                            * position_history_.GetDeltaTime();
+                                            * Config::dt;
             dt_delay = std::clamp(dt_delay, Quantity<Second>(0.0), max_dt);
 
             for (int iter = 0; iter < Config::max_iterations; ++iter) {
@@ -398,7 +392,7 @@ namespace Phyth::Electromagnetics {
             auto ComputeResidual = [&](const Quantity<Second> dt) -> Quantity<Meter> {
                 const auto pos_r = GetPositionAtOffset(dt);
                 const Quantity<Meter> R = (point - pos_r).Length();
-                return R - Consts::c * dt;
+                return R - Consts::c * Config::dt;
             };
 
             Quantity<Meter> f_low = ComputeResidual(dt_low);
@@ -430,123 +424,118 @@ namespace Phyth::Electromagnetics {
 
         [[nodiscard]] Vector3<decltype(0_Am2 / 1_s)>
         ComputeMomentFirstDerivative(const Quantity<Second>& retarded_dt) const {
-            const auto dt = moment_history_.GetDeltaTime();
             const auto size = moment_history_.GetSize();
-            const auto idx = (retarded_dt / dt).to<size_t>();
+            const auto idx = (retarded_dt / Config::dt).to<size_t>();
 
             if (size < 2) return {};
 
             if (idx < 1) {
                 const auto m0 = GetMomentAtOffset(retarded_dt);
-                const auto m1 = GetMomentAtOffset(retarded_dt + dt);
-                return (m1 - m0) / dt;
+                const auto m1 = GetMomentAtOffset(retarded_dt + Config::dt);
+                return (m1 - m0) / Config::dt;
             }
             if (idx >= size - 1) {
                 const auto m0 = GetMomentAtOffset(retarded_dt);
-                const auto m1 = GetMomentAtOffset(retarded_dt - dt);
-                return (m0 - m1) / dt;
+                const auto m1 = GetMomentAtOffset(retarded_dt - Config::dt);
+                return (m0 - m1) / Config::dt;
             }
-            const auto m_next = GetMomentAtOffset(retarded_dt + dt);
-            const auto m_prev = GetMomentAtOffset(retarded_dt - dt);
-            return (m_next - m_prev) / (2 * dt);
+            const auto m_next = GetMomentAtOffset(retarded_dt + Config::dt);
+            const auto m_prev = GetMomentAtOffset(retarded_dt - Config::dt);
+            return (m_next - m_prev) / (2 * Config::dt);
         }
 
         [[nodiscard]] Vector3<decltype(0_Am2 / 1_s / 1_s)>
         ComputeMomentSecondDerivative(const Quantity<Second>& retarded_dt) const {
-            const auto dt = moment_history_.GetDeltaTime();
             const auto size = moment_history_.GetSize();
-            const auto idx = (retarded_dt / dt).to<size_t>();
+            const auto idx = (retarded_dt / Config::dt).to<size_t>();
 
             if (size < 3) return {};
 
             if (idx < 2) {
                 const auto m0 = GetMomentAtOffset(retarded_dt);
-                const auto m1 = GetMomentAtOffset(retarded_dt + dt);
-                const auto m2 = GetMomentAtOffset(retarded_dt + 2 * dt);
-                return (m2 - 2 * m1 + m0) / (dt * dt);
+                const auto m1 = GetMomentAtOffset(retarded_dt + Config::dt);
+                const auto m2 = GetMomentAtOffset(retarded_dt + 2 * Config::dt);
+                return (m2 - 2 * m1 + m0) / (Config::dt * Config::dt);
             }
             if (idx >= size - 1) {
                 const auto m0 = GetMomentAtOffset(retarded_dt);
-                const auto m1 = GetMomentAtOffset(retarded_dt - dt);
-                const auto m2 = GetMomentAtOffset(retarded_dt - 2 * dt);
-                return (m0 - 2 * m1 + m2) / (dt * dt);
+                const auto m1 = GetMomentAtOffset(retarded_dt - Config::dt);
+                const auto m2 = GetMomentAtOffset(retarded_dt - 2 * Config::dt);
+                return (m0 - 2 * m1 + m2) / (Config::dt * Config::dt);
             }
-            const auto m_prev = GetMomentAtOffset(retarded_dt + dt);
+            const auto m_prev = GetMomentAtOffset(retarded_dt + Config::dt);
             const auto m_curr = GetMomentAtOffset(retarded_dt);
-            const auto m_next = GetMomentAtOffset(retarded_dt - dt);
-            return (m_next - 2 * m_curr + m_prev) / (dt * dt);
+            const auto m_next = GetMomentAtOffset(retarded_dt - Config::dt);
+            return (m_next - 2 * m_curr + m_prev) / (Config::dt * Config::dt);
         }
 
         [[nodiscard]] Vector3<decltype(1_Cm / 1_s)>
         ComputeElectricDipoleFirstDerivative(const Quantity<Second>& retarded_dt) const {
-            const auto dt = electric_dipole_history_.GetDeltaTime();
             const auto size = electric_dipole_history_.GetSize();
-            const auto idx = (retarded_dt / dt).to<size_t>();
+            const auto idx = (retarded_dt / Config::dt).to<size_t>();
 
             if (size < 2) return {};
 
             if (idx < 1) {
                 const auto p0 = GetElectricDipoleAtOffset(retarded_dt);
-                const auto p1 = GetElectricDipoleAtOffset(retarded_dt + dt);
-                return (p1 - p0) / dt;
+                const auto p1 = GetElectricDipoleAtOffset(retarded_dt + Config::dt);
+                return (p1 - p0) / Config::dt;
             }
             if (idx >= size - 1) {
                 const auto p0 = GetElectricDipoleAtOffset(retarded_dt);
-                const auto p1 = GetElectricDipoleAtOffset(retarded_dt - dt);
-                return (p0 - p1) / dt;
+                const auto p1 = GetElectricDipoleAtOffset(retarded_dt - Config::dt);
+                return (p0 - p1) / Config::dt;
             }
-            const auto p_next = GetElectricDipoleAtOffset(retarded_dt + dt);
-            const auto p_prev = GetElectricDipoleAtOffset(retarded_dt - dt);
-            return (p_next - p_prev) / (2 * dt);
+            const auto p_next = GetElectricDipoleAtOffset(retarded_dt + Config::dt);
+            const auto p_prev = GetElectricDipoleAtOffset(retarded_dt - Config::dt);
+            return (p_next - p_prev) / (2 * Config::dt);
         }
 
         [[nodiscard]] Vector3<decltype(1_Cm / 1_s / 1_s)>
         ComputeElectricDipoleSecondDerivative(const Quantity<Second>& retarded_dt) const {
-            const auto dt = electric_dipole_history_.GetDeltaTime();
             const auto size = electric_dipole_history_.GetSize();
-            const auto idx = (retarded_dt / dt).to<size_t>();
+            const auto idx = (retarded_dt / Config::dt).to<size_t>();
 
             if (size < 3) return {};
 
             if (idx < 2) {
                 const auto p0 = GetElectricDipoleAtOffset(retarded_dt);
-                const auto p1 = GetElectricDipoleAtOffset(retarded_dt + dt);
-                const auto p2 = GetElectricDipoleAtOffset(retarded_dt + 2 * dt);
-                return (p2 - 2 * p1 + p0) / (dt * dt);
+                const auto p1 = GetElectricDipoleAtOffset(retarded_dt + Config::dt);
+                const auto p2 = GetElectricDipoleAtOffset(retarded_dt + 2 * Config::dt);
+                return (p2 - 2 * p1 + p0) / (Config::dt * Config::dt);
             }
             if (idx >= size - 1) {
                 const auto p0 = GetElectricDipoleAtOffset(retarded_dt);
-                const auto p1 = GetElectricDipoleAtOffset(retarded_dt - dt);
-                const auto p2 = GetElectricDipoleAtOffset(retarded_dt - 2 * dt);
-                return (p0 - 2 * p1 + p2) / (dt * dt);
+                const auto p1 = GetElectricDipoleAtOffset(retarded_dt - Config::dt);
+                const auto p2 = GetElectricDipoleAtOffset(retarded_dt - 2 * Config::dt);
+                return (p0 - 2 * p1 + p2) / (Config::dt * Config::dt);
             }
-            const auto p_prev = GetElectricDipoleAtOffset(retarded_dt + dt);
+            const auto p_prev = GetElectricDipoleAtOffset(retarded_dt + Config::dt);
             const auto p_curr = GetElectricDipoleAtOffset(retarded_dt);
-            const auto p_next = GetElectricDipoleAtOffset(retarded_dt - dt);
-            return (p_next - 2 * p_curr + p_prev) / (dt * dt);
+            const auto p_next = GetElectricDipoleAtOffset(retarded_dt - Config::dt);
+            return (p_next - 2 * p_curr + p_prev) / (Config::dt * Config::dt);
         }
 
         [[nodiscard]] Vector3<decltype(1_mps2 / 1_s)>
         ComputeAccelerationFirstDerivative(const Quantity<Second>& retarded_dt) const {
-            const auto dt = acceleration_history_.GetDeltaTime();
             const auto size = acceleration_history_.GetSize();
-            const auto idx = (retarded_dt / dt).to<size_t>();
+            const auto idx = (retarded_dt / Config::dt).to<size_t>();
 
             if (size < 2) return {};
 
             if (idx < 1) {
                 const auto a0 = GetAccelerationAtOffset(retarded_dt);
-                const auto a1 = GetAccelerationAtOffset(retarded_dt + dt);
-                return (a1 - a0) / dt;
+                const auto a1 = GetAccelerationAtOffset(retarded_dt + Config::dt);
+                return (a1 - a0) / Config::dt;
             }
             if (idx >= size - 1) {
                 const auto a0 = GetAccelerationAtOffset(retarded_dt);
-                const auto a1 = GetAccelerationAtOffset(retarded_dt - dt);
-                return (a0 - a1) / dt;
+                const auto a1 = GetAccelerationAtOffset(retarded_dt - Config::dt);
+                return (a0 - a1) / Config::dt;
             }
-            const auto a_next = GetAccelerationAtOffset(retarded_dt + dt);
-            const auto a_prev = GetAccelerationAtOffset(retarded_dt - dt);
-            return (a_next - a_prev) / (2 * dt);
+            const auto a_next = GetAccelerationAtOffset(retarded_dt + Config::dt);
+            const auto a_prev = GetAccelerationAtOffset(retarded_dt - Config::dt);
+            return (a_next - a_prev) / (2 * Config::dt);
         }
 
         [[nodiscard]] Vector3<Quantity<Newton>>

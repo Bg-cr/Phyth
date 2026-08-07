@@ -21,7 +21,7 @@ namespace Phyth {
         virtual ~Field() = default;
 
         [[nodiscard]] virtual T GetValueAt(const Vector3<Quantity<Meter>>& point) const = 0;
-        virtual void Update(Quantity<Second> dt) {}
+        virtual void Update() {}
     };
 
     template <typename, typename = void>

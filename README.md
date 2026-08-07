@@ -136,10 +136,10 @@ which are used to verify numerical stability.
 using namespace Phyth;
 using namespace Phyth::Mechanics;
 
-constexpr Quantity<Second> DELTA_TIME = 1_s / 1000;
 constexpr Quantity<Second> SIMULATION_TIME = 2.73_s;
 
 int main() {
+    Config::dt = 1_s / 1000;
     const auto anchor = std::make_shared<Particle>(1_kg, Vector3{0_m, 0_m, 0_m});
     anchor->SetFixed(true);
     
@@ -151,9 +151,9 @@ int main() {
         p->ApplyForce({0_N, -1_kg * Consts::g, 0_N});
     });
 
-    for (Quantity<Second> t = 0_s; t < SIMULATION_TIME; t += DELTA_TIME) {
-        pendulum->Integrate(DELTA_TIME);
-        constraint.Correct(DELTA_TIME);
+    for (Quantity<Second> t = 0_s; t < SIMULATION_TIME; t += Config::dt) {
+        pendulum->Integrate();
+        constraint.Correct();
 
         std::cout << t << " " << *pendulum << " " << pendulum->GetTotalEnergy(-1_m) << std::endl;
     }

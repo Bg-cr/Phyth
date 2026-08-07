@@ -5,6 +5,7 @@
 
 #include "Phyth/Physical/PhysicalConsts.hpp"
 #include "Phyth/Core/Units.hpp"
+#include "Phyth/Physical/PhysicalConfig.hpp"
 #include "Phyth/Tools/Vector3.hpp"
 
 namespace Phyth::Mechanics {
@@ -30,7 +31,7 @@ namespace Phyth::Mechanics {
         /**
          * @brief Integrates equations of motion using velocity Verlet.
          */
-        virtual void Integrate(const Quantity<Second> dt) noexcept {
+        virtual void Integrate() noexcept {
             if (fixed_) {
                 external_force_ = Vector3<Quantity<Newton>>();
                 return;
@@ -38,13 +39,13 @@ namespace Phyth::Mechanics {
             compute_forces_func_(this);
 
             const auto acc_old = external_force_ / mass_;
-            position_ = position_ + velocity_ * dt + 0.5 * acc_old * dt * dt;
+            position_ = position_ + velocity_ * Config::dt + 0.5 * acc_old * Config::dt * Config::dt;
 
             external_force_ = Vector3<Quantity<Newton>>();
             compute_forces_func_(this);
 
             const auto acc_new = external_force_ / mass_;
-            velocity_ = velocity_ + 0.5 * (acc_old + acc_new) * dt;
+            velocity_ = velocity_ + 0.5 * (acc_old + acc_new) * Config::dt;
 
             external_force_ = Vector3<Quantity<Newton>>();
         }

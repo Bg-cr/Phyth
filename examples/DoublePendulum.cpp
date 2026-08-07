@@ -4,9 +4,10 @@
 using namespace Phyth;
 using namespace Phyth::Mechanics;
 
-constexpr Quantity<Second> DELTA_TIME = 1_s / 1000;
 
 int main() {
+    Config::dt = 1_s / 1000;
+
     const auto anchor_point = std::make_shared<Particle>(1_kg, Vector3{0_m, 0_m, 0_m});
     anchor_point->SetFixed(true);
     const auto p1 = std::make_shared<Particle>(1_kg, Vector3{1_m, 1_m, 0_m});
@@ -28,19 +29,19 @@ int main() {
     );
 
     constexpr auto total_time = 10000_s;
-    constexpr int steps = static_cast<int>((total_time / DELTA_TIME / 50).value);
+    const int steps = (total_time / Config::dt / 50).to<int>();
 
-    for (int i = 0; i < total_time / DELTA_TIME; ++i) {
-        c1.Correct(DELTA_TIME);
-        c2.Correct(DELTA_TIME);
-        c3.Correct(DELTA_TIME);
+    for (int i = 0; i < total_time / Config::dt; ++i) {
+        c1.Correct();
+        c2.Correct();
+        c3.Correct();
 
-        p1->Integrate(DELTA_TIME);
-        p2->Integrate(DELTA_TIME);
+        p1->Integrate();
+        p2->Integrate();
 
         if (i % steps == 0) {
             // If we record the simulated data every moment, the final analysis will result in image 'DoublePendulumAnalysis.png'
-            std::cout << "Time: " << i * DELTA_TIME << "\n"
+            std::cout << "Time: " << i * Config::dt << "\n"
                       << "  P1 Position:" << p1->GetPosition() << "\n"
                       << "  P1 Velocity: " << p1->GetVelocity() << "\n"
                       << "  P2 Position:" << p2->GetPosition() << "\n"

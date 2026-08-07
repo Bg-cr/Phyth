@@ -165,12 +165,8 @@ namespace Phyth::Electromagnetics {
             return (point - position_).Length();
         }
 
-        void Integrate(const Quantity<Second> dt) noexcept override {
-            position_history_.SetDeltaTime(dt);
-            velocity_history_.SetDeltaTime(dt);
-            acceleration_history_.SetDeltaTime(dt);
-
-            Particle::Integrate(dt);
+        void Integrate() noexcept override {
+            Particle::Integrate();
 
             position_history_.Register(position_);
             velocity_history_.Register(velocity_);
@@ -219,7 +215,7 @@ namespace Phyth::Electromagnetics {
             Quantity<Second> dt_delay = R0 / Consts::c;
 
             const Quantity<Second> max_dt = static_cast<double>(position_history_.GetSize())
-                                            * position_history_.GetDeltaTime();
+                                            * Config::dt;
             dt_delay = std::clamp(dt_delay, Quantity<Second>(0.0), max_dt);
 
             for (int iter = 0; iter < Config::max_iterations; ++iter) {

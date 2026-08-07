@@ -3,6 +3,7 @@
 
 #include "Phyth/Core/Units.hpp"
 #include "QuantityFuncs.hpp"
+#include "Phyth/Physical/PhysicalConfig.hpp"
 
 #include <vector>
 #include <cmath>
@@ -26,11 +27,7 @@ namespace Phyth {
          * @throws std::out_of_range If the time exceeds the historical data range
          */
         [[nodiscard]] ValueType GetValueByTime(const Quantity<Second> time) const {
-            if (dt_ <= 0_s) {
-                throw std::runtime_error("Invalid dt_ in TimeHistory");
-            }
-
-            const Scalar tick = time / dt_;
+            const Scalar tick = time / Config::dt;
 
             const auto index = Utils::floor(tick).to<long long>();
 
@@ -39,18 +36,13 @@ namespace Phyth {
             }
 
             ValueType result = history_[index];
-    
-            // 计算小数部分
+
             const Scalar frac = tick - Scalar(static_cast<double>(index));
-    
-            // 如果需要插值，且下一个点存在
+
             if (frac > Config::epsilon) {
                 if (static_cast<size_t>(index + 1) < history_.size()) {
-                    // 正常插值
                     result += (history_[index + 1] - result) * frac;
                 }
-                // 如果下一个点不存在，直接返回当前点（不插值）
-                // 这相当于线性外推被截断为常数
             }
             return result;
         }
@@ -70,7 +62,7 @@ namespace Phyth {
                 throw std::out_of_range("Offset cannot be negative");
             }
 
-            const Quantity<Second> time = static_cast<double>(history_.size()) * dt_ - offset;
+            const Quantity<Second> time = static_cast<double>(history_.size()) * Config::dt - offset;
             if (time < 0_s) {
                 throw std::out_of_range("Offset exceeds history range");
             }
@@ -78,20 +70,11 @@ namespace Phyth {
             return GetValueByTime(time);
         }
 
-        void SetDeltaTime(const Quantity<Second> dt) {
-            if (dt <= 0_s) {
-                throw std::invalid_argument("dt must be positive");
-            }
-            dt_ = dt;
-        }
-
-        [[nodiscard]] Quantity<Second> GetDeltaTime() const { return dt_; }
         [[nodiscard]] size_t GetSize() const noexcept { return history_.size(); }
         [[nodiscard]] bool IsEmpty() const noexcept { return history_.empty(); }
 
     protected:
         std::vector<ValueType> history_;
-        Quantity<Second> dt_;
     };
 }
 
