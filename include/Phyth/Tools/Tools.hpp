@@ -3,6 +3,5 @@
 
 #include "Vector3.hpp"
 #include "QuantityFuncs.hpp"
-#include "FormulaSolver.hpp"
 
 #endif //PHYTH_TOOLS_HPP
