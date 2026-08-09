@@ -13,11 +13,21 @@ namespace Phyth {
     /**
      * @def PHYTH_DEFINE_UNIT
      * @brief Define a unit, literal operator, and registry entry
-     * @param dim_type Dimension type
-     * @param unit_type Unit type name
-     * @param suffix Literal suffix
-     * @param scale_num Scale numerator
-     * @param scale_den Scale denominator
+     *
+     * This macro creates:
+     *   1. A unit type alias (e.g., Meter)
+     *   2. A literal operator (e.g., 1.0_m)
+     *   3. A static registrar that registers the unit's name and symbol
+     *
+     * @param dim_type   Dimension type (e.g., Length, Mass)
+     * @param unit_type  Unit type name (e.g., Meter, Kilogram)
+     * @param suffix     Literal suffix (e.g., m, kg)
+     * @param scale_num  Scale numerator relative to base unit
+     * @param scale_den  Scale denominator relative to base unit
+     *
+     * Example:
+     *   PHYTH_DEFINE_UNIT(Length, Meter, m, 1, 1)   // 1.0_m
+     *   PHYTH_DEFINE_UNIT(Length, Kilometer, km, 1000, 1)  // 1.0_km = 1000 m
      */
 #define PHYTH_DEFINE_UNIT(dim_type, unit_type, suffix, scale_num, scale_den) \
     using unit_type = Unit<dim_type, std::ratio<scale_num, scale_den>>; \
@@ -35,12 +45,16 @@ namespace Phyth {
     /**
      * @def PHYTH_DEFINE_UNIT_WITH_NAME
      * @brief Same as DEFINE_UNIT with custom display symbol
-     * @param dim_type Dimension type
-     * @param unit_type Unit type name
-     * @param suffix Literal suffix
-     * @param scale_num Scale numerator
-     * @param scale_den Scale denominator
-     * @param symbol Display symbol
+     *
+     * @param dim_type   Dimension type
+     * @param unit_type  Unit type name
+     * @param suffix     Literal suffix
+     * @param scale_num  Scale numerator
+     * @param scale_den  Scale denominator
+     * @param symbol     Display symbol (e.g., "m/s", "N/C")
+     *
+     * Example:
+     *   PHYTH_DEFINE_UNIT_WITH_NAME(Velocity, MeterPerSecond, mps, 1, 1, "m/s")
      */
 #define PHYTH_DEFINE_UNIT_WITH_NAME(dim_type, unit_type, suffix, scale_num, scale_den, symbol) \
     using unit_type = Unit<dim_type, std::ratio<scale_num, scale_den>>; \
@@ -58,13 +72,18 @@ namespace Phyth {
     /**
      * @def PHYTH_DEFINE_UNIT_WITH_TAG
      * @brief Define a unit with a tag type for type-safe differentiation
-     * @param dim_type Dimension type
-     * @param unit_type Unit type name
-     * @param suffix Literal suffix
-     * @param scale_num Scale numerator
-     * @param scale_den Scale denominator
-     * @param symbol Display symbol
-     * @param tag Tag type
+     *
+     * This is used when two units have the same dimension and scale but represent
+     * different physical concepts. For example, Radian and Degree are both
+     * dimensionless with scale 1, but they are distinct types.
+     *
+     * @param dim_type   Dimension type
+     * @param unit_type  Unit type name
+     * @param suffix     Literal suffix
+     * @param scale_num  Scale numerator
+     * @param scale_den  Scale denominator
+     * @param symbol     Display symbol
+     * @param tag        Tag type for type differentiation
      */
 #define PHYTH_DEFINE_UNIT_WITH_TAG(dim_type, unit_type, suffix, scale_num, scale_den, symbol, tag) \
         using unit_type = Unit<dim_type, std::ratio<scale_num, scale_den>, tag>; \
@@ -183,7 +202,9 @@ namespace Phyth {
 
     struct DegreePerSecondTag {
     };
-    PHYTH_DEFINE_UNIT_WITH_TAG(AngularVelocity, DegreePerSecond, degps, 3141592653589793, 18000000000000000, "deg/m", DegreePerSecondTag)
+
+    PHYTH_DEFINE_UNIT_WITH_TAG(AngularVelocity, DegreePerSecond, degps, 3141592653589793, 18000000000000000, "deg/m",
+                               DegreePerSecondTag)
 
 #undef PHYTH_DEFINE_UNIT
 #undef PHYTH_DEFINE_UNIT_WITH_NAME

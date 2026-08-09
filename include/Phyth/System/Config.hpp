@@ -9,14 +9,16 @@ namespace Phyth {
 
 
     namespace Config {
-        static inline auto output_mode = OutputMode::Auto;
-        static inline double epsilon = 1e-6;
-        static inline int max_iterations = 50;
-        static double tolerance = 1e-12;
+        inline auto output_mode = OutputMode::Auto;
+        inline double epsilon = 1e-6;
+        inline int max_iterations = 50;
+        inline double tolerance = 1e-12;
 
         inline void Reset() noexcept {
             output_mode = OutputMode::Auto;
             epsilon = 1e-6;
+            max_iterations = 50;
+            tolerance = 1e-12;
         }
     }
 }
