@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Phyth<span id="projectnumber">&#160;v1.0.0</span>
+   <div id="projectname">Phyth<span id="projectnumber">&#160;v0.1.0</span>
    </div>
    <div id="projectbrief">A dimensional safe C++ header-only mechanics and electromagnetics simulation library.</div>
   </td>
@@ -239,6 +239,18 @@ Quick Start</h1>
 <p>&zwj;For specific analysis of the above program, see Accuracy Verification. </p>
 </blockquote>
 <h1><a class="anchor" id="autotoc_md12"></a>
+Simulation workflow</h1>
+<ol type="1">
+<li>Set <code>Config::dt</code> (time step)</li>
+<li>Add elements (e.g., Particle)</li>
+<li>Loop:<ul>
+<li><code>Integrate()</code> updates every element</li>
+<li><code>Correct()</code> applies <b>Velocity Correct</b> to particles.</li>
+<li>process data</li>
+</ul>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md13"></a>
 Project Struct</h1>
 <p>Below is the project tree diagram and introduction: </p><div class="fragment"><div class="line">F:.</div>
 <div class="line">├─examples</div>
@@ -263,7 +275,7 @@ Project Struct</h1>
 </ul>
 </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 FAQ</h1>
 <p><b>Q: Is dimensionality checking performed during compilation or at runtime? Is it zero-cost?</b></p>
 <p>A: Compile-time. In Release mode, <code>Quantity&lt;T, Dim&gt;</code> has a memory layout identical to that of a native <code>double</code>, with zero runtime overhead.</p>
@@ -276,7 +288,7 @@ FAQ</h1>
 <li>Mechanics: Particle, Spring, Distance Constraint (Single/Double Pendulum Verified)</li>
 <li>Electromagnetics: Calculation of point/line/surface/bulk charges, electric dipoles, and electrostatic fields, etc.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md15"></a>
 Known Limitations</h1>
 <ul>
 <li><b>Performance</b>: Electromagnetic field calculations use direct summation over volume elements . For large-scale 3D simulations, this may be slow.</li>
@@ -284,17 +296,17 @@ Known Limitations</h1>
 <li><b>No collision detection</b>: <a class="el" href="namespacePhyth.html">Phyth</a> focuses on dynamics and field calculations, not contact mechanics.</li>
 <li><b>No automatic differentiation</b>: Gradients must be computed manually if needed for optimization.</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md15"></a>
+<h1><a class="anchor" id="autotoc_md16"></a>
 Contributing</h1>
 <p>We welcome contributions from researchers, students, and developers!</p>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 How to Contribute</h2>
 <ol type="1">
 <li><b>Report bugs or request features</b> → Use our <a href="https://github.com/Bg-cr/Phyth/issues/new/choose">Issue Templates</a></li>
 <li><b>Submit code changes</b> → Fork the repo, create a branch, and open a Pull Request</li>
 <li><b>Suggest new physics modules</b> → Start a Discussion</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 Guidelines</h2>
 <ul>
 <li>All new formulas must include validation tests (compare against analytical solutions)</li>
@@ -302,7 +314,7 @@ Guidelines</h2>
 <li>Write descriptive commit messages</li>
 </ul>
 <p>See CONTRIBUTING.md for full details.</p>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<h1><a class="anchor" id="autotoc_md19"></a>
 Acknowledgments</h1>
 <p><a class="el" href="namespacePhyth.html">Phyth</a>'s dimensional analysis system draws inspiration from:</p><ul>
 <li><a href="https://www.boost.org/doc/libs/1_85_0/doc/html/boost_units.html">Boost.Units</a> — compile-time dimensional analysis in C++</li>

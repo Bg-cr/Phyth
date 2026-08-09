@@ -53,5 +53,5 @@ var searchData=
   ['getvaluebytime_50',['GetValueByTime',['../classPhyth_1_1TimeHistory.html#a44034c167278eeff4cd4f82c299f9288',1,'Phyth::TimeHistory']]],
   ['getvelocity_51',['GetVelocity',['../classPhyth_1_1Mechanics_1_1Particle.html#a071a05ff68b64678e77ee14746af55a9',1,'Phyth::Mechanics::Particle']]],
   ['getvelocityatoffset_52',['getvelocityatoffset',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#ab699997230176e6614e01ba9b7388184',1,'Phyth::Electromagnetics::MagneticDipole::GetVelocityAtOffset()'],['../classPhyth_1_1Electromagnetics_1_1PointCharge.html#a8c65c79cb22af94ae356f59f25add0c6',1,'Phyth::Electromagnetics::PointCharge::GetVelocityAtOffset()']]],
-  ['guidelines_53',['Guidelines',['../index.html#autotoc_md17',1,'']]]
+  ['guidelines_53',['Guidelines',['../index.html#autotoc_md18',1,'']]]
 ];
