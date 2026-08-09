@@ -1,0 +1,51 @@
+<map id="Phyth::Electromagnetics::MagneticDipole" name="Phyth::Electromagnetics::MagneticDipole">
+<area shape="rect" id="Node000001" title="Magnetic dipole with full electromagnetic field and dynamics." alt="" coords="1176,463,1356,503"/>
+<area shape="rect" id="Node000002" href="$classPhyth_1_1Mechanics_1_1Particle.html" title="Physical particle with mass, position, velocity, and force accumulation." alt="" coords="721,93,913,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="927,101,984,107,1044,121,1103,144,1129,159,1154,179,1183,211,1207,249,1226,289,1241,330,1259,407,1266,463,1261,464,1253,408,1236,332,1221,291,1203,252,1179,215,1150,183,1126,164,1100,148,1043,126,983,112,926,106"/>
+<area shape="rect" id="Node000003" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="284,5,496,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="471,31,641,65,760,91,758,96,639,70,470,36"/>
+<area shape="rect" id="Node000004" href="$structPhyth_1_1Vector3.html" title=" " alt="" coords="271,55,509,95"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="523,82,721,96,720,102,522,87"/>
+<area shape="rect" id="Node000005" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="8,45,205,85"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="219,66,271,68,271,74,219,72"/>
+<area shape="rect" id="Node000006" href="$structPhyth_1_1Vector3.html" title=" " alt="" coords="299,119,481,159"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="494,129,720,111,721,116,494,134"/>
+<area shape="rect" id="Node000007" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="5,127,208,152"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="222,137,299,137,299,142,222,142"/>
+<area shape="rect" id="Node000008" href="$structPhyth_1_1Vector3.html" title=" " alt="" coords="305,189,475,229"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="488,192,563,174,639,146,650,138,663,129,720,112,721,118,665,134,653,142,641,151,565,179,489,197"/>
+<area shape="rect" id="Node000009" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="11,201,202,227"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="216,209,305,208,305,213,216,215"/>
+<area shape="rect" id="Node000010" href="$classPhyth_1_1Electromagnetics_1_1MagneticSource.html" title="Abstract base class for all magnetic field sources." alt="" coords="727,143,907,183"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="921,157,978,162,1039,174,1100,195,1128,210,1154,228,1180,254,1203,284,1221,317,1235,350,1255,414,1265,463,1259,464,1250,415,1230,352,1216,319,1198,287,1176,257,1150,232,1125,214,1097,200,1038,179,977,168,920,163"/>
+<area shape="rect" id="Node000011" href="$classPhyth_1_1Electromagnetics_1_1ChargeSource.html" title="Abstract base class for all charge distributions." alt="" coords="727,207,907,247"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="920,216,977,218,1038,226,1098,243,1153,272,1177,292,1198,316,1230,369,1251,421,1263,462,1258,464,1246,423,1225,371,1194,319,1174,296,1151,276,1096,248,1037,231,977,223,920,221"/>
+<area shape="rect" id="Node000012" href="$structPhyth_1_1Vector3.html" title=" " alt="" coords="680,271,953,311"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="968,300,1062,322,1109,338,1153,360,1185,382,1213,410,1254,461,1250,465,1210,413,1182,387,1151,364,1107,343,1060,327,966,306"/>
+<area shape="rect" id="Node000013" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="277,271,503,311"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="517,289,680,289,680,294,517,294"/>
+<area shape="rect" id="Node000014" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="718,335,915,375"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="929,366,1039,387,1153,419,1197,439,1235,461,1232,466,1194,444,1151,425,1038,392,928,372"/>
+<area shape="rect" id="Node000015" href="$structPhyth_1_1Quaternion.html" title=" " alt="" coords="741,399,892,439"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="906,427,1152,461,1176,465,1175,470,1152,466,906,432"/>
+<area shape="rect" id="Node000016" href="$structPhyth_1_1Quantity.html" title="Physical quantity with a value and a compile&#45;time unit." alt="" coords="296,396,484,421"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="498,409,741,415,741,420,498,414"/>
+<area shape="rect" id="Node000017" href="$structPhyth_1_1Vector3.html" title=" " alt="" coords="695,463,939,503"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="952,481,1176,481,1176,486,952,486"/>
+<area shape="rect" id="Node000018" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="288,463,492,503"/>
+<area shape="poly" id="edge17_Node000017_Node000018" title=" " alt="" coords="506,481,694,481,694,486,506,486"/>
+<area shape="rect" id="Node000019" href="$structPhyth_1_1Vector3.html" title=" " alt="" coords="707,527,926,567"/>
+<area shape="poly" id="edge18_Node000001_Node000019" title=" " alt="" coords="939,530,1152,501,1175,497,1176,502,1152,506,940,535"/>
+<area shape="rect" id="Node000020" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="269,545,511,571"/>
+<area shape="poly" id="edge19_Node000019_Node000020" title=" " alt="" coords="525,552,707,547,707,553,525,557"/>
+<area shape="rect" id="Node000021" href="$classPhyth_1_1TimeHistory.html" title=" " alt="" coords="725,592,909,647"/>
+<area shape="poly" id="edge20_Node000001_Node000021" title=" " alt="" coords="922,602,1034,579,1093,563,1151,544,1195,523,1233,501,1236,506,1197,528,1153,548,1095,568,1035,584,923,607"/>
+<area shape="rect" id="Node000022" href="$classPhyth_1_1TimeHistory.html" title=" " alt="" coords="691,671,943,725"/>
+<area shape="poly" id="edge21_Node000001_Node000022" title=" " alt="" coords="955,678,1055,651,1104,632,1151,608,1182,584,1210,555,1250,502,1255,505,1214,559,1186,588,1153,612,1106,637,1056,657,957,683"/>
+<area shape="rect" id="Node000023" href="$classPhyth_1_1TimeHistory.html" title=" " alt="" coords="664,749,969,804"/>
+<area shape="poly" id="edge22_Node000001_Node000023" title=" " alt="" coords="982,760,1026,750,1070,735,1112,716,1150,691,1173,670,1192,646,1223,594,1245,543,1257,503,1262,504,1250,545,1228,596,1196,649,1177,674,1154,695,1115,720,1072,740,1028,755,983,765"/>
+<area shape="rect" id="Node000024" href="$classPhyth_1_1TimeHistory.html" title=" " alt="" coords="673,828,961,883"/>
+<area shape="poly" id="edge23_Node000001_Node000024" title=" " alt="" coords="974,848,1021,839,1067,825,1111,805,1150,777,1179,747,1203,711,1221,672,1236,633,1253,558,1261,503,1266,504,1259,559,1241,634,1226,674,1207,714,1183,750,1154,781,1114,809,1069,830,1022,844,975,853"/>
+<area shape="rect" id="Node000025" href="$classPhyth_1_1TimeHistory.html" title=" " alt="" coords="695,907,938,961"/>
+<area shape="poly" id="edge24_Node000001_Node000025" title=" " alt="" coords="951,936,1004,930,1056,918,1106,897,1150,867,1186,825,1214,777,1234,725,1248,672,1261,573,1263,503,1268,503,1266,574,1253,673,1239,727,1219,779,1191,828,1154,871,1109,902,1058,923,1004,936,952,942"/>
+</map>

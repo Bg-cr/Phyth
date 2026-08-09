@@ -1,0 +1,13 @@
+<map id="Phyth::Electromagnetics::DipoleCharge" name="Phyth::Electromagnetics::DipoleCharge">
+<area shape="rect" id="Node000001" title="Ideal electric dipole with zero net charge." alt="" coords="601,69,781,109"/>
+<area shape="rect" id="Node000002" href="$classPhyth_1_1Electromagnetics_1_1ChargeSource.html" title="Abstract base class for all charge distributions." alt="" coords="286,5,466,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="480,44,602,69,600,74,479,49"/>
+<area shape="rect" id="Node000003" href="$structPhyth_1_1Vector3.html" title=" " alt="" coords="291,69,461,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="474,87,601,87,601,92,474,92"/>
+<area shape="rect" id="Node000004" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="8,74,199,99"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="212,85,291,86,291,91,212,90"/>
+<area shape="rect" id="Node000005" href="$structPhyth_1_1Vector3.html" title=" " alt="" coords="263,136,489,176"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="484,131,601,106,602,111,485,136"/>
+<area shape="rect" id="Node000006" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="5,141,201,181"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="215,156,262,156,263,161,215,162"/>
+</map>

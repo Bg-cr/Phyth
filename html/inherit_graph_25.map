@@ -1,0 +1,23 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classPhyth_1_1Electromagnetics_1_1ChargeSource.html" title="Abstract base class for all charge distributions." alt="" coords="11,165,191,205"/>
+<area shape="rect" id="Node000001" href="$classPhyth_1_1Electromagnetics_1_1DipoleCharge.html" title="Ideal electric dipole with zero net charge." alt="" coords="245,69,425,109"/>
+<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="157,157,244,119,276,107,277,112,246,124,159,162"/>
+<area shape="rect" id="Node000002" href="$classPhyth_1_1Electromagnetics_1_1LineCharge.html" title="Uniform line charge along a straight segment." alt="" coords="245,133,425,173"/>
+<area shape="poly" id="edge3_Node000000_Node000002" title=" " alt="" coords="204,169,245,163,245,168,205,174"/>
+<area shape="rect" id="Node000003" href="$classPhyth_1_1Electromagnetics_1_1MagneticDipole.html" title="Magnetic dipole with full electromagnetic field and dynamics." alt="" coords="245,325,425,365"/>
+<area shape="poly" id="edge4_Node000000_Node000003" title=" " alt="" coords="144,212,199,257,222,286,232,298,247,311,268,323,266,328,244,316,228,302,218,289,195,261,141,216"/>
+<area shape="rect" id="Node000006" href="$classPhyth_1_1Electromagnetics_1_1PointCharge.html" title="Point charge with full electromagnetic field and dynamics." alt="" coords="245,261,425,301"/>
+<area shape="poly" id="edge5_Node000000_Node000006" title=" " alt="" coords="159,209,246,247,277,259,276,264,244,252,157,214"/>
+<area shape="rect" id="Node000008" href="$classPhyth_1_1Electromagnetics_1_1SurfaceCharge.html" title="Uniform surface charge distribution on a rectangular patch." alt="" coords="245,197,425,237"/>
+<area shape="poly" id="edge6_Node000000_Node000008" title=" " alt="" coords="205,197,245,202,245,208,204,202"/>
+<area shape="rect" id="Node000009" href="$classPhyth_1_1Electromagnetics_1_1VolumeCharge.html" title="Uniform volume charge distribution in a rectangular box." alt="" coords="245,5,425,45"/>
+<area shape="poly" id="edge7_Node000000_Node000009" title=" " alt="" coords="128,153,179,104,210,78,244,55,268,43,270,48,247,60,214,82,183,108,132,157"/>
+<area shape="rect" id="Node000004" href="$classPhyth_1_1Electromagnetics_1_1MagneticSource.html" title="Abstract base class for all magnetic field sources." alt="" coords="11,325,191,365"/>
+<area shape="poly" id="edge9_Node000004_Node000003" title=" " alt="" coords="205,343,245,343,245,348,205,348"/>
+<area shape="poly" id="edge10_Node000004_Node000006" title=" " alt="" coords="188,319,261,299,262,304,189,324"/>
+<area shape="rect" id="Node000005" href="$classPhyth_1_1Electromagnetics_1_1CurrentSegment.html" title="Magnetic field from a straight current&#45;carrying wire segment." alt="" coords="245,389,425,429"/>
+<area shape="poly" id="edge8_Node000004_Node000005" title=" " alt="" coords="189,366,262,387,261,392,188,372"/>
+<area shape="rect" id="Node000007" href="$classPhyth_1_1Mechanics_1_1Particle.html" title="Physical particle with mass, position, velocity, and force accumulation." alt="" coords="5,271,197,297"/>
+<area shape="poly" id="edge11_Node000007_Node000003" title=" " alt="" coords="164,298,259,323,258,328,163,303"/>
+<area shape="poly" id="edge12_Node000007_Node000006" title=" " alt="" coords="211,280,245,280,245,285,211,285"/>
+</map>

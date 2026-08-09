@@ -1,7 +1,0 @@
-var searchData=
-[
-  ['thermodynamictemperature_0',['ThermodynamicTemperature',['../namespace_phyth.html#ace3ba9f547df49807876b9124f1a2130',1,'Phyth']]],
-  ['time_1',['Time',['../namespace_phyth.html#a035375302146d8d90494ae3da9bedafe',1,'Phyth']]],
-  ['translationalstiffness_2',['TranslationalStiffness',['../namespace_phyth.html#a8f30f28c81d067e4ae820543f67e4f34',1,'Phyth']]],
-  ['type_3',['type',['../namespace_phyth.html#aa576a75b14abff5a9612484cb89a4095',1,'Phyth::DimComponent&lt; N, Dimension&lt; Ratios... &gt; &gt;::type'],['../namespace_phyth.html#a6c479b1680ef4f0eee6728927b60476c',1,'Phyth::DimMul&lt; Dimension&lt; R1... &gt;, Dimension&lt; R2... &gt; &gt;::type'],['../namespace_phyth.html#ae85c1a67c8c8beab21885cc9083c0c59',1,'Phyth::DimDiv&lt; Dimension&lt; R1... &gt;, Dimension&lt; R2... &gt; &gt;::type'],['../namespace_phyth.html#a32479693a6cf19634504249d5d25e199',1,'Phyth::DimRoot&lt; N, Dimension&lt; Ratios... &gt; &gt;::type'],['../namespace_phyth.html#a5cb46d04d36bdfaa51676a3eda34b969',1,'Phyth::DimRcp&lt; Dimension&lt; Ratios... &gt; &gt;::type'],['../namespace_phyth.html#aa5e135ef745c7cafdf7d70b4f5d910e7',1,'Phyth::DimPowerHelper::type'],['../namespace_phyth.html#a1dc815971a4f7463f92918d04775b78f',1,'Phyth::DimPowerHelper&lt; 0, D &gt;::type'],['../namespace_phyth.html#a7035a17feb4261449137a782c789d689',1,'Phyth::DimPowerType::type'],['../_quantity_8hpp.html#aa64daac8bc28a20f4a051b5f4c2ea649',1,'common_type_impl&lt; U1, U2, std::enable_if_t&lt; Phyth::is_unit_v&lt; U1 &gt; &amp;&amp;Phyth::is_unit_v&lt; U2 &gt; &gt; &gt;::type']]]
-];

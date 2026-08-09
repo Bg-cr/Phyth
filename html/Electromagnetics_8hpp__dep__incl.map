@@ -1,0 +1,7 @@
+<map id="include/Phyth/Elements/Electromagnetics/Electromagnetics.hpp" name="include/Phyth/Elements/Electromagnetics/Electromagnetics.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,289,45"/>
+<area shape="rect" id="Node000002" href="$Elements_8hpp.html" title=" " alt="" coords="60,93,235,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,59,150,93,145,93,145,59"/>
+<area shape="rect" id="Node000003" href="$Phyth_8hpp.html" title=" " alt="" coords="58,181,237,207"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="150,147,150,181,145,181,145,147"/>
+</map>

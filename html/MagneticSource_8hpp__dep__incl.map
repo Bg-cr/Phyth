@@ -1,0 +1,23 @@
+<map id="include/Phyth/Elements/Electromagnetics/FieldSources/MagneticSource.hpp" name="include/Phyth/Elements/Electromagnetics/FieldSources/MagneticSource.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="284,5,510,60"/>
+<area shape="rect" id="Node000002" href="$ChargeSources_8hpp.html" title=" " alt="" coords="284,211,510,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="271,45,196,53,123,67,62,85,39,97,24,110,14,126,9,140,9,153,14,164,37,184,74,201,122,213,175,222,284,231,284,237,175,227,121,218,73,206,34,189,10,167,4,154,3,139,9,123,20,106,37,92,60,80,122,62,195,48,271,39"/>
+<area shape="rect" id="Node000006" href="$CurrentSegment_8hpp.html" title=" " alt="" coords="35,108,260,163"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="321,67,214,110,212,105,319,63"/>
+<area shape="rect" id="Node000007" href="$MagneticDipole_8hpp.html" title=" " alt="" coords="284,108,510,163"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="400,74,400,108,394,108,394,74"/>
+<area shape="rect" id="Node000008" href="$PointCharge_8hpp.html" title=" " alt="" coords="534,108,759,163"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="475,63,582,105,580,110,473,67"/>
+<area shape="rect" id="Node000009" href="$MagneticField_8hpp.html" title=" " alt="" coords="599,218,862,258"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="523,39,599,48,672,62,734,80,757,92,774,106,782,120,785,135,779,166,765,195,749,219,744,216,761,192,774,164,779,135,777,122,770,110,754,97,732,85,671,67,598,53,523,45"/>
+<area shape="rect" id="Node000003" href="$Electromagnetics_8hpp.html" title=" " alt="" coords="388,313,672,353"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="447,271,505,311,502,315,444,275"/>
+<area shape="rect" id="Node000004" href="$Elements_8hpp.html" title=" " alt="" coords="443,401,618,441"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="533,367,533,401,528,401,528,367"/>
+<area shape="rect" id="Node000005" href="$Phyth_8hpp.html" title=" " alt="" coords="441,489,620,515"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="533,455,533,489,528,489,528,455"/>
+<area shape="poly" id="edge6_Node000006_Node000002" title=" " alt="" coords="226,165,333,208,331,213,224,170"/>
+<area shape="poly" id="edge8_Node000007_Node000002" title=" " alt="" coords="400,176,400,211,394,211,394,176"/>
+<area shape="poly" id="edge10_Node000008_Node000002" title=" " alt="" coords="570,170,463,213,461,208,568,165"/>
+<area shape="poly" id="edge12_Node000009_Node000003" title=" " alt="" coords="679,266,572,316,570,311,676,261"/>
+</map>

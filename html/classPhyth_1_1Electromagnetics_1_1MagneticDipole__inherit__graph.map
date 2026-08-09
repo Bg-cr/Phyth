@@ -1,0 +1,9 @@
+<map id="Phyth::Electromagnetics::MagneticDipole" name="Phyth::Electromagnetics::MagneticDipole">
+<area shape="rect" id="Node000001" title="Magnetic dipole with full electromagnetic field and dynamics." alt="" coords="245,55,425,95"/>
+<area shape="rect" id="Node000002" href="$classPhyth_1_1Mechanics_1_1Particle.html" title="Physical particle with mass, position, velocity, and force accumulation." alt="" coords="5,5,197,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="168,31,254,53,253,58,166,37"/>
+<area shape="rect" id="Node000003" href="$classPhyth_1_1Electromagnetics_1_1MagneticSource.html" title="Abstract base class for all magnetic field sources." alt="" coords="11,55,191,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="205,73,245,73,245,78,205,78"/>
+<area shape="rect" id="Node000004" href="$classPhyth_1_1Electromagnetics_1_1ChargeSource.html" title="Abstract base class for all charge distributions." alt="" coords="11,119,191,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="188,113,261,93,262,98,189,118"/>
+</map>

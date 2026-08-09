@@ -1,0 +1,17 @@
+<map id="Phyth::Mechanics::Particle" name="Phyth::Mechanics::Particle">
+<area shape="rect" id="Node000001" title="Physical particle with mass, position, velocity, and force accumulation." alt="" coords="660,91,852,116"/>
+<area shape="rect" id="Node000002" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="282,5,494,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="477,31,637,65,717,88,715,93,635,70,476,36"/>
+<area shape="rect" id="Node000003" href="$structPhyth_1_1Vector3.html" title=" " alt="" coords="269,55,507,95"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="521,83,660,93,660,99,520,88"/>
+<area shape="rect" id="Node000004" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="8,45,205,85"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="219,66,269,68,269,73,219,72"/>
+<area shape="rect" id="Node000005" href="$structPhyth_1_1Vector3.html" title=" " alt="" coords="297,119,479,159"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="492,127,660,110,660,115,492,132"/>
+<area shape="rect" id="Node000006" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="5,127,208,152"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="222,137,297,137,297,142,222,142"/>
+<area shape="rect" id="Node000007" href="$structPhyth_1_1Vector3.html" title=" " alt="" coords="303,189,473,229"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="486,183,635,142,720,113,721,119,637,147,487,188"/>
+<area shape="rect" id="Node000008" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="11,201,202,227"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="216,209,303,208,303,213,216,215"/>
+</map>

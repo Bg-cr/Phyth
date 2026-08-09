@@ -1,0 +1,22 @@
+<map id="include/Phyth/Elements/Mechanics/Particle.hpp" name="include/Phyth/Elements/Mechanics/Particle.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="337,5,512,45"/>
+<area shape="rect" id="Node000002" href="$MagneticDipole_8hpp.html" title=" " alt="" coords="5,93,231,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="350,52,205,96,204,91,349,47"/>
+<area shape="rect" id="Node000007" href="$Constrainer_8hpp.html" title=" " alt="" coords="255,101,456,141"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="405,58,371,102,367,99,400,55"/>
+<area shape="rect" id="Node000008" href="$Mechanics_8hpp.html" title=" " alt="" coords="327,203,523,243"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="452,55,471,92,476,121,471,149,458,179,442,205,437,202,454,177,466,147,471,121,466,94,447,58"/>
+<area shape="rect" id="Node000009" href="$Spring_8hpp.html" title=" " alt="" coords="532,101,707,141"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="478,49,581,98,579,103,475,54"/>
+<area shape="rect" id="Node000003" href="$ChargeSources_8hpp.html" title=" " alt="" coords="76,196,301,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="147,158,172,194,168,197,142,161"/>
+<area shape="rect" id="Node000004" href="$Electromagnetics_8hpp.html" title=" " alt="" coords="73,299,357,339"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="203,263,213,298,207,299,197,265"/>
+<area shape="rect" id="Node000005" href="$Elements_8hpp.html" title=" " alt="" coords="217,387,392,427"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="247,347,287,385,283,388,243,350"/>
+<area shape="rect" id="Node000006" href="$Phyth_8hpp.html" title=" " alt="" coords="215,475,394,500"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="307,440,307,474,302,474,302,440"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="378,151,414,202,409,205,374,154"/>
+<area shape="poly" id="edge8_Node000008_Node000005" title=" " alt="" coords="415,257,396,298,371,340,328,388,324,385,367,337,391,295,410,255"/>
+<area shape="poly" id="edge11_Node000009_Node000008" title=" " alt="" coords="572,149,462,206,460,201,570,145"/>
+</map>

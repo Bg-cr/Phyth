@@ -1,0 +1,7 @@
+<map id="Phyth::Mechanics::Particle" name="Phyth::Mechanics::Particle">
+<area shape="rect" id="Node000001" title="Physical particle with mass, position, velocity, and force accumulation." alt="" coords="101,5,293,31"/>
+<area shape="rect" id="Node000002" href="$classPhyth_1_1Electromagnetics_1_1MagneticDipole.html" title="Magnetic dipole with full electromagnetic field and dynamics." alt="" coords="5,79,185,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,41,121,81,118,76,170,37"/>
+<area shape="rect" id="Node000003" href="$classPhyth_1_1Electromagnetics_1_1PointCharge.html" title="Point charge with full electromagnetic field and dynamics." alt="" coords="209,79,389,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="224,37,276,76,273,81,221,41"/>
+</map>

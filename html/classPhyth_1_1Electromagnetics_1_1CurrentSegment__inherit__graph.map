@@ -1,0 +1,5 @@
+<map id="Phyth::Electromagnetics::CurrentSegment" name="Phyth::Electromagnetics::CurrentSegment">
+<area shape="rect" id="Node000001" title="Magnetic field from a straight current&#45;carrying wire segment." alt="" coords="5,93,185,133"/>
+<area shape="rect" id="Node000002" href="$classPhyth_1_1Electromagnetics_1_1MagneticSource.html" title="Abstract base class for all magnetic field sources." alt="" coords="5,5,185,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,59,98,93,93,93,93,59"/>
+</map>

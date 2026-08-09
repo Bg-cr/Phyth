@@ -1,0 +1,11 @@
+<map id="include/Phyth/System/UnitsRegistry.hpp" name="include/Phyth/System/UnitsRegistry.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="133,5,296,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,64,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,48,75,90,73,85,170,43"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="89,93,213,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,47,171,84,167,81,197,44"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="237,93,323,119"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="233,44,264,81,260,84,228,47"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="348,93,412,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="255,43,345,85,342,90,253,48"/>
+</map>

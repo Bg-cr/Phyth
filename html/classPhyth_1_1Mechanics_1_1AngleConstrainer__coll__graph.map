@@ -1,0 +1,7 @@
+<map id="Phyth::Mechanics::AngleConstrainer" name="Phyth::Mechanics::AngleConstrainer">
+<area shape="rect" id="Node000001" title="Constrains a particle&#39;s angular position around an anchor." alt="" coords="5,211,261,236"/>
+<area shape="rect" id="Node000002" href="$structPhyth_1_1Interval.html" title=" " alt="" coords="37,108,229,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,147,136,211,131,211,131,147"/>
+<area shape="rect" id="Node000003" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="34,5,233,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="136,45,136,108,131,108,131,45"/>
+</map>

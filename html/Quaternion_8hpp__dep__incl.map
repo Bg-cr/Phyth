@@ -1,0 +1,16 @@
+<map id="include/Phyth/Tools/Quaternion.hpp" name="include/Phyth/Tools/Quaternion.hpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="165,5,311,45"/>
+<area shape="rect" id="Node000002" href="$MagneticDipole_8hpp.html" title=" " alt="" coords="51,93,276,148"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,57,186,95,182,92,212,54"/>
+<area shape="rect" id="Node000007" href="$Tools_8hpp.html" title=" " alt="" coords="270,203,417,243"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="265,55,290,92,319,151,339,202,334,204,314,154,285,95,260,58"/>
+<area shape="rect" id="Node000003" href="$ChargeSources_8hpp.html" title=" " alt="" coords="20,196,245,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="154,162,143,197,138,195,149,161"/>
+<area shape="rect" id="Node000004" href="$Electromagnetics_8hpp.html" title=" " alt="" coords="5,299,289,339"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="142,264,147,298,142,299,136,265"/>
+<area shape="rect" id="Node000005" href="$Elements_8hpp.html" title=" " alt="" coords="92,387,267,427"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="162,351,175,386,170,387,157,352"/>
+<area shape="rect" id="Node000006" href="$Phyth_8hpp.html" title=" " alt="" coords="153,475,331,500"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="205,436,235,473,231,476,201,439"/>
+<area shape="poly" id="edge7_Node000007_Node000006" title=" " alt="" coords="338,257,315,336,280,428,252,476,248,473,276,426,310,334,333,256"/>
+</map>

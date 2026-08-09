@@ -1,0 +1,7 @@
+<map id="Phyth::Mechanics::DistanceConstrainer" name="Phyth::Mechanics::DistanceConstrainer">
+<area shape="rect" id="Node000001" title="Constrains a particle&#39;s distance from an anchor within an interval." alt="" coords="5,196,207,236"/>
+<area shape="rect" id="Node000002" href="$structPhyth_1_1Interval.html" title=" " alt="" coords="13,108,199,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,147,109,196,103,196,103,147"/>
+<area shape="rect" id="Node000003" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="11,5,201,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="109,45,109,108,103,108,103,45"/>
+</map>

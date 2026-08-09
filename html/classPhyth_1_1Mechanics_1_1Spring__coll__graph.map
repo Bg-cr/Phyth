@@ -1,0 +1,9 @@
+<map id="Phyth::Mechanics::Spring" name="Phyth::Mechanics::Spring">
+<area shape="rect" id="Node000001" title="Spring constraint between two particles." alt="" coords="348,77,533,102"/>
+<area shape="rect" id="Node000002" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="5,5,215,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,45,374,74,373,79,227,51"/>
+<area shape="rect" id="Node000003" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="11,69,209,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="222,87,348,87,348,92,222,92"/>
+<area shape="rect" id="Node000004" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="15,134,205,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="197,129,366,99,367,105,198,134"/>
+</map>
