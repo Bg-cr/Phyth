@@ -24,10 +24,13 @@ jobs:
       - name: Generate Documentation
         run: doxygen Doxyfile
 
+      - name: Disable Jekyll
+        run: touch docs/html/.nojekyll
+
       - name: Deploy to gh-pages branch
         uses: JamesIves/github-pages-deploy-action@v4.9.0
         with:
-          folder: docs
+          folder: docs/html
           branch: gh-pages
           clean: true
           token: ${{ secrets.GITHUB_TOKEN }}
