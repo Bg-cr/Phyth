@@ -141,24 +141,25 @@ namespace Phyth::Consts {
 ```
 
 ### Comments
+
 - Use `//` for line comments
-
 - Document public APIs with `///` or `/** ... */`
+- Never use character annotations other than ASCII; use combinations with the same effect, e.g., m² → m^2
+- **Every comment must provide value** — if it merely repeats what the code already says, delete it.
 
-- Never use character annotations other than ASSCI, instead use combinations with the same effect, like m² → m^2
+**When to comment:**
 
-**Scope of Application**
+| Scenario                                | Required? | Focus                                             |
+|-----------------------------------------|-----------|---------------------------------------------------|
+| Public API (functions, classes, traits) | Yes       | **What** it is, **edge cases**, **preconditions** |
+| Non-obvious business logic              | Yes       | **Why** this approach                             |
+| Workarounds / hacks                     | Yes       | **Why** it's needed and **when** to remove        |
+| Complex template metaprogramming        | Yes       | **What** the compile-time contract is             |
+| Simple getters/setters                  | No        | —                                                 |
+| Self-explanatory code                   | No        | —                                                 |
+| Plain type aliases                      | No        | —                                                 |
 
-For all non-obvious code, comments must be used.
-
-| Scenario                   | Comment?              | How                                 |
-|----------------------------|-----------------------|-------------------------------------|
-| Public class / struct      | Yes (`@brief`)        | Describe **what** it is             |
-| Template parameters        | Yes (`@tparam`)       | Explain **what** is each parameter. |
-| Macros                     | Yes (`@def` + params) | Describe **what** it is.            |
-| Complex / non-obvius logic | Yes (`//`)            | Explan **why** use the logic.       |
-| Type aliases (`using`)     | No                    | —                                   |
-| Type traits (`is_xxx`)     | No                    | —                                   |
+Write comments to explain **why** something exists and **what constraints** apply, not **what** the code literally does.
 
 ```cpp
 /// Computes gravitational force between two particles.

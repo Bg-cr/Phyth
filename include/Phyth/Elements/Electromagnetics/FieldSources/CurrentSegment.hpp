@@ -138,6 +138,6 @@ namespace Phyth::Electromagnetics {
             return (point - closest).Length();
         }
     };
-} // namespace Phyth::Electromagnetics
+
 
 #endif // PHYTH_CURRENT_SEGMENT_HPP

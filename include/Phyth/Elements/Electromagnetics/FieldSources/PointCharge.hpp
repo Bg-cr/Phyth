@@ -51,7 +51,13 @@ namespace Phyth::Electromagnetics {
             try {
                 retarded_dt = SolveRetardedTimeOffset(point);
             } catch (std::runtime_error &) {
-                return Consts::k_E * charge_value_ / r.LengthSquared() * r.Normalized();
+                Vector3<Quantity<Meter>> retarded_r = r;
+                if (!position_history_.IsEmpty()) {
+                    retarded_r = position_history_.GetValueByTime(0_s);
+                    // The observation point has not yet seen the movement of charges.
+                    // It is an electrostatic field of charges at p_0.
+                }
+                return Consts::k_E * charge_value_ / retarded_r.LengthSquared() * retarded_r.Normalized();
             }
 
             const auto retarded_pos = GetPositionAtOffset(retarded_dt);
@@ -260,7 +266,7 @@ namespace Phyth::Electromagnetics {
             Quantity<Meter> f_high = ComputeResidual(dt_high);
 
             if (f_low * f_high > 0_m2) {
-                return Utils::abs(f_low) < Utils::abs(f_high) ? dt_low : dt_high;
+                throw std::runtime_error("Signal has not reached observation point or no solution in interval");
             }
 
             for (int iter = 0; iter < Config::max_iterations; ++iter) {
@@ -280,7 +286,7 @@ namespace Phyth::Electromagnetics {
                 }
             }
 
-            return (dt_low + dt_high) / 2;
+            throw std::runtime_error("Bisection failed to converge");
         }
     };
 }
