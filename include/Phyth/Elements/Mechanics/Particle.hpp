@@ -134,7 +134,7 @@ namespace Phyth::Mechanics {
         /**
          * @brief Set the user-defined force computation function
          *
-         * @param func Function that applies forces to the particle via ApplyForce()
+         * @param func Function that applies forces to the particle via ApplyForce() (Only Apply Force)
          *
          * The function is called automatically during Integrate().
          * The default function does nothing.

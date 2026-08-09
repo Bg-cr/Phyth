@@ -192,6 +192,15 @@ which confirms that the integrator and constraint solver are working properly.
 
 > For specific analysis of the above program, see [Accuracy Verification](#accuracy-verification).
 
+## Simulation workflow
+
+1. Set `Config::dt` (time step)
+2. Add elements (e.g., Particle)
+3. Loop:
+  - `Integrate()` updates every element
+  - `Correct()` applies **Velocity Correct** to particles.
+  - process data
+
 ## Project Struct
 Below is the project tree diagram and introduction: 
 ```
