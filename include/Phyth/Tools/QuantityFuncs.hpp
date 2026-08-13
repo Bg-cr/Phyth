@@ -225,20 +225,20 @@ namespace Phyth::Utils {
      *   auto inv_t = Utils::pow<-1>(t); // 0.5 s^-1
      */
     template<int Power, typename UnitT>
-    constexpr auto pow(Quantity<UnitT> q) {
-        if constexpr (Power == 0) {
+    auto pow(Quantity<UnitT> q) {
+        if (Power == 0) {
             return Scalar(1.0);
-        } else if constexpr (Power > 0) {
+        }
+        if (Power > 0) {
             using DimT = typename UnitT::DimensionT;
             using ResultDim = DimPowerTypeT<Power, DimT>;
             using ResultUnit = Unit<ResultDim>;
             return Quantity<ResultUnit>(std::pow(q.value, Power));
-        } else {
-            using DimT = typename UnitT::DimensionT;
-            using ResultDim = DimRcpT<DimPowerTypeT<-Power, DimT> >;
-            using ResultUnit = Unit<ResultDim>;
-            return Quantity<ResultUnit>(std::pow(q.value, Power));
         }
+        using DimT = typename UnitT::DimensionT;
+        using ResultDim = DimRcpT<DimPowerTypeT<-Power, DimT> >;
+        using ResultUnit = Unit<ResultDim>;
+        return Quantity<ResultUnit>(std::pow(q.value, Power));
     }
 
     /**
@@ -253,7 +253,7 @@ namespace Phyth::Utils {
      *   auto t2 = Utils::square(t);  // 4 s^2
      */
     template<typename UnitT>
-    constexpr auto square(Quantity<UnitT> q) {
+    auto square(Quantity<UnitT> q) {
         using DimT = typename UnitT::DimensionT;
         using ResultDim = DimMulT<DimT, DimT>;
         using ResultUnit = Unit<ResultDim>;
@@ -268,7 +268,7 @@ namespace Phyth::Utils {
      * @return Quantity with dimension DimT^3
      */
     template<typename UnitT>
-    constexpr auto cube(Quantity<UnitT> q) {
+    auto cube(Quantity<UnitT> q) {
         using DimT = typename UnitT::DimensionT;
         using ResultDim = DimMulT<DimMulT<DimT, DimT>, DimT>;
         using ResultUnit = Unit<ResultDim>;
@@ -288,7 +288,7 @@ namespace Phyth::Utils {
      *   auto length = Utils::root<2>(area);  // 3.0_m
      */
     template<int N, typename UnitT>
-    constexpr auto root(Quantity<UnitT> q) {
+    auto root(Quantity<UnitT> q) {
         static_assert(N > 0, "Root index must be positive");
         using DimT = typename UnitT::DimensionT;
         using ResultDim = DimRootT<N, DimT>;
@@ -307,7 +307,7 @@ namespace Phyth::Utils {
      *   auto length = Utils::sqrt(area);  // 3.0_m
      */
     template<typename UnitT>
-    constexpr auto sqrt(Quantity<UnitT> q) {
+    auto sqrt(Quantity<UnitT> q) {
         return root<2>(q);
     }
 
@@ -318,7 +318,7 @@ namespace Phyth::Utils {
      * @return Quantity with dimension DimT^(1/3)
      */
     template<typename UnitT>
-    constexpr auto cbrt(Quantity<UnitT> q) {
+    auto cbrt(Quantity<UnitT> q) {
         return root<3>(q);
     }
 
@@ -329,7 +329,7 @@ namespace Phyth::Utils {
      * @return Quantity with the same unit, value = |q.value|
      */
     template<typename UnitT>
-    constexpr auto abs(Quantity<UnitT> q) {
+    auto abs(Quantity<UnitT> q) {
         return Quantity<UnitT>(std::abs(q.value));
     }
 
@@ -341,7 +341,7 @@ namespace Phyth::Utils {
      * @return x - n*y for some integer n, with the same unit as x and y
      */
     template<typename UnitT>
-    constexpr Quantity<UnitT> fmod(Quantity<UnitT> x, Quantity<UnitT> y) {
+    Quantity<UnitT> fmod(Quantity<UnitT> x, Quantity<UnitT> y) {
         static_assert(is_unit_v<UnitT>, "Unit type cannot be a non-unit");
         return Quantity<UnitT>(std::fmod(x.value, y.value));
     }
@@ -358,7 +358,7 @@ namespace Phyth::Utils {
      *   auto frac = Utils::modf(x, int_part);  // int_part = 3_m, frac = 0.14_m
      */
     template<typename UnitT>
-    constexpr Quantity<UnitT> modf(Quantity<UnitT> x, Quantity<UnitT> &y) {
+    Quantity<UnitT> modf(Quantity<UnitT> x, Quantity<UnitT> &y) {
         return Quantity<UnitT>(std::modf(x.value, &y.value));
     }
 
@@ -370,7 +370,7 @@ namespace Phyth::Utils {
      * @return The larger quantity
      */
     template<typename UnitT>
-    constexpr Quantity<UnitT> max(Quantity<UnitT> x, Quantity<UnitT> y) {
+    Quantity<UnitT> max(Quantity<UnitT> x, Quantity<UnitT> y) {
         static_assert(is_unit_v<UnitT>, "Unit type cannot be a non-unit");
         return Quantity<UnitT>(std::max(x.value, y.value));
     }
@@ -383,7 +383,7 @@ namespace Phyth::Utils {
      * @return The smaller quantity
      */
     template<typename UnitT>
-    constexpr Quantity<UnitT> min(Quantity<UnitT> x, Quantity<UnitT> y) {
+    Quantity<UnitT> min(Quantity<UnitT> x, Quantity<UnitT> y) {
         static_assert(is_unit_v<UnitT>, "Unit type cannot be a non-unit");
         return Quantity<UnitT>(std::min(x.value, y.value));
     }
@@ -397,7 +397,7 @@ namespace Phyth::Utils {
      * @return If x < min, returns min; if x > max, returns max; otherwise returns x
      */
     template<typename UnitT>
-    constexpr Quantity<UnitT> clamp(Quantity<UnitT> x, Quantity<UnitT> min, Quantity<UnitT> max) {
+    Quantity<UnitT> clamp(Quantity<UnitT> x, Quantity<UnitT> min, Quantity<UnitT> max) {
         static_assert(is_unit_v<UnitT>, "Unit type cannot be a non-unit");
         return Quantity<UnitT>(std::clamp(x.value, min.value, max.value));
     }
@@ -409,8 +409,30 @@ namespace Phyth::Utils {
      * @return Quantity with the same unit, value = floor(x.value)
      */
     template<typename UnitT>
-    constexpr Quantity<UnitT> floor(Quantity<UnitT> x) {
+    Quantity<UnitT> floor(Quantity<UnitT> x) {
         return Quantity<UnitT>(std::floor(x.value));
+    }
+
+    /**
+     * @brief Determine whether a quantity is nan
+     *
+     * @param x Input quantity
+     * @return Return value = isnan(x.value)
+     */
+    template<typename UnitT>
+    bool isnan(Quantity<UnitT> x) {
+        return std::isnan(x.value);
+    }
+
+    /**
+     * @brief Determine whether a quantity is finite
+     *
+     * @param x Input quantity
+     * @return Return value = isfintie(x.value)
+     */
+    template<typename UnitT>
+    bool isfinite(Quantity<UnitT> x) {
+        return std::isfinite(x.value);
     }
 }
 

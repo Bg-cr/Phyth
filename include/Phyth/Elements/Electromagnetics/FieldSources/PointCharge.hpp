@@ -107,7 +107,7 @@ namespace Phyth::Electromagnetics {
             } catch (std::runtime_error &) {
                 Vector3<Quantity<Meter> > retarded_r = r;
                 if (!position_history_.IsEmpty()) {
-                    retarded_r = position_history_.GetValueByTime(0_s);
+                    retarded_r = point - position_history_.GetValueByTime(0_s);
                     // The observation point has not yet seen the movement of charges.
                     // It is an electrostatic field of charges at p_0.
                 }
@@ -343,6 +343,10 @@ namespace Phyth::Electromagnetics {
                 const Quantity<Meter> f = R - Consts::c * dt_delay;
 
                 if (Utils::abs(f / Consts::c) < Quantity<Second>(Config::tolerance)) {
+                    if (Utils::isnan(dt_delay)) {
+                        throw std::runtime_error(
+                            "PointCharge: signal has not reached observation point or no solution in interval");
+                    }
                     return dt_delay;
                 }
 
