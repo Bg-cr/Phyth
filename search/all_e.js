@@ -30,7 +30,7 @@ var searchData=
   ['position_5f_27',['position_',['../classPhyth_1_1Mechanics_1_1Particle.html#a18aebb13084f94342c0de81cdf793fef',1,'Phyth::Mechanics::Particle::position_'],['../classPhyth_1_1Electromagnetics_1_1DipoleCharge.html#aa5a8225e05635905dbca580f8b318e15',1,'Phyth::Electromagnetics::DipoleCharge::position_']]],
   ['position_5fhistory_5f_28',['position_history_',['../classPhyth_1_1Electromagnetics_1_1PointCharge.html#a31dee7b149f50b0fd8b369d48ac32a8b',1,'Phyth::Electromagnetics::PointCharge::position_history_'],['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#a29fea181d8c21015b01b2c30de6707ff',1,'Phyth::Electromagnetics::MagneticDipole::position_history_']]],
   ['positioning_29',['Positioning',['../index.html#autotoc_md4',1,'']]],
-  ['pow_30',['pow',['../namespacePhyth_1_1Utils.html#a748bad2172e9fa46b60b30b9b2ce0c59',1,'Phyth::Utils']]],
+  ['pow_30',['pow',['../namespacePhyth_1_1Utils.html#ade930d5dcf7a8f8a204df68ffba54271',1,'Phyth::Utils']]],
   ['power_31',['Power',['../namespacePhyth.html#a109e584d7638fde940dd0b37fb697f0a',1,'Phyth']]],
   ['pressure_32',['Pressure',['../namespacePhyth.html#a2767864da93ed36386fec63ecd9d9f7b',1,'Phyth']]],
   ['project_33',['project',['../index.html#autotoc_md10',1,'Include in Your Project'],['../structPhyth_1_1Vector3.html#ae299502ec574af2c97c41c77356a0c1d',1,'Phyth::Vector3::Project()']]],

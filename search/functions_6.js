@@ -5,7 +5,9 @@ var searchData=
   ['intervalcheck_2',['intervalcheck',['../classPhyth_1_1Mechanics_1_1DistanceConstrainer.html#af727586af2df5fdf794c4830171a936d',1,'Phyth::Mechanics::DistanceConstrainer::IntervalCheck()'],['../classPhyth_1_1Mechanics_1_1AngleConstrainer.html#a52bb564e77d0039e34aed8cf8c4fd8ed',1,'Phyth::Mechanics::AngleConstrainer::IntervalCheck()']]],
   ['inversed_3',['Inversed',['../structPhyth_1_1Quaternion.html#aede511a3ab7a5576264e7714d5abcf63',1,'Phyth::Quaternion']]],
   ['isempty_4',['IsEmpty',['../classPhyth_1_1TimeHistory.html#a7345745df215b98075708f6dc8b45a27',1,'Phyth::TimeHistory']]],
-  ['isfixed_5',['IsFixed',['../classPhyth_1_1Mechanics_1_1Particle.html#a3376f0de0d61fe25616f6eb7e452fa89',1,'Phyth::Mechanics::Particle']]],
-  ['ispointonwire_6',['IsPointOnWire',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a558c6abb65347097ad3bcaaa2e62333c',1,'Phyth::Electromagnetics::CurrentSegment']]],
-  ['isunit_7',['IsUnit',['../structPhyth_1_1Quaternion.html#a5c2d73946004547589648e5f8131bbd6',1,'Phyth::Quaternion']]]
+  ['isfinite_5',['isfinite',['../namespacePhyth_1_1Utils.html#ae84f5a94c4118d9edeb8a986f025f0d0',1,'Phyth::Utils']]],
+  ['isfixed_6',['IsFixed',['../classPhyth_1_1Mechanics_1_1Particle.html#a3376f0de0d61fe25616f6eb7e452fa89',1,'Phyth::Mechanics::Particle']]],
+  ['isnan_7',['isnan',['../namespacePhyth_1_1Utils.html#a03180d0c1d4296105294fb3d825908cd',1,'Phyth::Utils']]],
+  ['ispointonwire_8',['IsPointOnWire',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a558c6abb65347097ad3bcaaa2e62333c',1,'Phyth::Electromagnetics::CurrentSegment']]],
+  ['isunit_9',['IsUnit',['../structPhyth_1_1Quaternion.html#a5c2d73946004547589648e5f8131bbd6',1,'Phyth::Quaternion']]]
 ];

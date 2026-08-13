@@ -19,7 +19,7 @@ var searchData=
   ['solveretardedtimeoffset_16',['solveretardedtimeoffset',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#ab44b7fd92c739f1a73287dcd1297cb5a',1,'Phyth::Electromagnetics::MagneticDipole::SolveRetardedTimeOffset()'],['../classPhyth_1_1Electromagnetics_1_1PointCharge.html#a74cabe4ae8b73ef8f3b77880923d32d4',1,'Phyth::Electromagnetics::PointCharge::SolveRetardedTimeOffset()']]],
   ['solveretardedtimeoffsetbisection_17',['solveretardedtimeoffsetbisection',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#a32c437878a41f5cc26d38b2cce4c5831',1,'Phyth::Electromagnetics::MagneticDipole::SolveRetardedTimeOffsetBisection()'],['../classPhyth_1_1Electromagnetics_1_1PointCharge.html#af435d2344337ee26f68d27b448a15724',1,'Phyth::Electromagnetics::PointCharge::SolveRetardedTimeOffsetBisection()']]],
   ['spring_18',['Spring',['../classPhyth_1_1Mechanics_1_1Spring.html#a52efe443e89af51d467508a3e3e26ddf',1,'Phyth::Mechanics::Spring']]],
-  ['sqrt_19',['sqrt',['../namespacePhyth_1_1Utils.html#a09f4832bcf50272ad32f53d4554e57da',1,'Phyth::Utils']]],
-  ['square_20',['square',['../namespacePhyth_1_1Utils.html#aeb86c9a10d8fd7f7bab7931f479700af',1,'Phyth::Utils']]],
+  ['sqrt_19',['sqrt',['../namespacePhyth_1_1Utils.html#a422dfe62d5043bb3f01af10ecd7958af',1,'Phyth::Utils']]],
+  ['square_20',['square',['../namespacePhyth_1_1Utils.html#a3477d9cceaa7e62e60f069eafef35461',1,'Phyth::Utils']]],
   ['surfacecharge_21',['SurfaceCharge',['../classPhyth_1_1Electromagnetics_1_1SurfaceCharge.html#ad700627c5ed2eb55651560d0aa2b45fc',1,'Phyth::Electromagnetics::SurfaceCharge']]]
 ];

@@ -6,7 +6,7 @@ var searchData=
   ['initial_5fmoment_5f_3',['initial_moment_',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#a82246b2e0e3c146cf2bf38bd9dee1e84',1,'Phyth::Electromagnetics::MagneticDipole']]],
   ['installation_4',['Installation',['../index.html#autotoc_md8',1,'']]],
   ['integrate_5',['integrate',['../classPhyth_1_1Mechanics_1_1Particle.html#a8ea3fe531d4c45817a12016391c249a3',1,'Phyth::Mechanics::Particle::Integrate()'],['../classPhyth_1_1Electromagnetics_1_1PointCharge.html#af921cab73f69530e3410e0b6451cc24d',1,'Phyth::Electromagnetics::PointCharge::Integrate()'],['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#abd10ff4d777c3a951ff251486be32560',1,'Phyth::Electromagnetics::MagneticDipole::Integrate()']]],
-  ['interval_6',['interval',['../structPhyth_1_1Interval.html#aa06632e6d0682829ca9720e9ce4691b7',1,'Phyth::Interval::Interval(Quantity&lt; UnitT &gt; value) noexcept'],['../structPhyth_1_1Interval.html#a5b47283062da557c88c778ef959f58bc',1,'Phyth::Interval::Interval(Quantity&lt; UnitT &gt; min, Quantity&lt; UnitT &gt; max)'],['../structPhyth_1_1Interval.html',1,'Phyth::Interval&lt; UnitT &gt;']]],
+  ['interval_6',['interval',['../structPhyth_1_1Interval.html#a5b47283062da557c88c778ef959f58bc',1,'Phyth::Interval::Interval()'],['../structPhyth_1_1Interval.html',1,'Phyth::Interval&lt; UnitT &gt;'],['../structPhyth_1_1Interval.html#aa06632e6d0682829ca9720e9ce4691b7',1,'Phyth::Interval::Interval()']]],
   ['interval_2ehpp_7',['Interval.hpp',['../Interval_8hpp.html',1,'']]],
   ['interval_3c_20meter_20_3e_8',['Interval&lt; Meter &gt;',['../structPhyth_1_1Interval.html',1,'Phyth']]],
   ['interval_3c_20radian_20_3e_9',['Interval&lt; Radian &gt;',['../structPhyth_1_1Interval.html',1,'Phyth']]],
@@ -38,7 +38,9 @@ var searchData=
   ['is_5fvector3_3c_20vector3_3c_20quantityt_20_3e_20_3e_35',['is_vector3&lt; Vector3&lt; QuantityT &gt; &gt;',['../structPhyth_1_1is__vector3_3_01Vector3_3_01QuantityT_01_4_01_4.html',1,'Phyth']]],
   ['is_5fvector3_5fv_36',['is_vector3_v',['../namespacePhyth.html#ae1324ccac8919d1c1b1f7e7ac22558fd',1,'Phyth']]],
   ['isempty_37',['IsEmpty',['../classPhyth_1_1TimeHistory.html#a7345745df215b98075708f6dc8b45a27',1,'Phyth::TimeHistory']]],
-  ['isfixed_38',['IsFixed',['../classPhyth_1_1Mechanics_1_1Particle.html#a3376f0de0d61fe25616f6eb7e452fa89',1,'Phyth::Mechanics::Particle']]],
-  ['ispointonwire_39',['IsPointOnWire',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a558c6abb65347097ad3bcaaa2e62333c',1,'Phyth::Electromagnetics::CurrentSegment']]],
-  ['isunit_40',['IsUnit',['../structPhyth_1_1Quaternion.html#a5c2d73946004547589648e5f8131bbd6',1,'Phyth::Quaternion']]]
+  ['isfinite_38',['isfinite',['../namespacePhyth_1_1Utils.html#ae84f5a94c4118d9edeb8a986f025f0d0',1,'Phyth::Utils']]],
+  ['isfixed_39',['IsFixed',['../classPhyth_1_1Mechanics_1_1Particle.html#a3376f0de0d61fe25616f6eb7e452fa89',1,'Phyth::Mechanics::Particle']]],
+  ['isnan_40',['isnan',['../namespacePhyth_1_1Utils.html#a03180d0c1d4296105294fb3d825908cd',1,'Phyth::Utils']]],
+  ['ispointonwire_41',['IsPointOnWire',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a558c6abb65347097ad3bcaaa2e62333c',1,'Phyth::Electromagnetics::CurrentSegment']]],
+  ['isunit_42',['IsUnit',['../structPhyth_1_1Quaternion.html#a5c2d73946004547589648e5f8131bbd6',1,'Phyth::Quaternion']]]
 ];

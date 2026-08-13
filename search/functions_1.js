@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['cbrt_0',['cbrt',['../namespacePhyth_1_1Utils.html#ae803cb80568283147bf924194406d741',1,'Phyth::Utils']]],
-  ['clamp_1',['clamp',['../namespacePhyth_1_1Utils.html#abd6188df5b35c544e59551ca6d04d72c',1,'Phyth::Utils']]],
+  ['cbrt_0',['cbrt',['../namespacePhyth_1_1Utils.html#a051ddd932ff15e2aedaec8e4f823ffcb',1,'Phyth::Utils']]],
+  ['clamp_1',['clamp',['../namespacePhyth_1_1Utils.html#ac5ccce3d46ca9915e2cb9aee6cdd4395',1,'Phyth::Utils']]],
   ['clear_2',['clear',['../classPhyth_1_1Electromagnetics_1_1MagneticField.html#a795e20e4b93c6740d133d0ea22497003',1,'Phyth::Electromagnetics::MagneticField::Clear()'],['../classPhyth_1_1Electromagnetics_1_1ElectricField.html#a4aecfd6770983458549734e124d7bb25',1,'Phyth::Electromagnetics::ElectricField::Clear()']]],
   ['computeaccelerationfirstderivative_3',['ComputeAccelerationFirstDerivative',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#a3b1bd9ab094d84bebebbe71c4c56fbef',1,'Phyth::Electromagnetics::MagneticDipole']]],
   ['computeelectricdipolefirstderivative_4',['ComputeElectricDipoleFirstDerivative',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#ab6244903a5a1ca848fc838a457b7d67c',1,'Phyth::Electromagnetics::MagneticDipole']]],
@@ -18,6 +18,6 @@ var searchData=
   ['cos_15',['cos',['../namespacePhyth_1_1Utils.html#a02ca9868395d22412cd6994921cfbf84',1,'Phyth::Utils']]],
   ['cosh_16',['cosh',['../namespacePhyth_1_1Utils.html#ae0c5e7ab5de31c79038c4bf386bccb16',1,'Phyth::Utils']]],
   ['cross_17',['Cross',['../structPhyth_1_1Vector3.html#ad956d264728106635a864691fa8235ae',1,'Phyth::Vector3']]],
-  ['cube_18',['cube',['../namespacePhyth_1_1Utils.html#a820bc97020acaca03e84fee58a873ba2',1,'Phyth::Utils']]],
+  ['cube_18',['cube',['../namespacePhyth_1_1Utils.html#a5a96665ae4b7923559925e58ad77bc1b',1,'Phyth::Utils']]],
   ['currentsegment_19',['CurrentSegment',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a3c58b3be004daf5d0aafa538feb94e06',1,'Phyth::Electromagnetics::CurrentSegment']]]
 ];
