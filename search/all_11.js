@@ -3,7 +3,7 @@ var searchData=
   ['scalar_0',['Scalar',['../namespacePhyth.html#a28bb13608f6655f1b118a0e6b38d9e16',1,'Phyth']]],
   ['scale_1',['scale',['../structPhyth_1_1Unit.html#ae2488c15cffec1893701dffdb44e3c05',1,'Phyth::Unit']]],
   ['setangularvelocity_2',['SetAngularVelocity',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#ae934dc4312d6cc4e1c56f973f959b3d6',1,'Phyth::Electromagnetics::MagneticDipole']]],
-  ['setcomputeforcesfunction_3',['setcomputeforcesfunction',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#ac85fde127cd085c19ecc7516d90bfc81',1,'Phyth::Electromagnetics::MagneticDipole::SetComputeForcesFunction()'],['../classPhyth_1_1Electromagnetics_1_1PointCharge.html#af51680749d936ac4b5b81a65151d12bc',1,'Phyth::Electromagnetics::PointCharge::SetComputeForcesFunction()'],['../classPhyth_1_1Mechanics_1_1Particle.html#ae8b644e5cb79c39d1a508484c4bb5262',1,'Phyth::Mechanics::Particle::SetComputeForcesFunction()']]],
+  ['setcomputeforcesfunction_3',['setcomputeforcesfunction',['../classPhyth_1_1Mechanics_1_1Particle.html#ae8b644e5cb79c39d1a508484c4bb5262',1,'Phyth::Mechanics::Particle::SetComputeForcesFunction()'],['../classPhyth_1_1Electromagnetics_1_1PointCharge.html#af51680749d936ac4b5b81a65151d12bc',1,'Phyth::Electromagnetics::PointCharge::SetComputeForcesFunction()'],['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#ac85fde127cd085c19ecc7516d90bfc81',1,'Phyth::Electromagnetics::MagneticDipole::SetComputeForcesFunction()']]],
   ['setdamping_4',['SetDamping',['../classPhyth_1_1Mechanics_1_1Spring.html#a5b354717e88e0b5a5e4afbb10108abe4',1,'Phyth::Mechanics::Spring']]],
   ['setexternalforce_5',['SetExternalForce',['../classPhyth_1_1Mechanics_1_1Particle.html#a34af51c71b9bc20b29aae9cd91b272dc',1,'Phyth::Mechanics::Particle']]],
   ['setfixed_6',['SetFixed',['../classPhyth_1_1Mechanics_1_1Particle.html#a623b886628ae918b2deb47b6ec99c139',1,'Phyth::Mechanics::Particle']]],
@@ -27,12 +27,12 @@ var searchData=
   ['solveretardedtimeoffset_24',['solveretardedtimeoffset',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#ab44b7fd92c739f1a73287dcd1297cb5a',1,'Phyth::Electromagnetics::MagneticDipole::SolveRetardedTimeOffset()'],['../classPhyth_1_1Electromagnetics_1_1PointCharge.html#a74cabe4ae8b73ef8f3b77880923d32d4',1,'Phyth::Electromagnetics::PointCharge::SolveRetardedTimeOffset()']]],
   ['solveretardedtimeoffsetbisection_25',['solveretardedtimeoffsetbisection',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#a32c437878a41f5cc26d38b2cce4c5831',1,'Phyth::Electromagnetics::MagneticDipole::SolveRetardedTimeOffsetBisection()'],['../classPhyth_1_1Electromagnetics_1_1PointCharge.html#af435d2344337ee26f68d27b448a15724',1,'Phyth::Electromagnetics::PointCharge::SolveRetardedTimeOffsetBisection()']]],
   ['sources_5f_26',['sources_',['../classPhyth_1_1Electromagnetics_1_1ElectricField.html#a7cd09fee1a10f5cf4907e6958352c66b',1,'Phyth::Electromagnetics::ElectricField::sources_'],['../classPhyth_1_1Electromagnetics_1_1MagneticField.html#a87651df070160ac418233ce1a1f5ec4c',1,'Phyth::Electromagnetics::MagneticField::sources_']]],
-  ['spring_27',['spring',['../classPhyth_1_1Mechanics_1_1Spring.html#a52efe443e89af51d467508a3e3e26ddf',1,'Phyth::Mechanics::Spring::Spring()'],['../classPhyth_1_1Mechanics_1_1Spring.html',1,'Phyth::Mechanics::Spring']]],
+  ['spring_27',['spring',['../classPhyth_1_1Mechanics_1_1Spring.html',1,'Phyth::Mechanics::Spring'],['../classPhyth_1_1Mechanics_1_1Spring.html#a52efe443e89af51d467508a3e3e26ddf',1,'Phyth::Mechanics::Spring::Spring()']]],
   ['spring_2ehpp_28',['Spring.hpp',['../Spring_8hpp.html',1,'']]],
   ['sqrt_29',['sqrt',['../namespacePhyth_1_1Utils.html#a422dfe62d5043bb3f01af10ecd7958af',1,'Phyth::Utils']]],
   ['square_30',['square',['../namespacePhyth_1_1Utils.html#a3477d9cceaa7e62e60f069eafef35461',1,'Phyth::Utils']]],
   ['start_31',['Quick Start',['../index.html#autotoc_md11',1,'']]],
-  ['start_5f_32',['start_',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a4e9f234fe0644db50cb0b2a07218d51f',1,'Phyth::Electromagnetics::CurrentSegment::start_'],['../classPhyth_1_1Electromagnetics_1_1LineCharge.html#a4ab2debd9f46c66d40edfd2b83e38d2c',1,'Phyth::Electromagnetics::LineCharge::start_']]],
+  ['start_5f_32',['start_',['../classPhyth_1_1Electromagnetics_1_1LineCharge.html#a4ab2debd9f46c66d40edfd2b83e38d2c',1,'Phyth::Electromagnetics::LineCharge::start_'],['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a4e9f234fe0644db50cb0b2a07218d51f',1,'Phyth::Electromagnetics::CurrentSegment::start_']]],
   ['stiffness_5f_33',['stiffness_',['../classPhyth_1_1Mechanics_1_1Spring.html#a4ca701833c41dbcc467eb32cc38ec14b',1,'Phyth::Mechanics::Spring']]],
   ['struct_34',['Project Struct',['../index.html#autotoc_md13',1,'']]],
   ['support_35',['Platform Support',['../index.html#autotoc_md7',1,'']]],
@@ -40,5 +40,6 @@ var searchData=
   ['surfacecharge_2ehpp_37',['SurfaceCharge.hpp',['../SurfaceCharge_8hpp.html',1,'']]],
   ['surfacechargedensity_38',['SurfaceChargeDensity',['../namespacePhyth.html#ac2502fe7073c5e78167c0b9e6a8a62e4',1,'Phyth']]],
   ['symbol_39',['symbol',['../namespacePhyth.html#ac2f9a9919674ff49cacc82b107c9b62d',1,'Phyth::UnitInfo']]],
-  ['system_2ehpp_40',['System.hpp',['../System_8hpp.html',1,'']]]
+  ['symmetric_40',['Symmetric',['../structPhyth_1_1Matrix3x3.html#a6eff7d18003610e421c224bdc17d5e08',1,'Phyth::Matrix3x3']]],
+  ['system_2ehpp_41',['System.hpp',['../System_8hpp.html',1,'']]]
 ];

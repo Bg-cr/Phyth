@@ -21,5 +21,6 @@ var searchData=
   ['spring_18',['Spring',['../classPhyth_1_1Mechanics_1_1Spring.html#a52efe443e89af51d467508a3e3e26ddf',1,'Phyth::Mechanics::Spring']]],
   ['sqrt_19',['sqrt',['../namespacePhyth_1_1Utils.html#a422dfe62d5043bb3f01af10ecd7958af',1,'Phyth::Utils']]],
   ['square_20',['square',['../namespacePhyth_1_1Utils.html#a3477d9cceaa7e62e60f069eafef35461',1,'Phyth::Utils']]],
-  ['surfacecharge_21',['SurfaceCharge',['../classPhyth_1_1Electromagnetics_1_1SurfaceCharge.html#ad700627c5ed2eb55651560d0aa2b45fc',1,'Phyth::Electromagnetics::SurfaceCharge']]]
+  ['surfacecharge_21',['SurfaceCharge',['../classPhyth_1_1Electromagnetics_1_1SurfaceCharge.html#ad700627c5ed2eb55651560d0aa2b45fc',1,'Phyth::Electromagnetics::SurfaceCharge']]],
+  ['symmetric_22',['Symmetric',['../structPhyth_1_1Matrix3x3.html#a6eff7d18003610e421c224bdc17d5e08',1,'Phyth::Matrix3x3']]]
 ];

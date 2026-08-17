@@ -7,5 +7,7 @@ var searchData=
   ['toquantity_4',['ToQuantity',['../structPhyth_1_1Quaternion.html#ac2f5cbf3a9b718fd1aad33649a18279a',1,'Phyth::Quaternion']]],
   ['tospherical_5',['ToSpherical',['../structPhyth_1_1Vector3.html#a342667c0b60ea0f46126d612e6e3d51b',1,'Phyth::Vector3']]],
   ['tostring_6',['toString',['../classPhyth_1_1Electromagnetics_1_1ElectricField.html#a554a42753c74f50903923dc41fd1dd5d',1,'Phyth::Electromagnetics::ElectricField']]],
-  ['tovector_7',['ToVector',['../structPhyth_1_1Quaternion.html#a92e873b8d02a80b8290aad72c99407fd',1,'Phyth::Quaternion']]]
+  ['tovector_7',['ToVector',['../structPhyth_1_1Quaternion.html#a92e873b8d02a80b8290aad72c99407fd',1,'Phyth::Quaternion']]],
+  ['trace_8',['Trace',['../structPhyth_1_1Matrix3x3.html#aa1b4b5cb90daabba00cc904d90a5c901',1,'Phyth::Matrix3x3']]],
+  ['transpose_9',['Transpose',['../structPhyth_1_1Matrix3x3.html#a82ad3feb4e527e1e457b2c5ac1fac33b',1,'Phyth::Matrix3x3']]]
 ];
