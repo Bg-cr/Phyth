@@ -554,6 +554,66 @@ namespace Phyth {
     }
 
     /**
+     * @brief Add a dimensionless quantity and a scalar
+     *
+     * @tparam UnitT Must be dimensionless
+     * @param a The dimensionless quantity
+     * @param scalar The scalar value to add
+     * @return Quantity<UnitT> with value a.value + scalar
+     */
+    template<typename UnitT>
+    constexpr auto operator+(Quantity<UnitT> a, double scalar) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot add a dimensionful quantity with a scalar");
+        return Quantity<UnitT>(a.value + scalar);
+    }
+
+    /**
+     * @brief Add a scalar and a dimensionless quantity (commutative)
+     *
+     * @tparam UnitT Must be dimensionless
+     * @param scalar The scalar value
+     * @param a The dimensionless quantity
+     * @return Quantity<UnitT> with value scalar + a.value
+     */
+    template<typename UnitT>
+    constexpr auto operator+(double scalar, Quantity<UnitT> a) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot add a dimensionful quantity with a scalar");
+        return Quantity<UnitT>(scalar + a.value);
+    }
+
+    /**
+     * @brief Subtract a scalar from a dimensionless quantity
+     *
+     * @tparam UnitT Must be dimensionless
+     * @param a The dimensionless quantity
+     * @param scalar The scalar value to subtract
+     * @return Quantity<UnitT> with value a.value - scalar
+     */
+    template<typename UnitT>
+    constexpr auto operator-(Quantity<UnitT> a, double scalar) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot subtract a scalar from a dimensionful quantity");
+        return Quantity<UnitT>(a.value - scalar);
+    }
+
+    /**
+     * @brief Subtract a dimensionless quantity from a scalar
+     *
+     * @tparam UnitT Must be dimensionless
+     * @param scalar The scalar value
+     * @param a The dimensionless quantity to subtract
+     * @return Quantity<UnitT> with value scalar - a.value
+     */
+    template<typename UnitT>
+    constexpr auto operator-(double scalar, Quantity<UnitT> a) {
+        static_assert(is_dimensionless_v<UnitT>,
+                      "Cannot subtract a dimensionful quantity from a scalar");
+        return Quantity<UnitT>(scalar - a.value);
+    }
+
+    /**
      * @brief Multiply a quantity by a scalar
      *
      * @param a The quantity
