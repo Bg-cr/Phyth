@@ -495,7 +495,7 @@ Functions</h2></td></tr>
 <tr class="separator:a531c05f50190fa4bb7221723af7f7dec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d5b9ba8edc75faaf133fea36d5f21cc" id="r_a8d5b9ba8edc75faaf133fea36d5f21cc"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">typename</a> <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">T</a> , <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">typename</a> <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">U</a> &gt; </td></tr>
 <tr class="memitem:a8d5b9ba8edc75faaf133fea36d5f21cc"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">constexpr</a> <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePhyth.html#a8d5b9ba8edc75faaf133fea36d5f21cc">operator*</a> (<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">T</a> <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">scalar</a>, <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">const</a> <a class="el" href="structPhyth_1_1Matrix3x3.html">Matrix3x3</a>&lt; <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">U</a> &gt; &amp;<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">m</a>)</td></tr>
-<tr class="memdesc:a8d5b9ba8edc75faaf133fea36d5f21cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar * Matrix.  <br /></td></tr>
+<tr class="memdesc:a8d5b9ba8edc75faaf133fea36d5f21cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scalar * Matrix multiplication.  <br /></td></tr>
 <tr class="separator:a8d5b9ba8edc75faaf133fea36d5f21cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2ec603571601956a047e1120e243606" id="r_ae2ec603571601956a047e1120e243606"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">typename</a> <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">T</a> , <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">typename</a> <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">U</a> &gt; </td></tr>
 <tr class="memitem:ae2ec603571601956a047e1120e243606"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">constexpr</a> <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">auto</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePhyth.html#ae2ec603571601956a047e1120e243606">operator*</a> (<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">const</a> <a class="el" href="structPhyth_1_1Quantity.html">Quantity</a>&lt; <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">T</a> &gt; <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">scalar</a>, <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">const</a> <a class="el" href="structPhyth_1_1Quaternion.html">Quaternion</a>&lt; <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">U</a> &gt; &amp;<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">q</a>)</td></tr>
@@ -2302,9 +2302,25 @@ template&lt;<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e86
 </table>
 </div><div class="memdoc">
 
-<p>Scalar * Matrix. </p>
+<p>Scalar * Matrix multiplication. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Scalar type </td></tr>
+    <tr><td class="paramname">U</td><td><a class="el" href="structPhyth_1_1Quantity.html" title="Physical quantity with a value and a compile-time unit.">Quantity</a> type of the matrix </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">scalar</td><td>Scalar value </td></tr>
+    <tr><td class="paramname">m</td><td>Matrix to multiply </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>auto Matrix scaled by scalar</dd></dl>
+<p>Example: auto scaled = 2.0 * m; </p>
 
-<p class="definition">Definition at line <a class="el" href="Matrix3x3_8hpp_source.html#l00212">212</a> of file <a class="el" href="Matrix3x3_8hpp_source.html">Matrix3x3.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Matrix3x3_8hpp_source.html#l00479">479</a> of file <a class="el" href="Matrix3x3_8hpp_source.html">Matrix3x3.hpp</a>.</p>
 
 </div>
 </div>

@@ -32,14 +32,15 @@ var searchData=
   ['applymagnetictorque_29',['ApplyMagneticTorque',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#a439f61a9694f9c60e033ad91ad16e076',1,'Phyth::Electromagnetics::MagneticDipole']]],
   ['applytorque_30',['ApplyTorque',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#a697617b9454946d271ca1996fe015408',1,'Phyth::Electromagnetics::MagneticDipole']]],
   ['area_31',['Area',['../namespacePhyth.html#aed7140add3ffca35e2454d36ef1bf00c',1,'Phyth']]],
-  ['as_32',['as',['../structPhyth_1_1Matrix3x3.html#aab9165e264042cda44aef83c8f660e7a',1,'Phyth::Matrix3x3::as()'],['../structPhyth_1_1Quaternion.html#a389f9b175b8dec358030f8a4dd95a199',1,'Phyth::Quaternion::as()'],['../structPhyth_1_1Vector3.html#a465f476703c874cadb94d713983d575f',1,'Phyth::Vector3::as()'],['../structPhyth_1_1Quantity.html#ab9de8e0321d3931afb9b9d8d0433c68f',1,'Phyth::Quantity::as()']]],
+  ['as_32',['as',['../structPhyth_1_1Vector3.html#a465f476703c874cadb94d713983d575f',1,'Phyth::Vector3::as()'],['../structPhyth_1_1Quaternion.html#a389f9b175b8dec358030f8a4dd95a199',1,'Phyth::Quaternion::as()'],['../structPhyth_1_1Quantity.html#ab9de8e0321d3931afb9b9d8d0433c68f',1,'Phyth::Quantity::as()'],['../structPhyth_1_1Matrix3x3.html#aab9165e264042cda44aef83c8f660e7a',1,'Phyth::Matrix3x3::as()']]],
   ['asin_33',['asin',['../namespacePhyth_1_1Utils.html#a96ba59e96aa64bfd851c3f9551fe5a26',1,'Phyth::Utils']]],
   ['asinh_34',['asinh',['../namespacePhyth_1_1Utils.html#ab682a8bffd04f4caf881f9fc520c2999',1,'Phyth::Utils']]],
-  ['atan_35',['atan',['../namespacePhyth_1_1Utils.html#a96f48855f8c66ba260c8da3dffdf8a01',1,'Phyth::Utils']]],
-  ['atan2_36',['atan2',['../namespacePhyth_1_1Utils.html#a1099bc52ae9282e488f7c167855949c9',1,'Phyth::Utils']]],
-  ['atanh_37',['atanh',['../namespacePhyth_1_1Utils.html#a8871fdf0b932e7f608e36dd2147d8c70',1,'Phyth::Utils']]],
-  ['auto_38',['Auto',['../namespacePhyth.html#aeb93f1e3e260f7e17365da0486c0e8eaa06b9281e396db002010bde1de57262eb',1,'Phyth']]],
-  ['axis_5fx_5f_39',['axis_x_',['../classPhyth_1_1Electromagnetics_1_1VolumeCharge.html#afe2797734888f3205d30c0bcde4a6b9a',1,'Phyth::Electromagnetics::VolumeCharge']]],
-  ['axis_5fy_5f_40',['axis_y_',['../classPhyth_1_1Electromagnetics_1_1VolumeCharge.html#a3b34a254f5f8f7d06153f520213e219a',1,'Phyth::Electromagnetics::VolumeCharge']]],
-  ['axis_5fz_5f_41',['axis_z_',['../classPhyth_1_1Electromagnetics_1_1VolumeCharge.html#af6e9814f68da084eea332806f192280c',1,'Phyth::Electromagnetics::VolumeCharge']]]
+  ['at_35',['at',['../structPhyth_1_1Matrix3x3.html#a0a17dfd35e8e6946a9664f75748c94b6',1,'Phyth::Matrix3x3::at(const int i, const int j)'],['../structPhyth_1_1Matrix3x3.html#a4af923ff38891a46b092b0182a0e35bf',1,'Phyth::Matrix3x3::at(const int i, const int j) const']]],
+  ['atan_36',['atan',['../namespacePhyth_1_1Utils.html#a96f48855f8c66ba260c8da3dffdf8a01',1,'Phyth::Utils']]],
+  ['atan2_37',['atan2',['../namespacePhyth_1_1Utils.html#a1099bc52ae9282e488f7c167855949c9',1,'Phyth::Utils']]],
+  ['atanh_38',['atanh',['../namespacePhyth_1_1Utils.html#a8871fdf0b932e7f608e36dd2147d8c70',1,'Phyth::Utils']]],
+  ['auto_39',['Auto',['../namespacePhyth.html#aeb93f1e3e260f7e17365da0486c0e8eaa06b9281e396db002010bde1de57262eb',1,'Phyth']]],
+  ['axis_5fx_5f_40',['axis_x_',['../classPhyth_1_1Electromagnetics_1_1VolumeCharge.html#afe2797734888f3205d30c0bcde4a6b9a',1,'Phyth::Electromagnetics::VolumeCharge']]],
+  ['axis_5fy_5f_41',['axis_y_',['../classPhyth_1_1Electromagnetics_1_1VolumeCharge.html#a3b34a254f5f8f7d06153f520213e219a',1,'Phyth::Electromagnetics::VolumeCharge']]],
+  ['axis_5fz_5f_42',['axis_z_',['../classPhyth_1_1Electromagnetics_1_1VolumeCharge.html#af6e9814f68da084eea332806f192280c',1,'Phyth::Electromagnetics::VolumeCharge']]]
 ];
