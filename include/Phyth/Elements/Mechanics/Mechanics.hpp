@@ -5,4 +5,7 @@
 #include "Spring.hpp"
 #include "Constrainer.hpp"
 
+#include "IsotropicMaterial.hpp"
+#include "Materials.hpp"
+
 #endif //PHYTH_MECHANICAL_H
