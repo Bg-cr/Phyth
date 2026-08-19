@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['lambda_5f_0',['lambda_',['../classPhyth_1_1Electromagnetics_1_1LineCharge.html#a7311f82cf7fa9a0ce0985060a1a81200',1,'Phyth::Electromagnetics::LineCharge']]],
-  ['length_5f_1',['length_',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a93968d1dbb0cf5094e82af552f276ee5',1,'Phyth::Electromagnetics::CurrentSegment::length_'],['../classPhyth_1_1Electromagnetics_1_1LineCharge.html#aedd7084f11904b899c50d670cd23dbd0',1,'Phyth::Electromagnetics::LineCharge::length_']]]
+  ['k_5fb_0',['k_B',['../namespacePhyth_1_1Consts.html#afde1f8d163aa17dd21c49d6c269d4e16',1,'Phyth::Consts']]],
+  ['k_5fe_1',['k_E',['../namespacePhyth_1_1Consts.html#a2e97fe622d57674a3288489058fe0950',1,'Phyth::Consts']]]
 ];

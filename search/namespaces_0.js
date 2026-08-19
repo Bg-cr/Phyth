@@ -5,5 +5,7 @@ var searchData=
   ['phyth_3a_3aconsts_2',['Consts',['../namespacePhyth_1_1Consts.html',1,'Phyth']]],
   ['phyth_3a_3aelectromagnetics_3',['Electromagnetics',['../namespacePhyth_1_1Electromagnetics.html',1,'Phyth']]],
   ['phyth_3a_3amechanics_4',['Mechanics',['../namespacePhyth_1_1Mechanics.html',1,'Phyth']]],
-  ['phyth_3a_3autils_5',['Utils',['../namespacePhyth_1_1Utils.html',1,'Phyth']]]
+  ['phyth_3a_3amechanics_3a_3amaterial_5',['Material',['../namespacePhyth_1_1Mechanics_1_1Material.html',1,'Phyth::Mechanics']]],
+  ['phyth_3a_3amechanics_3a_3amaterial_3a_3adetail_6',['detail',['../namespacePhyth_1_1Mechanics_1_1Material_1_1detail.html',1,'Phyth::Mechanics::Material']]],
+  ['phyth_3a_3autils_7',['Utils',['../namespacePhyth_1_1Utils.html',1,'Phyth']]]
 ];

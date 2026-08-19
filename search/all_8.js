@@ -7,7 +7,7 @@ var searchData=
   ['initial_5fmoment_5f_4',['initial_moment_',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#a82246b2e0e3c146cf2bf38bd9dee1e84',1,'Phyth::Electromagnetics::MagneticDipole']]],
   ['installation_5',['Installation',['../index.html#autotoc_md8',1,'']]],
   ['integrate_6',['integrate',['../classPhyth_1_1Mechanics_1_1Particle.html#a8ea3fe531d4c45817a12016391c249a3',1,'Phyth::Mechanics::Particle::Integrate()'],['../classPhyth_1_1Electromagnetics_1_1PointCharge.html#af921cab73f69530e3410e0b6451cc24d',1,'Phyth::Electromagnetics::PointCharge::Integrate()'],['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#abd10ff4d777c3a951ff251486be32560',1,'Phyth::Electromagnetics::MagneticDipole::Integrate()']]],
-  ['interval_7',['interval',['../structPhyth_1_1Interval.html#aa06632e6d0682829ca9720e9ce4691b7',1,'Phyth::Interval::Interval(Quantity&lt; UnitT &gt; value) noexcept'],['../structPhyth_1_1Interval.html#a5b47283062da557c88c778ef959f58bc',1,'Phyth::Interval::Interval(Quantity&lt; UnitT &gt; min, Quantity&lt; UnitT &gt; max)'],['../structPhyth_1_1Interval.html',1,'Phyth::Interval&lt; UnitT &gt;']]],
+  ['interval_7',['interval',['../structPhyth_1_1Interval.html#a5b47283062da557c88c778ef959f58bc',1,'Phyth::Interval::Interval()'],['../structPhyth_1_1Interval.html',1,'Phyth::Interval&lt; UnitT &gt;'],['../structPhyth_1_1Interval.html#aa06632e6d0682829ca9720e9ce4691b7',1,'Phyth::Interval::Interval()']]],
   ['interval_2ehpp_8',['Interval.hpp',['../Interval_8hpp.html',1,'']]],
   ['interval_3c_20meter_20_3e_9',['Interval&lt; Meter &gt;',['../structPhyth_1_1Interval.html',1,'Phyth']]],
   ['interval_3c_20radian_20_3e_10',['Interval&lt; Radian &gt;',['../structPhyth_1_1Interval.html',1,'Phyth']]],
@@ -42,6 +42,8 @@ var searchData=
   ['isfinite_39',['isfinite',['../namespacePhyth_1_1Utils.html#ae84f5a94c4118d9edeb8a986f025f0d0',1,'Phyth::Utils']]],
   ['isfixed_40',['IsFixed',['../classPhyth_1_1Mechanics_1_1Particle.html#a3376f0de0d61fe25616f6eb7e452fa89',1,'Phyth::Mechanics::Particle']]],
   ['isnan_41',['isnan',['../namespacePhyth_1_1Utils.html#a03180d0c1d4296105294fb3d825908cd',1,'Phyth::Utils']]],
-  ['ispointonwire_42',['IsPointOnWire',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a558c6abb65347097ad3bcaaa2e62333c',1,'Phyth::Electromagnetics::CurrentSegment']]],
-  ['isunit_43',['IsUnit',['../structPhyth_1_1Quaternion.html#a5c2d73946004547589648e5f8131bbd6',1,'Phyth::Quaternion']]]
+  ['isotropicmaterial_42',['isotropicmaterial',['../classPhyth_1_1IsotropicMaterial.html',1,'Phyth::IsotropicMaterial'],['../classPhyth_1_1IsotropicMaterial.html#a8cb70c57229871191498acc89d9baeb4',1,'Phyth::IsotropicMaterial::IsotropicMaterial(const Quantity&lt; Pascal &gt; shear_modulus, const Quantity&lt; Pascal &gt; bulk_modulus)'],['../classPhyth_1_1IsotropicMaterial.html#a3e4076c33a346a30b78733d8423c95d1',1,'Phyth::IsotropicMaterial::IsotropicMaterial()=default'],['../classPhyth_1_1IsotropicMaterial.html#a06eae49e927c266af6f82b7aa4d6ffcb',1,'Phyth::IsotropicMaterial::IsotropicMaterial(const Quantity&lt; Pascal &gt; youngs_modulus, const Scalar poisson_ratio)']]],
+  ['isotropicmaterial_2ehpp_43',['IsotropicMaterial.hpp',['../IsotropicMaterial_8hpp.html',1,'']]],
+  ['ispointonwire_44',['IsPointOnWire',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a558c6abb65347097ad3bcaaa2e62333c',1,'Phyth::Electromagnetics::CurrentSegment']]],
+  ['isunit_45',['IsUnit',['../structPhyth_1_1Quaternion.html#a5c2d73946004547589648e5f8131bbd6',1,'Phyth::Quaternion']]]
 ];

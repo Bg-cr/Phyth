@@ -1,0 +1,19 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,176,124,201"/>
+<area shape="rect" id="Node000001" href="$structPhyth_1_1is__field__impl.html" title=" " alt="" coords="182,5,369,31"/>
+<area shape="poly" id="edge16_Node000000_Node000001" title=" " alt="" coords="75,162,111,100,138,67,171,40,193,28,195,33,173,44,142,71,116,103,79,165"/>
+<area shape="rect" id="Node000003" href="$structPhyth_1_1is__dim.html" title="Trait: check if a type is a Dimension instantiation." alt="" coords="172,55,379,80"/>
+<area shape="poly" id="edge18_Node000000_Node000003" title=" " alt="" coords="83,164,121,126,171,90,202,78,204,83,173,95,125,130,87,167"/>
+<area shape="rect" id="Node000004" href="$structPhyth_1_1is__field__impl.html" title="Implementation helper for is_field trait." alt="" coords="179,105,371,145"/>
+<area shape="poly" id="edge19_Node000000_Node000004" title=" " alt="" coords="120,169,208,142,210,147,121,174"/>
+<area shape="rect" id="Node000005" href="$structPhyth_1_1is__quantity.html" title="Trait: check if a type is a Quantity instantiation." alt="" coords="206,169,345,209"/>
+<area shape="poly" id="edge20_Node000000_Node000005" title=" " alt="" coords="138,186,206,186,206,191,138,191"/>
+<area shape="rect" id="Node000006" href="$structPhyth_1_1is__quaternion.html" title="Trait: check if a type is a Quaternion instantiation." alt="" coords="198,233,353,273"/>
+<area shape="poly" id="edge21_Node000000_Node000006" title=" " alt="" coords="121,203,210,230,208,235,120,208"/>
+<area shape="rect" id="Node000007" href="$structPhyth_1_1is__unit.html" title="Trait: check if a type is a Unit instantiation." alt="" coords="201,297,349,323"/>
+<area shape="poly" id="edge22_Node000000_Node000007" title=" " alt="" coords="87,210,125,248,173,282,204,295,202,300,171,287,121,252,83,214"/>
+<area shape="rect" id="Node000008" href="$structPhyth_1_1is__vector3.html" title="Trait: check if a type is a Vector3 instantiation." alt="" coords="203,347,348,387"/>
+<area shape="poly" id="edge23_Node000000_Node000008" title=" " alt="" coords="80,213,117,273,143,304,174,332,204,348,201,353,170,336,139,308,113,276,76,215"/>
+<area shape="rect" id="Node000002" href="$structPhyth_1_1is__field.html" title="Type trait to check if a type is a Field instantiation." alt="" coords="427,5,577,31"/>
+<area shape="poly" id="edge17_Node000001_Node000002" title=" " alt="" coords="383,15,427,15,427,21,383,21"/>
+</map>

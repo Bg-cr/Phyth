@@ -16,8 +16,10 @@ var searchData=
   ['quantity_3c_20newton_20_3e_13',['Quantity&lt; Newton &gt;',['../structPhyth_1_1Quantity.html',1,'Phyth']]],
   ['quantity_3c_20newtonmeter_20_3e_14',['Quantity&lt; NewtonMeter &gt;',['../structPhyth_1_1Quantity.html',1,'Phyth']]],
   ['quantity_3c_20newtonpermeter_20_3e_15',['Quantity&lt; NewtonPerMeter &gt;',['../structPhyth_1_1Quantity.html',1,'Phyth']]],
-  ['quantity_3c_20radian_20_3e_16',['Quantity&lt; Radian &gt;',['../structPhyth_1_1Quantity.html',1,'Phyth']]],
-  ['quantity_3c_20radianpersecond_20_3e_17',['Quantity&lt; RadianPerSecond &gt;',['../structPhyth_1_1Quantity.html',1,'Phyth']]],
-  ['quaternion_18',['Quaternion',['../structPhyth_1_1Quaternion.html',1,'Phyth']]],
-  ['quaternion_3c_20phyth_3a_3aquantity_20_3e_19',['Quaternion&lt; Phyth::Quantity &gt;',['../structPhyth_1_1Quaternion.html',1,'Phyth']]]
+  ['quantity_3c_20pascal_20_3e_16',['Quantity&lt; Pascal &gt;',['../structPhyth_1_1Quantity.html',1,'Phyth']]],
+  ['quantity_3c_20radian_20_3e_17',['Quantity&lt; Radian &gt;',['../structPhyth_1_1Quantity.html',1,'Phyth']]],
+  ['quantity_3c_20radianpersecond_20_3e_18',['Quantity&lt; RadianPerSecond &gt;',['../structPhyth_1_1Quantity.html',1,'Phyth']]],
+  ['quantity_3c_20scalarunit_20_3e_19',['Quantity&lt; ScalarUnit &gt;',['../structPhyth_1_1Quantity.html',1,'Phyth']]],
+  ['quaternion_20',['Quaternion',['../structPhyth_1_1Quaternion.html',1,'Phyth']]],
+  ['quaternion_3c_20phyth_3a_3aquantity_20_3e_21',['Quaternion&lt; Phyth::Quantity &gt;',['../structPhyth_1_1Quaternion.html',1,'Phyth']]]
 ];

@@ -9,6 +9,7 @@ var searchData=
   ['isfinite_6',['isfinite',['../namespacePhyth_1_1Utils.html#ae84f5a94c4118d9edeb8a986f025f0d0',1,'Phyth::Utils']]],
   ['isfixed_7',['IsFixed',['../classPhyth_1_1Mechanics_1_1Particle.html#a3376f0de0d61fe25616f6eb7e452fa89',1,'Phyth::Mechanics::Particle']]],
   ['isnan_8',['isnan',['../namespacePhyth_1_1Utils.html#a03180d0c1d4296105294fb3d825908cd',1,'Phyth::Utils']]],
-  ['ispointonwire_9',['IsPointOnWire',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a558c6abb65347097ad3bcaaa2e62333c',1,'Phyth::Electromagnetics::CurrentSegment']]],
-  ['isunit_10',['IsUnit',['../structPhyth_1_1Quaternion.html#a5c2d73946004547589648e5f8131bbd6',1,'Phyth::Quaternion']]]
+  ['isotropicmaterial_9',['isotropicmaterial',['../classPhyth_1_1IsotropicMaterial.html#a3e4076c33a346a30b78733d8423c95d1',1,'Phyth::IsotropicMaterial::IsotropicMaterial()=default'],['../classPhyth_1_1IsotropicMaterial.html#a06eae49e927c266af6f82b7aa4d6ffcb',1,'Phyth::IsotropicMaterial::IsotropicMaterial(const Quantity&lt; Pascal &gt; youngs_modulus, const Scalar poisson_ratio)'],['../classPhyth_1_1IsotropicMaterial.html#a8cb70c57229871191498acc89d9baeb4',1,'Phyth::IsotropicMaterial::IsotropicMaterial(const Quantity&lt; Pascal &gt; shear_modulus, const Quantity&lt; Pascal &gt; bulk_modulus)']]],
+  ['ispointonwire_10',['IsPointOnWire',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a558c6abb65347097ad3bcaaa2e62333c',1,'Phyth::Electromagnetics::CurrentSegment']]],
+  ['isunit_11',['IsUnit',['../structPhyth_1_1Quaternion.html#a5c2d73946004547589648e5f8131bbd6',1,'Phyth::Quaternion']]]
 ];

@@ -6,6 +6,7 @@ var searchData=
   ['formatvalue_3',['FormatValue',['../namespacePhyth.html#abd81f3732de9dc1959c7af8349ebb883',1,'Phyth']]],
   ['fromaxisangle_4',['FromAxisAngle',['../structPhyth_1_1Quaternion.html#ab39509884172a7cadc9d2a106ddd5956',1,'Phyth::Quaternion']]],
   ['fromeuler_5',['FromEuler',['../structPhyth_1_1Quaternion.html#abaa2555f647842f2c53c00e23ad92522',1,'Phyth::Quaternion']]],
-  ['frompolar_6',['FromPolar',['../structPhyth_1_1Vector3.html#a963c1306f39027a526025aa556b3c233',1,'Phyth::Vector3']]],
-  ['fromspherical_7',['FromSpherical',['../structPhyth_1_1Vector3.html#ac50e6f978f12e42fe4b5aac2915da9d9',1,'Phyth::Vector3']]]
+  ['fromini_6',['FromINI',['../classPhyth_1_1Mechanics_1_1Material_1_1MaterialDatabase.html#af4b58cfad02913ba79b75d2d3d4dbae1',1,'Phyth::Mechanics::Material::MaterialDatabase']]],
+  ['frompolar_7',['FromPolar',['../structPhyth_1_1Vector3.html#a963c1306f39027a526025aa556b3c233',1,'Phyth::Vector3']]],
+  ['fromspherical_8',['FromSpherical',['../structPhyth_1_1Vector3.html#ac50e6f978f12e42fe4b5aac2915da9d9',1,'Phyth::Vector3']]]
 ];

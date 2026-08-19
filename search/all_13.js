@@ -10,5 +10,7 @@ var searchData=
   ['units_2ehpp_7',['Units.hpp',['../Units_8hpp.html',1,'']]],
   ['unitsregistry_2ehpp_8',['UnitsRegistry.hpp',['../UnitsRegistry_8hpp.html',1,'']]],
   ['unitsymbol_9',['UnitSymbol',['../namespacePhyth.html#a0443430b78ac6a95849354db4b9cab6c',1,'Phyth']]],
-  ['update_10',['Update',['../classPhyth_1_1Field.html#a0df972fc18e1a97ebcd37b7aef7e6380',1,'Phyth::Field']]]
+  ['update_10',['Update',['../classPhyth_1_1Field.html#a0df972fc18e1a97ebcd37b7aef7e6380',1,'Phyth::Field']]],
+  ['updatederivedparameters_11',['UpdateDerivedParameters',['../classPhyth_1_1IsotropicMaterial.html#a2be0b31c74aa37acab696e7a0d848421',1,'Phyth::IsotropicMaterial']]],
+  ['updatederivedparametersfromgk_12',['UpdateDerivedParametersFromGK',['../classPhyth_1_1IsotropicMaterial.html#add8b030e058eb16d99f3a04f12e7ab5c',1,'Phyth::IsotropicMaterial']]]
 ];

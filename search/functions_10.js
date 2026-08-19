@@ -5,5 +5,7 @@ var searchData=
   ['unitregistrar_2',['UnitRegistrar',['../structPhyth_1_1UnitRegistrar.html#af3ee7e7ccac406410691b45513d00468',1,'Phyth::UnitRegistrar']]],
   ['unitregistry_3',['UnitRegistry',['../classPhyth_1_1UnitRegistry.html#ababb9c2e1bab73d59bbb78300bd0eb87',1,'Phyth::UnitRegistry']]],
   ['unitsymbol_4',['UnitSymbol',['../namespacePhyth.html#a0443430b78ac6a95849354db4b9cab6c',1,'Phyth']]],
-  ['update_5',['Update',['../classPhyth_1_1Field.html#a0df972fc18e1a97ebcd37b7aef7e6380',1,'Phyth::Field']]]
+  ['update_5',['Update',['../classPhyth_1_1Field.html#a0df972fc18e1a97ebcd37b7aef7e6380',1,'Phyth::Field']]],
+  ['updatederivedparameters_6',['UpdateDerivedParameters',['../classPhyth_1_1IsotropicMaterial.html#a2be0b31c74aa37acab696e7a0d848421',1,'Phyth::IsotropicMaterial']]],
+  ['updatederivedparametersfromgk_7',['UpdateDerivedParametersFromGK',['../classPhyth_1_1IsotropicMaterial.html#add8b030e058eb16d99f3a04f12e7ab5c',1,'Phyth::IsotropicMaterial']]]
 ];

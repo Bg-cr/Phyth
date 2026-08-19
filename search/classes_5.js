@@ -17,5 +17,6 @@ var searchData=
   ['is_5funit_14',['is_unit',['../structPhyth_1_1is__unit.html',1,'Phyth']]],
   ['is_5funit_3c_20unit_3c_20dimt_2c_20scale_2c_20tagt_20_3e_20_3e_15',['is_unit&lt; Unit&lt; DimT, Scale, TagT &gt; &gt;',['../structPhyth_1_1is__unit_3_01Unit_3_01DimT_00_01Scale_00_01TagT_01_4_01_4.html',1,'Phyth']]],
   ['is_5fvector3_16',['is_vector3',['../structPhyth_1_1is__vector3.html',1,'Phyth']]],
-  ['is_5fvector3_3c_20vector3_3c_20quantityt_20_3e_20_3e_17',['is_vector3&lt; Vector3&lt; QuantityT &gt; &gt;',['../structPhyth_1_1is__vector3_3_01Vector3_3_01QuantityT_01_4_01_4.html',1,'Phyth']]]
+  ['is_5fvector3_3c_20vector3_3c_20quantityt_20_3e_20_3e_17',['is_vector3&lt; Vector3&lt; QuantityT &gt; &gt;',['../structPhyth_1_1is__vector3_3_01Vector3_3_01QuantityT_01_4_01_4.html',1,'Phyth']]],
+  ['isotropicmaterial_18',['IsotropicMaterial',['../classPhyth_1_1IsotropicMaterial.html',1,'Phyth']]]
 ];

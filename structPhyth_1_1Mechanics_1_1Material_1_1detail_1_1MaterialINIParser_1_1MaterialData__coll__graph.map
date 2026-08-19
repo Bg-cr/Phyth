@@ -1,0 +1,7 @@
+<map id="Phyth::Mechanics::Material::detail::MaterialINIParser::MaterialData" name="Phyth::Mechanics::Material::detail::MaterialINIParser::MaterialData">
+<area shape="rect" id="Node000001" title="Material property data structure." alt="" coords="119,93,318,148"/>
+<area shape="rect" id="Node000002" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="5,5,200,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,38,190,91,186,95,124,42"/>
+<area shape="rect" id="Node000003" href="$structPhyth_1_1Quantity.html" title=" " alt="" coords="225,5,445,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="315,42,283,71,255,95,251,91,280,67,311,39"/>
+</map>
