@@ -7,5 +7,6 @@
 
 #include "IsotropicMaterial.hpp"
 #include "Materials.hpp"
+#include "ForceSources/ForceSources.hpp"
 
 #endif //PHYTH_MECHANICAL_H

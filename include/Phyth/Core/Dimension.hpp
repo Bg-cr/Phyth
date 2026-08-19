@@ -322,6 +322,7 @@ namespace Phyth {
     using MagneticDipoleMoment = DimMulT<ElectricCurrent, Area>;
     using MomentOfInertia = DimMulT<Mass, Area>;
     using AngularVelocity = DimDivT<Dimensionless, Time>;
+    using ForceDensity = DimDivT<Force, Volume>;
 
     /**
      * @brief Trait: check if a quantity's dimension is dimensionless
