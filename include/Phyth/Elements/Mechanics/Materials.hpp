@@ -236,7 +236,7 @@ namespace Phyth::Mechanics::Material {
          *   auto steel = db.Get("Steel");
          * @endcode
          */
-        [[nodiscard]] static MaterialDatabase &FromINI(const std::string &path) {
+        [[nodiscard]] static MaterialDatabase FromINI(const std::string &path) {
             MaterialDatabase db;
             db.materials_ = {};
             const auto materials = detail::MaterialINIParser::Parse(path);
@@ -249,24 +249,6 @@ namespace Phyth::Mechanics::Material {
     private:
         std::unordered_map<std::string, IsotropicMaterial> materials_;  ///< Internal storage mapping names to materials
     };
-
-    /**
-     * @brief Get the global singleton material database instance
-     *
-     * Returns a reference to the static MaterialDatabase instance.
-     * Use this for application-wide material access and registration.
-     *
-     * @return MaterialDatabase& Reference to the global database
-     *
-     * Example:
-     *   auto& db = Phyth::Mechanics::Material::GetMaterialDatabase();
-     *   db.RegisterMaterial("Titanium", IsotropicMaterial(110e9_Pa, 0.34_));
-     *   auto titanium = db.Get("Titanium");
-     */
-    inline MaterialDatabase &GetMaterialDatabase() {
-        static MaterialDatabase db;
-        return db;
-    }
 }
 
 #endif //PHYTH_MATERIALS_HPP
