@@ -206,6 +206,8 @@ namespace Phyth {
     PHYTH_DEFINE_UNIT_WITH_TAG(AngularVelocity, DegreePerSecond, degps, 3141592653589793, 18000000000000000, "deg/m",
                                DegreePerSecondTag)
 
+    PHYTH_DEFINE_UNIT_WITH_NAME(ForceDensity, NewtonPerMeterCubed, Npm3, 1, 1, "N/m^3")
+
 #undef PHYTH_DEFINE_UNIT
 #undef PHYTH_DEFINE_UNIT_WITH_NAME
 }
