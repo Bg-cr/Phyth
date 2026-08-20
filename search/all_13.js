@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['u_5faxis_5f_0',['u_axis_',['../classPhyth_1_1Electromagnetics_1_1SurfaceCharge.html#a60cd6a1159f003bb20eea6b9d51fbf5d',1,'Phyth::Electromagnetics::SurfaceCharge']]],
+  ['u_5faxis_5f_0',['u_axis_',['../classPhyth_1_1Mechanics_1_1SurfaceForce.html#aa55148c14d52c02554ffbc3fef8a48c6',1,'Phyth::Mechanics::SurfaceForce::u_axis_'],['../classPhyth_1_1Electromagnetics_1_1SurfaceCharge.html#a60cd6a1159f003bb20eea6b9d51fbf5d',1,'Phyth::Electromagnetics::SurfaceCharge::u_axis_']]],
   ['unit_1',['unit',['../structPhyth_1_1Unit.html',1,'Phyth::Unit&lt; DimT, Scale, TagT &gt;'],['../structPhyth_1_1Unit.html#a995d83ae77c10c6f9a5e75aa5cdbf85b',1,'Phyth::Unit::Unit()']]],
   ['unit_2ehpp_2',['Unit.hpp',['../Unit_8hpp.html',1,'']]],
   ['unitinfo_3',['UnitInfo',['../namespacePhyth.html#structPhyth_1_1UnitInfo',1,'Phyth']]],

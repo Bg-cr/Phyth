@@ -76,7 +76,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">Phyth::Mechanics Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -94,13 +95,62 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPhyth_1_1Mechanics_1_1DistanceConstrainer.html">DistanceConstrainer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constrains a particle's distance from an anchor within an interval.  <a href="classPhyth_1_1Mechanics_1_1DistanceConstrainer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPhyth_1_1Mechanics_1_1ForceSource.html">ForceSource</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Abstract base class for all force/traction distributions.  <a href="classPhyth_1_1Mechanics_1_1ForceSource.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPhyth_1_1Mechanics_1_1Particle.html">Particle</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Physical particle with mass, position, velocity, and force accumulation.  <a href="classPhyth_1_1Mechanics_1_1Particle.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPhyth_1_1Mechanics_1_1PointForce.html">PointForce</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concentrated force acting at a single point in an elastic medium.  <a href="classPhyth_1_1Mechanics_1_1PointForce.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPhyth_1_1Mechanics_1_1Spring.html">Spring</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classPhyth_1_1Mechanics_1_1Spring.html" title="Spring constraint between two particles.">Spring</a> constraint between two particles.  <a href="classPhyth_1_1Mechanics_1_1Spring.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPhyth_1_1Mechanics_1_1SurfaceForce.html">SurfaceForce</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uniform surface traction on a rectangular patch.  <a href="classPhyth_1_1Mechanics_1_1SurfaceForce.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPhyth_1_1Mechanics_1_1VolumeForce.html">VolumeForce</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Uniform body force distributed over a rectangular box.  <a href="classPhyth_1_1Mechanics_1_1VolumeForce.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:aa20e9b1a8519a7d21a650d9c1c94e87f" id="r_aa20e9b1a8519a7d21a650d9c1c94e87f"><td class="memTemplParams" colspan="2">template&lt;<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">typename</a> <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">T</a> &gt; </td></tr>
+<tr class="memitem:aa20e9b1a8519a7d21a650d9c1c94e87f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">constexpr</a> <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">bool</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacePhyth_1_1Mechanics.html#aa20e9b1a8519a7d21a650d9c1c94e87f">is_force_source_v</a> = std::is_base_of_v&lt;<a class="el" href="classPhyth_1_1Mechanics_1_1ForceSource.html">ForceSource</a>, <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">T</a>&gt;</td></tr>
+<tr class="memdesc:aa20e9b1a8519a7d21a650d9c1c94e87f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type trait to check if a type is a <a class="el" href="classPhyth_1_1Mechanics_1_1ForceSource.html" title="Abstract base class for all force/traction distributions.">ForceSource</a>.  <br /></td></tr>
+<tr class="separator:aa20e9b1a8519a7d21a650d9c1c94e87f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="aa20e9b1a8519a7d21a650d9c1c94e87f" name="aa20e9b1a8519a7d21a650d9c1c94e87f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa20e9b1a8519a7d21a650d9c1c94e87f">&#9670;&#160;</a></span>is_force_source_v</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">typename</a> <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">T</a> &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">constexpr</a> <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">bool</a> Phyth::Mechanics::is_force_source_v = std::is_base_of_v&lt;<a class="el" href="classPhyth_1_1Mechanics_1_1ForceSource.html">ForceSource</a>, <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">T</a>&gt;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Type trait to check if a type is a <a class="el" href="classPhyth_1_1Mechanics_1_1ForceSource.html" title="Abstract base class for all force/traction distributions.">ForceSource</a>. </p>
+<p>Example: <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">static_assert(is_force_source_v&lt;PointForce&gt;)</a>; // true <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">static_assert(is_force_source_v&lt;int&gt;)</a>; // false </p>
+
+<p class="definition">Definition at line <a class="el" href="ForceSource_8hpp_source.html#l00111">111</a> of file <a class="el" href="ForceSource_8hpp_source.html">ForceSource.hpp</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
