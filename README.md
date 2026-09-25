@@ -140,10 +140,10 @@ constexpr Quantity<Second> SIMULATION_TIME = 2.73_s;
 
 int main() {
     Config::dt = 1_s / 1000;
-    const auto anchor = std::make_shared<Particle>(1_kg, Vector3{0_m, 0_m, 0_m});
+    const auto anchor = std::make_shared<Particle>(1_kg, Vector3<Quantity<Meter>>{0_m, 0_m, 0_m});
     anchor->SetFixed(true);
     
-    const auto pendulum = std::make_shared<Particle>(1_kg, Vector3{1_m, 0_m, 0_m});
+    const auto pendulum = std::make_shared<Particle>(1_kg, Vector3<Quantity<Meter>>{1_m, 0_m, 0_m});
     
     const DistanceConstrainer constraint{anchor, pendulum};
 
