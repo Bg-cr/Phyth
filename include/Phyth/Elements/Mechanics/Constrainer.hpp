@@ -230,7 +230,7 @@ namespace Phyth::Mechanics {
                 return;
             }
 
-            const Vector3<Quantity<Meter> > target_pos = anchor_->GetPosition() + Vector3{
+            const Vector3<Quantity<Meter> > target_pos = anchor_->GetPosition() + Vector3<Quantity<Meter>>{
                                                              length * Utils::sin(target_theta) * Utils::cos(target_phi),
                                                              length * Utils::sin(target_theta) * Utils::sin(target_phi),
                                                              length * Utils::cos(target_theta)

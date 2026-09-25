@@ -8,15 +8,15 @@ using namespace Phyth::Mechanics;
 int main() {
     Config::dt = 1_s / 1000;
     
-    const auto anchor_point = std::make_shared<Particle>(1_kg, Vector3{0_m, 0_m, 0_m});
+    const auto anchor_point = std::make_shared<Particle>(1_kg, Vector3<Quantity<Meter>>{0, 0, 0});
     anchor_point->SetFixed(true);
-    const auto particle = std::make_shared<Particle>(1_kg, Vector3{1_m, 0_m, 0_m});
+    const auto particle = std::make_shared<Particle>(1_kg, Vector3<Quantity<Meter>>{1, 0, 0});
     const DistanceConstrainer c1 {anchor_point, particle};
 
     particle->SetComputeForcesFunction([](Particle *p){p->ApplyForce({0_N, -1_kg * Consts::g, 0_N});});
 
     constexpr auto total_time = 2.73_s;
-    const int steps = (total_time / Config::dt / 20).to<int>();
+    const int steps = (total_time / Config::dt / 20).To<int>();
 
     for (int i = 0; i < total_time / Config::dt; ++i) {
         particle->Integrate();

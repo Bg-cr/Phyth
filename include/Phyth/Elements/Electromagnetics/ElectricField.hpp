@@ -70,7 +70,7 @@ namespace Phyth::Electromagnetics {
          */
         [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb> >
         GetValueAt(const Vector3<Quantity<Meter> > &point) const override {
-            Vector3 total{0_NpC, 0_NpC, 0_NpC};
+            Vector3<Quantity<NewtonPerCoulomb>> total{0_NpC, 0_NpC, 0_NpC};
             for (const auto &source: sources_) {
                 total += source->GetElectricFieldAt(point);
             }

@@ -130,7 +130,7 @@ namespace Phyth::Electromagnetics {
             // If point is on the wire axis, field is undefined.
             // Return zero instead of blowing up.
             if (rho < Config::epsilon * length_) {
-                return Vector3{0_T, 0_T, 0_T};
+                return Vector3<Quantity<Tesla> >{0_T, 0_T, 0_T};
             }
 
             const auto z1 = -proj;

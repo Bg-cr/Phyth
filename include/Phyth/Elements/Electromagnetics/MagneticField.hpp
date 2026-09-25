@@ -68,7 +68,7 @@ namespace Phyth::Electromagnetics {
          */
         [[nodiscard]] Vector3<Quantity<Tesla> >
         GetValueAt(const Vector3<Quantity<Meter> > &point) const override {
-            Vector3 total{0_T, 0_T, 0_T};
+            Vector3<Quantity<Tesla>> total{0_T, 0_T, 0_T};
             for (const auto &source: sources_) {
                 total += source->GetMagneticFieldAt(point);
             }

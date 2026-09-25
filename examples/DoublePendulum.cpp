@@ -8,11 +8,11 @@ using namespace Phyth::Mechanics;
 int main() {
     Config::dt = 1_s / 1000;
 
-    const auto anchor_point = std::make_shared<Particle>(1_kg, Vector3{0_m, 0_m, 0_m});
+    const auto anchor_point = std::make_shared<Particle>(1_kg, Vector3<Quantity<Meter>>{0_m, 0_m, 0_m});
     anchor_point->SetFixed(true);
-    const auto p1 = std::make_shared<Particle>(1_kg, Vector3{1_m, 1_m, 0_m});
+    const auto p1 = std::make_shared<Particle>(1_kg, Vector3<Quantity<Meter>>{1_m, 1_m, 0_m});
     const DistanceConstrainer c1 {anchor_point, p1};
-    const auto p2 = std::make_shared<Particle>(1_kg, Vector3{2_m, 0_m, 0_m});
+    const auto p2 = std::make_shared<Particle>(1_kg, Vector3<Quantity<Meter>>{2_m, 0_m, 0_m});
     const DistanceConstrainer c2 {p1, p2};
     const DistanceConstrainer c3 {p2, p1};
 
@@ -29,7 +29,7 @@ int main() {
     );
 
     constexpr auto total_time = 10000_s;
-    const int steps = (total_time / Config::dt / 50).to<int>();
+    const int steps = (total_time / Config::dt / 50).To<int>();
 
     for (int i = 0; i < total_time / Config::dt; ++i) {
         c1.Correct();

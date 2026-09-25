@@ -60,7 +60,7 @@ namespace Phyth {
          *   auto in_meters = length.as<Meter>(); // 1000 m
          */
         template<typename TargetUnit>
-        constexpr auto as() const {
+        constexpr auto As() const {
             static_assert(std::is_same_v<typename UnitT::DimensionT,
                               typename TargetUnit::DimensionT>,
                           "Cannot convert between different dimensions");
@@ -74,7 +74,7 @@ namespace Phyth {
          * @return The value cast to TargetType
          */
         template<typename TargetType>
-        constexpr auto to() const {
+        constexpr auto To() const {
             return static_cast<TargetType>(value);
         }
 

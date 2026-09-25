@@ -65,7 +65,7 @@ namespace Phyth {
         [[nodiscard]] ValueType GetValueByTime(const Quantity<Second> time) const {
             const Scalar tick = time / Config::dt;
 
-            const auto index = Utils::floor(tick).to<long long>();
+            const auto index = Utils::floor(tick).To<long long>();
 
             if (index < 0 || index >= static_cast<long long>(history_.size())) {
                 throw std::out_of_range("TimeHistory::GetValueByTime: time out of range");

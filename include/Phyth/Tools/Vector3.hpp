@@ -1,13 +1,15 @@
 #ifndef PHYTH_VECTOR3_HPP
 #define PHYTH_VECTOR3_HPP
 
-#include "Phyth/Core/Dimension.hpp"
 #include "Phyth/Core/Quantity.hpp"
+#include "Vector.hpp"
 #include "QuantityFuncs.hpp"
 
 #include <ostream>
 
 namespace Phyth {
+    template<typename T>
+    using Vector3 = Vector<3, T>;
     /**
      * @brief 3D vector with Quantity components
      *
@@ -23,8 +25,8 @@ namespace Phyth {
      *   auto displacement = velocity * 2.0_s;  // Vector3<Quantity<Meter>>
      */
     template<typename T>
-    struct Vector3 {
-        static_assert(is_quantity_v<T>, "Vector3 only supports Quantity types");
+    struct Vector<3, T> {
+        static_assert(is_quantity_v<T>, "Vector only supports Quantity types");
 
         /** X component */
         T x;
@@ -34,7 +36,7 @@ namespace Phyth {
         T z;
 
         /** @brief Construct a zero vector (0, 0, 0) */
-        constexpr Vector3() : x(0), y(0), z(0) {
+        constexpr Vector() : x(0), y(0), z(0) {
         }
 
         /**
@@ -44,7 +46,7 @@ namespace Phyth {
          * @param y_ Y component
          * @param z_ Z component
          */
-        constexpr Vector3(T x_, T y_, T z_) : x(x_), y(y_), z(z_) {
+        constexpr Vector(T x_, T y_, T z_) : x(x_), y(y_), z(z_) {
         }
 
         /**
@@ -58,8 +60,8 @@ namespace Phyth {
          *   auto pos = Vector3<Quantity<Meter>>::FromPolar(5.0_m, 30.0_deg);
          *   // pos ~ (4.33_m, 2.5_m, 0_m)
          */
-        static constexpr Vector3 FromPolar(T r, const Scalar theta_rad) {
-            return Vector3(
+        static constexpr Vector FromPolar(T r, const Scalar theta_rad) {
+            return Vector(
                 r * Utils::cos(theta_rad),
                 r * Utils::sin(theta_rad),
                 T(0)
@@ -79,8 +81,8 @@ namespace Phyth {
          *       5.0_m, 60.0_deg, 45.0_deg
          *   );
          */
-        static constexpr Vector3 FromSpherical(T r, const Scalar theta_rad, const Scalar phi_rad) {
-            return Vector3(
+        static constexpr Vector FromSpherical(T r, const Scalar theta_rad, const Scalar phi_rad) {
+            return Vector(
                 r * Utils::sin(theta_rad) * Utils::cos(phi_rad),
                 r * Utils::sin(theta_rad) * Utils::sin(phi_rad),
                 r * Utils::cos(theta_rad)
@@ -99,7 +101,7 @@ namespace Phyth {
          *       for full 3D conversion.
          */
         [[nodiscard]] auto ToPolar() const {
-            Vector3 r = Length();
+            Vector r = Length();
             auto theta = Utils::atan2(y / r, x / r);
             return std::pair<decltype(r), Scalar>{r, theta};
         }
@@ -128,8 +130,12 @@ namespace Phyth {
          * Example:
          *   vec[0] = 1.0_m;  // modifies x
          */
-        constexpr T &operator[](int i) {
-            return (&x)[i];
+        constexpr T &operator[](const size_t i) {
+            switch (i) {
+                case 0: return x;
+                case 1: return y;
+                default: return z;
+            }
         }
 
         /**
@@ -138,8 +144,12 @@ namespace Phyth {
          * @param i Index: 0 = x, 1 = y, 2 = z
          * @return Const reference to the component
          */
-        constexpr const T &operator[](int i) const {
-            return (&x)[i];
+        constexpr const T &operator[](const size_t i) const {
+            switch (i) {
+                case 0: return x;
+                case 1: return y;
+                default: return z;
+            }
         }
 
         /**
@@ -180,7 +190,7 @@ namespace Phyth {
          * @return Vector3 with all components negated
          */
         constexpr auto operator-() const {
-            return Vector3(-x, -y, -z);
+            return Vector(-x, -y, -z);
         }
 
         /**
@@ -193,7 +203,7 @@ namespace Phyth {
          * Note: This is intentionally constrained to non-Vector3 types to avoid
          *       ambiguity with element-wise multiplication.
          */
-        template<typename U, typename = std::enable_if_t<!std::is_same_v<std::decay_t<U>, Vector3>> >
+        template<typename U, typename = std::enable_if_t<!std::is_same_v<std::decay_t<U>, Vector>> >
         constexpr auto operator*(U scalar) const {
             return Vector3<decltype(x * scalar)>(
                 x * scalar,
@@ -226,7 +236,7 @@ namespace Phyth {
          * @return Reference to this vector
          */
         template<typename U>
-        constexpr Vector3 &operator+=(const Vector3<U> &other) {
+        constexpr Vector &operator+=(const Vector3<U> &other) {
             x += other.x;
             y += other.y;
             z += other.z;
@@ -241,7 +251,7 @@ namespace Phyth {
          * @return Reference to this vector
          */
         template<typename U>
-        constexpr Vector3 &operator-=(const Vector3<U> &other) {
+        constexpr Vector &operator-=(const Vector3<U> &other) {
             x -= other.x;
             y -= other.y;
             z -= other.z;
@@ -256,7 +266,7 @@ namespace Phyth {
          * @return Reference to this vector
          */
         template<typename U>
-        constexpr Vector3 &operator*=(U scalar) {
+        constexpr Vector &operator*=(U scalar) {
             x *= scalar;
             y *= scalar;
             z *= scalar;
@@ -271,7 +281,7 @@ namespace Phyth {
          * @return Reference to this vector
          */
         template<typename U>
-        constexpr Vector3 &operator/=(U scalar) {
+        constexpr Vector &operator/=(U scalar) {
             x /= scalar;
             y /= scalar;
             z /= scalar;
@@ -406,8 +416,8 @@ namespace Phyth {
          *   auto in_meters = pos.as<Meter>();  // (1000 m, 0 m, 0 m)
          */
         template<typename UnitT>
-        [[nodiscard]] Vector3<Quantity<UnitT> > as() const {
-            return {x.template as<UnitT>(), y.template as<UnitT>(), z.template as<UnitT>()};
+        [[nodiscard]] Vector3<Quantity<UnitT> > As() const {
+            return {x.template As<UnitT>(), y.template As<UnitT>(), z.template As<UnitT>()};
         }
 
         /**
@@ -418,28 +428,17 @@ namespace Phyth {
          *
          * Example output: "(1 m, 2 m, 3 m)"
          */
-        friend std::ostream &operator<<(std::ostream &os, const Vector3 &v) {
+        friend std::ostream &operator<<(std::ostream &os, const Vector &v) {
             os << "(" << v.x << ", " << v.y << ", " << v.z << ")";
             return os;
         }
     };
 
     /**
-     * @brief Trait: check if a type is a Vector3 instantiation
-     */
-    template<typename>
-    struct is_vector3 : std::false_type {
-    };
-
-    template<typename QuantityT>
-    struct is_vector3<Vector3<QuantityT> > : std::true_type {
-    };
-
-    /**
      * @brief Convenience variable template for is_vector3
      */
-    template<typename VecT>
-    inline constexpr auto is_vector3_v = is_vector3<VecT>::value;
+    template<typename T>
+    inline constexpr auto is_vector3_v = is_vector_of_n_v<3, T>;;
 
     /**
      * @brief Scalar multiplication (scalar * vector)

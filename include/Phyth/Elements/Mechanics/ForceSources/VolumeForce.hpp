@@ -120,7 +120,7 @@ namespace Phyth::Mechanics {
             const auto dy = std::clamp(local.y, -half_h, half_h);
             const auto dz = std::clamp(local.z, -half_d, half_d);
 
-            const auto closest = center_ + Vector3(dx, dy, dz);
+            const auto closest = center_ + Vector3<Quantity<Meter>>(dx, dy, dz);
             return (point - closest).Length();
         }
 
@@ -178,7 +178,7 @@ namespace Phyth::Mechanics {
                         const auto y = (j + 0.5) / ny * height_ - half_h;
                         const auto z = (k + 0.5) / nz * depth_ - half_d;
 
-                        const auto pos = center_ + Vector3(x, y, z);
+                        const auto pos = center_ + Vector3<Quantity<Meter>>(x, y, z);
                         const auto R = point - pos;
                         const auto R_mag = R.Length();
 

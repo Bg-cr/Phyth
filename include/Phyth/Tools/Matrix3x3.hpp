@@ -2,11 +2,15 @@
 #define PHYTH_MATRIX3X3_HPP
 
 #include "Phyth/Core/Quantity.hpp"
+#include "Matrix.hpp"
 #include "Vector3.hpp"
 #include <ostream>
 #include <stdexcept>
 
 namespace Phyth {
+    template <typename T>
+    using Matrix3x3 = Matrix<3, 3, T>;
+
     /**
      * @brief 3x3 matrix with Quantity components
      *
@@ -20,7 +24,7 @@ namespace Phyth {
      *   auto result = m * Vector3<Quantity<Meter>>(1.0_m, 0_m, 0_m);
      */
     template<typename T>
-    struct Matrix3x3 {
+    struct Matrix<3, 3, T> {
         static_assert(is_quantity_v<T>, "Matrix3x3 only supports Quantity types");
 
         Vector3<T> x_basis;
@@ -32,7 +36,7 @@ namespace Phyth {
          *
          * Initializes all elements to zero using Quantity's default constructor.
          */
-        constexpr Matrix3x3() : x_basis(0, 0, 0), y_basis(0, 0, 0), z_basis(0, 0, 0) {
+        constexpr Matrix() : x_basis(0, 0, 0), y_basis(0, 0, 0), z_basis(0, 0, 0) {
         }
 
         /**
@@ -42,7 +46,7 @@ namespace Phyth {
          * @param col1 Second column vector
          * @param col2 Third column vector
          */
-        constexpr Matrix3x3(const Vector3<T> &col0, const Vector3<T> &col1, const Vector3<T> &col2)
+        constexpr Matrix(const Vector3<T> &col0, const Vector3<T> &col1, const Vector3<T> &col2)
             : x_basis(col0), y_basis(col1), z_basis(col2) {
         }
 
@@ -68,7 +72,7 @@ namespace Phyth {
          *               7, 8, 9);
          *   // m(1, 0) == 4, m(0, 1) == 2
          */
-        constexpr Matrix3x3(
+        constexpr Matrix(
             T m00, T m01, T m02,
             T m10, T m11, T m12,
             T m20, T m21, T m22
@@ -87,8 +91,8 @@ namespace Phyth {
          * Example:
          *   auto I = Matrix3x3<Quantity<Meter>>::Identity();
          */
-        static constexpr Matrix3x3 Identity() {
-            return Matrix3x3(
+        static constexpr Matrix Identity() {
+            return Matrix(
                 T(1), T(0), T(0),
                 T(0), T(1), T(0),
                 T(0), T(0), T(1)
@@ -104,8 +108,8 @@ namespace Phyth {
          *   auto m = Matrix3x3(...);
          *   auto mT = m.Transpose();
          */
-        [[nodiscard]] constexpr Matrix3x3 Transpose() const {
-            return Matrix3x3(
+        [[nodiscard]] constexpr Matrix Transpose() const {
+            return Matrix(
                 x_basis.x, y_basis.x, z_basis.x,
                 x_basis.y, y_basis.y, z_basis.y,
                 x_basis.z, y_basis.z, z_basis.z
@@ -165,7 +169,7 @@ namespace Phyth {
          * Example:
          *   auto val = m.at(1, 2);  // Get element at row 1, column 2
          */
-        [[nodiscard]] const T& at(const int i, const int j) const {
+        [[nodiscard]] const T& At(const int i, const int j) const {
             if (i < 0 || i > 2 || j < 0 || j > 2) {
                 throw std::out_of_range("Matrix3x3::at: index out of range");
             }
@@ -188,7 +192,7 @@ namespace Phyth {
          * Example:
          *   m.at(0, 1) = 5;  // Set element at row 0, column 1 to 5
          */
-        T& at(const int i, const int j) {
+        T& At(const int i, const int j) {
             if (i < 0 || i > 2 || j < 0 || j > 2) {
                 throw std::out_of_range("Matrix3x3::at: index out of range");
             }
@@ -285,7 +289,7 @@ namespace Phyth {
          *   auto neg = -m;
          */
         constexpr auto operator-() const {
-            return Matrix3x3(-x_basis, -y_basis, -z_basis);
+            return Matrix(-x_basis, -y_basis, -z_basis);
         }
 
         /**
@@ -354,7 +358,7 @@ namespace Phyth {
          *   m += other;
          */
         template<typename U>
-        constexpr Matrix3x3 &operator+=(const Matrix3x3<U> &other) {
+        constexpr Matrix &operator+=(const Matrix3x3<U> &other) {
             x_basis += other.x_basis;
             y_basis += other.y_basis;
             z_basis += other.z_basis;
@@ -372,7 +376,7 @@ namespace Phyth {
          *   m -= other;
          */
         template<typename U>
-        constexpr Matrix3x3 &operator-=(const Matrix3x3<U> &other) {
+        constexpr Matrix &operator-=(const Matrix3x3<U> &other) {
             x_basis -= other.x_basis;
             y_basis -= other.y_basis;
             z_basis -= other.z_basis;
@@ -390,7 +394,7 @@ namespace Phyth {
          *   m *= 2.0;
          */
         template<typename U>
-        constexpr Matrix3x3 &operator*=(U scalar) {
+        constexpr Matrix &operator*=(U scalar) {
             x_basis *= scalar;
             y_basis *= scalar;
             z_basis *= scalar;
@@ -437,11 +441,11 @@ namespace Phyth {
          *   auto m_mm = m.as<Millimeter>();
          */
         template<typename UnitT>
-        [[nodiscard]] Matrix3x3<Quantity<UnitT> > as() const {
+        [[nodiscard]] Matrix3x3<Quantity<UnitT> > As() const {
             return Matrix3x3<Quantity<UnitT> >(
-                x_basis.template as<UnitT>(),
-                y_basis.template as<UnitT>(),
-                z_basis.template as<UnitT>()
+                x_basis.template As<UnitT>(),
+                y_basis.template As<UnitT>(),
+                z_basis.template As<UnitT>()
             );
         }
 
@@ -455,10 +459,10 @@ namespace Phyth {
          * Example:
          *   std::cout << m << std::endl;
          */
-        friend std::ostream &operator<<(std::ostream &os, const Matrix3x3 &m) {
-            os << "[" << m.x_basis << ",\n"
-                    << " " << m.y_basis << ",\n"
-                    << " " << m.z_basis << "]";
+        friend std::ostream& operator<<(std::ostream& os, const Matrix& m) {
+            os << "[" << m.x_basis.x << " " << m.y_basis.x << " " << m.z_basis.x << "\n"
+               << " " << m.x_basis.y << " " << m.y_basis.y << " " << m.z_basis.y << "\n"
+               << " " << m.x_basis.z << " " << m.y_basis.z << " " << m.z_basis.z << "]";
             return os;
         }
     };

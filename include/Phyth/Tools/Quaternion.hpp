@@ -1,7 +1,6 @@
 #ifndef PHYTH_QUATERNION_HPP
 #define PHYTH_QUATERNION_HPP
 
-#include "Phyth/Core/Dimension.hpp"
 #include "Phyth/Core/Quantity.hpp"
 #include "Phyth/Core/Quantities.hpp"
 #include "QuantityFuncs.hpp"
@@ -351,10 +350,10 @@ namespace Phyth {
         template<typename UnitT>
         [[nodiscard]] Quaternion<Quantity<UnitT> > as() const {
             return {
-                w.template as<UnitT>(),
-                x.template as<UnitT>(),
-                y.template as<UnitT>(),
-                z.template as<UnitT>()
+                w.template As<UnitT>(),
+                x.template As<UnitT>(),
+                y.template As<UnitT>(),
+                z.template As<UnitT>()
             };
         }
 

@@ -141,7 +141,7 @@ namespace Phyth::Electromagnetics {
         [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb> >
         NumericalIntegrateField(const Vector3<Quantity<Meter> > &point,
                                 const int nu, const int nv) const {
-            Vector3 E{0_NpC, 0_NpC, 0_NpC};
+            Vector3<Quantity<NewtonPerCoulomb>> E{0_NpC, 0_NpC, 0_NpC};
             const auto du = width_ / nu;
             const auto dv = height_ / nv;
 

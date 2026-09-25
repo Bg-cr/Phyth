@@ -149,7 +149,7 @@ namespace Phyth::Electromagnetics {
          */
         [[nodiscard]] Vector3<Quantity<NewtonPerCoulomb> >
         NumericalIntegrateField(const Vector3<Quantity<Meter> > &point, const int segments) const {
-            Vector3 E{0_NpC, 0_NpC, 0_NpC};
+            Vector3<Quantity<NewtonPerCoulomb>> E{0_NpC, 0_NpC, 0_NpC};
             const auto dl = length_ / segments;
 
             for (int i = 0; i < segments; ++i) {

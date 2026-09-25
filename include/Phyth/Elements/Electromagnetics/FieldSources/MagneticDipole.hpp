@@ -296,7 +296,7 @@ namespace Phyth::Electromagnetics {
          */
         void ApplyMagneticTorque(const MagneticSource &field_source) {
             const auto B = field_source.GetMagneticFieldAt(position_);
-            const auto torque = moment_.Cross(B).as<NewtonMeter>();
+            const auto torque = moment_.Cross(B).As<NewtonMeter>();
             ApplyTorque(torque);
         }
 
@@ -322,7 +322,7 @@ namespace Phyth::Electromagnetics {
         void ApplyElectricTorque(const ChargeSource &field_source) {
             const auto E = field_source.GetElectricFieldAt(position_);
             const auto p = GetRelativisticDipoleMomentCurrent();
-            const auto torque = p.Cross(E).as<NewtonMeter>();
+            const auto torque = p.Cross(E).As<NewtonMeter>();
             ApplyTorque(torque);
         }
 
@@ -627,7 +627,7 @@ namespace Phyth::Electromagnetics {
         [[nodiscard]] Vector3<decltype(0_Am2 / 1_s)>
         ComputeMomentFirstDerivative(const Quantity<Second> &retarded_dt) const {
             const auto size = moment_history_.GetSize();
-            const auto idx = (retarded_dt / Config::dt).to<size_t>();
+            const auto idx = (retarded_dt / Config::dt).To<size_t>();
 
             if (size < 2) return {};
 
@@ -652,7 +652,7 @@ namespace Phyth::Electromagnetics {
         [[nodiscard]] Vector3<decltype(0_Am2 / 1_s / 1_s)>
         ComputeMomentSecondDerivative(const Quantity<Second> &retarded_dt) const {
             const auto size = moment_history_.GetSize();
-            const auto idx = (retarded_dt / Config::dt).to<size_t>();
+            const auto idx = (retarded_dt / Config::dt).To<size_t>();
 
             if (size < 3) return {};
 
@@ -680,7 +680,7 @@ namespace Phyth::Electromagnetics {
         [[nodiscard]] Vector3<decltype(1_Cm / 1_s)>
         ComputeElectricDipoleFirstDerivative(const Quantity<Second> &retarded_dt) const {
             const auto size = electric_dipole_history_.GetSize();
-            const auto idx = (retarded_dt / Config::dt).to<size_t>();
+            const auto idx = (retarded_dt / Config::dt).To<size_t>();
 
             if (size < 2) return {};
 
@@ -705,7 +705,7 @@ namespace Phyth::Electromagnetics {
         [[nodiscard]] Vector3<decltype(1_Cm / 1_s / 1_s)>
         ComputeElectricDipoleSecondDerivative(const Quantity<Second> &retarded_dt) const {
             const auto size = electric_dipole_history_.GetSize();
-            const auto idx = (retarded_dt / Config::dt).to<size_t>();
+            const auto idx = (retarded_dt / Config::dt).To<size_t>();
 
             if (size < 3) return {};
 
@@ -733,7 +733,7 @@ namespace Phyth::Electromagnetics {
         [[nodiscard]] Vector3<decltype(1_mps2 / 1_s)>
         ComputeAccelerationFirstDerivative(const Quantity<Second> &retarded_dt) const {
             const auto size = acceleration_history_.GetSize();
-            const auto idx = (retarded_dt / Config::dt).to<size_t>();
+            const auto idx = (retarded_dt / Config::dt).To<size_t>();
 
             if (size < 2) return {};
 
