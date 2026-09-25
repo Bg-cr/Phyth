@@ -167,7 +167,7 @@ Private Attributes</h2></td></tr>
 <p><a class="el" href="classPhyth_1_1Mechanics_1_1Spring.html" title="Spring constraint between two particles.">Spring</a> applies a Hooke's law force between two particles: F = -k * (current_length - rest_length) * direction</p>
 <p>Additionally, a damping force proportional to the relative velocity along the spring axis can be added: F_damp = -c * (v1 - v2) · direction</p>
 <p>The spring is bi-directional: equal and opposite forces are applied to both particles. If one particle is fixed, the other still moves correctly.</p>
-<p>Example: auto p1 = std::make_shared&lt;Particle&gt;(1_kg, <a class="el" href="structPhyth_1_1Vector3.html" title="3D vector with Quantity components">Vector3</a>{0_m, 0_m, 0_m}); auto p2 = std::make_shared&lt;Particle&gt;(1_kg, <a class="el" href="structPhyth_1_1Vector3.html" title="3D vector with Quantity components">Vector3</a>{1_m, 0_m, 0_m});</p>
+<p>Example: auto p1 = std::make_shared&lt;Particle&gt;(1_kg, Vector3{0_m, 0_m, 0_m}); auto p2 = std::make_shared&lt;Particle&gt;(1_kg, Vector3{1_m, 0_m, 0_m});</p>
 <p><a class="el" href="classPhyth_1_1Mechanics_1_1Spring.html" title="Spring constraint between two particles.">Spring</a> spring(p1, p2, 10.0_N/m, 0.5_kgps);</p>
 <p>// In simulation loop: spring.Constrain();</p>
 <p>auto energy = spring.GetElasticEnergy(); // 1/2 * k * elongation^2 </p>

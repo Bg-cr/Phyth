@@ -41,7 +41,7 @@ var searchData=
   ['correct_38',['correct',['../classPhyth_1_1Mechanics_1_1AngleConstrainer.html#afd5e3272d5ea073966be204acc876719',1,'Phyth::Mechanics::AngleConstrainer::Correct()'],['../classPhyth_1_1Mechanics_1_1DistanceConstrainer.html#a9a7a15943754bbbe7e07a85ad2781d53',1,'Phyth::Mechanics::DistanceConstrainer::Correct()']]],
   ['cos_39',['cos',['../namespacePhyth_1_1Utils.html#a02ca9868395d22412cd6994921cfbf84',1,'Phyth::Utils']]],
   ['cosh_40',['cosh',['../namespacePhyth_1_1Utils.html#ae0c5e7ab5de31c79038c4bf386bccb16',1,'Phyth::Utils']]],
-  ['cross_41',['Cross',['../structPhyth_1_1Vector3.html#ad956d264728106635a864691fa8235ae',1,'Phyth::Vector3']]],
+  ['cross_41',['Cross',['../structPhyth_1_1Vector_3_013_00_01T_01_4.html#a6f4c50cf1c1f60f6c405994fbb444d21',1,'Phyth::Vector&lt; 3, T &gt;']]],
   ['cube_42',['cube',['../namespacePhyth_1_1Utils.html#a5a96665ae4b7923559925e58ad77bc1b',1,'Phyth::Utils']]],
   ['current_5f_43',['current_',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a6f0fdee42332d7e507fdba348fb84a57',1,'Phyth::Electromagnetics::CurrentSegment']]],
   ['currentsegment_44',['currentsegment',['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html#a3c58b3be004daf5d0aafa538feb94e06',1,'Phyth::Electromagnetics::CurrentSegment::CurrentSegment()'],['../classPhyth_1_1Electromagnetics_1_1CurrentSegment.html',1,'Phyth::Electromagnetics::CurrentSegment']]],

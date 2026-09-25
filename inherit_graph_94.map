@@ -1,0 +1,15 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,173,117,198"/>
+<area shape="rect" id="Node000001" href="$structPhyth_1_1is__dim_3_01Dimension_3_01Ratios_8_8_8_01_4_01_4.html" title=" " alt="" coords="165,5,360,45"/>
+<area shape="poly" id="edge29_Node000000_Node000001" title=" " alt="" coords="74,159,110,107,135,79,164,55,185,43,188,48,167,60,139,83,115,110,79,162"/>
+<area shape="rect" id="Node000002" href="$structPhyth_1_1is__quantity_3_01Quantity_3_01UnitT_01_4_01_4.html" title=" " alt="" coords="176,69,349,109"/>
+<area shape="poly" id="edge30_Node000000_Node000002" title=" " alt="" coords="90,162,164,119,193,107,195,112,167,124,93,167"/>
+<area shape="rect" id="Node000003" href="$structPhyth_1_1is__quaternion_3_01Quaternion_3_01T_01_4_01_4.html" title=" " alt="" coords="181,133,344,173"/>
+<area shape="poly" id="edge31_Node000000_Node000003" title=" " alt="" coords="130,172,181,164,181,169,131,177"/>
+<area shape="rect" id="Node000004" href="$structPhyth_1_1is__unit_3_01Unit_3_01DimT_00_01Scale_00_01TagT_01_4_01_4.html" title=" " alt="" coords="171,197,354,237"/>
+<area shape="poly" id="edge32_Node000000_Node000004" title=" " alt="" coords="131,194,172,200,171,205,130,199"/>
+<area shape="rect" id="Node000005" href="$structPhyth_1_1is__vector_3_01Vector_3_01N_00_01QuantityT_01_4_01_4.html" title=" " alt="" coords="171,261,354,301"/>
+<area shape="poly" id="edge33_Node000000_Node000005" title=" " alt="" coords="93,204,167,247,195,259,193,264,164,252,90,208"/>
+<area shape="rect" id="Node000006" href="$structPhyth_1_1is__vector__of__n_3_01N_00_01Vector_3_01N_00_01T_01_4_01_4.html" title=" " alt="" coords="171,325,354,365"/>
+<area shape="poly" id="edge34_Node000000_Node000006" title=" " alt="" coords="79,209,115,260,139,288,167,311,188,323,185,327,164,316,135,292,110,264,74,212"/>
+</map>

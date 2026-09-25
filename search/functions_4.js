@@ -7,6 +7,6 @@ var searchData=
   ['fromaxisangle_4',['FromAxisAngle',['../structPhyth_1_1Quaternion.html#ab39509884172a7cadc9d2a106ddd5956',1,'Phyth::Quaternion']]],
   ['fromeuler_5',['FromEuler',['../structPhyth_1_1Quaternion.html#abaa2555f647842f2c53c00e23ad92522',1,'Phyth::Quaternion']]],
   ['fromini_6',['FromINI',['../classPhyth_1_1Mechanics_1_1Material_1_1MaterialDatabase.html#af4b58cfad02913ba79b75d2d3d4dbae1',1,'Phyth::Mechanics::Material::MaterialDatabase']]],
-  ['frompolar_7',['FromPolar',['../structPhyth_1_1Vector3.html#a963c1306f39027a526025aa556b3c233',1,'Phyth::Vector3']]],
-  ['fromspherical_8',['FromSpherical',['../structPhyth_1_1Vector3.html#ac50e6f978f12e42fe4b5aac2915da9d9',1,'Phyth::Vector3']]]
+  ['frompolar_7',['FromPolar',['../structPhyth_1_1Vector_3_013_00_01T_01_4.html#a5f87dd5d0e895d90fd535e44a0e25adb',1,'Phyth::Vector&lt; 3, T &gt;']]],
+  ['fromspherical_8',['FromSpherical',['../structPhyth_1_1Vector_3_013_00_01T_01_4.html#a2d7235d7833058747a25340afc591307',1,'Phyth::Vector&lt; 3, T &gt;']]]
 ];

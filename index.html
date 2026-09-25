@@ -185,10 +185,10 @@ Quick Start</h1>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line">    Config::dt = 1_s / 1000;</div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> anchor = std::make_shared&lt;Particle&gt;(1_kg, <a class="code hl_struct" href="structPhyth_1_1Vector3.html">Vector3</a>{0_m, 0_m, 0_m});</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> anchor = std::make_shared&lt;Particle&gt;(1_kg, <a class="code hl_struct" href="structPhyth_1_1Vector_3_013_00_01T_01_4.html">Vector3</a>{0_m, 0_m, 0_m});</div>
 <div class="line">    anchor-&gt;SetFixed(<span class="keyword">true</span>);</div>
 <div class="line">    </div>
-<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> pendulum = std::make_shared&lt;Particle&gt;(1_kg, <a class="code hl_struct" href="structPhyth_1_1Vector3.html">Vector3</a>{1_m, 0_m, 0_m});</div>
+<div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> pendulum = std::make_shared&lt;Particle&gt;(1_kg, <a class="code hl_struct" href="structPhyth_1_1Vector_3_013_00_01T_01_4.html">Vector3</a>{1_m, 0_m, 0_m});</div>
 <div class="line">    </div>
 <div class="line">    <span class="keyword">const</span> <a class="code hl_class" href="classPhyth_1_1Mechanics_1_1DistanceConstrainer.html">DistanceConstrainer</a> constraint{anchor, pendulum};</div>
 <div class="line"> </div>
@@ -212,7 +212,7 @@ Quick Start</h1>
 <div class="ttc" id="anamespacePhyth_1_1Mechanics_html"><div class="ttname"><a href="namespacePhyth_1_1Mechanics.html">Phyth::Mechanics</a></div><div class="ttdef"><b>Definition</b> <a href="Constrainer_8hpp_source.html#l00012">Constrainer.hpp:12</a></div></div>
 <div class="ttc" id="anamespacePhyth_html"><div class="ttname"><a href="namespacePhyth.html">Phyth</a></div><div class="ttdef"><b>Definition</b> <a href="Dimension_8hpp_source.html#l00010">Dimension.hpp:10</a></div></div>
 <div class="ttc" id="astructPhyth_1_1Quantity_html"><div class="ttname"><a href="structPhyth_1_1Quantity.html">Phyth::Quantity</a></div><div class="ttdoc">Physical quantity with a value and a compile-time unit.</div><div class="ttdef"><b>Definition</b> <a href="Quantity_8hpp_source.html#l00027">Quantity.hpp:27</a></div></div>
-<div class="ttc" id="astructPhyth_1_1Vector3_html"><div class="ttname"><a href="structPhyth_1_1Vector3.html">Phyth::Vector3</a></div><div class="ttdoc">3D vector with Quantity components</div><div class="ttdef"><b>Definition</b> <a href="Vector3_8hpp_source.html#l00026">Vector3.hpp:26</a></div></div>
+<div class="ttc" id="astructPhyth_1_1Vector_3_013_00_01T_01_4_html"><div class="ttname"><a href="structPhyth_1_1Vector_3_013_00_01T_01_4.html">Phyth::Vector&lt; 3, T &gt;</a></div><div class="ttdoc">3D vector with Quantity components</div><div class="ttdef"><b>Definition</b> <a href="Vector3_8hpp_source.html#l00028">Vector3.hpp:28</a></div></div>
 </div><!-- fragment --><p><b>Expected output example</b> </p><div class="fragment"><div class="line">0 s Particle{pos=(1 m, -4.90332e-06 m, 0 m), mass=1 kg} 9.80665 J</div>
 <div class="line">0.001 s Particle{pos=(1 m, -1.96133e-05 m, 0 m), mass=1 kg} 9.80665 J</div>
 <div class="line">0.002 s Particle{pos=(1 m, -4.41299e-05 m, 0 m), mass=1 kg} 9.80665 J</div>

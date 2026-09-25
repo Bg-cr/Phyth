@@ -41,6 +41,6 @@ var searchData=
   ['pow_38',['pow',['../namespacePhyth_1_1Utils.html#ade930d5dcf7a8f8a204df68ffba54271',1,'Phyth::Utils']]],
   ['power_39',['Power',['../namespacePhyth.html#a109e584d7638fde940dd0b37fb697f0a',1,'Phyth']]],
   ['pressure_40',['Pressure',['../namespacePhyth.html#a2767864da93ed36386fec63ecd9d9f7b',1,'Phyth']]],
-  ['project_41',['project',['../index.html#autotoc_md10',1,'Include in Your Project'],['../structPhyth_1_1Vector3.html#ae299502ec574af2c97c41c77356a0c1d',1,'Phyth::Vector3::Project()']]],
+  ['project_41',['project',['../index.html#autotoc_md10',1,'Include in Your Project'],['../structPhyth_1_1Vector_3_013_00_01T_01_4.html#acd930c312db381b73ac72cf356f44ed1',1,'Phyth::Vector&lt; 3, T &gt;::Project()'],['../structPhyth_1_1Vector.html#a624e31fd71ebcfd400e09a5e69d3477d',1,'Phyth::Vector::Project()']]],
   ['project_20struct_42',['Project Struct',['../index.html#autotoc_md13',1,'']]]
 ];

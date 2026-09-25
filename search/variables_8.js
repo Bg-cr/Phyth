@@ -11,5 +11,7 @@ var searchData=
   ['is_5fquantity_5fv_8',['is_quantity_v',['../namespacePhyth.html#af85989cbbd17b3a5d73e2d1eae9100a6',1,'Phyth']]],
   ['is_5fquaternion_5fv_9',['is_quaternion_v',['../namespacePhyth.html#a93b650da25a776a26f6a021268d4ef71',1,'Phyth']]],
   ['is_5funit_5fv_10',['is_unit_v',['../namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6',1,'Phyth']]],
-  ['is_5fvector3_5fv_11',['is_vector3_v',['../namespacePhyth.html#ae1324ccac8919d1c1b1f7e7ac22558fd',1,'Phyth']]]
+  ['is_5fvector3_5fv_11',['is_vector3_v',['../namespacePhyth.html#ae1324ccac8919d1c1b1f7e7ac22558fd',1,'Phyth']]],
+  ['is_5fvector_5fof_5fn_5fv_12',['is_vector_of_n_v',['../namespacePhyth.html#a7d28c40a102a4d3d09820c4d7eeef72e',1,'Phyth']]],
+  ['is_5fvector_5fv_13',['is_vector_v',['../namespacePhyth.html#ade384e116ddf350b6474c4b61cae1217',1,'Phyth']]]
 ];
