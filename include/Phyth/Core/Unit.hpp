@@ -75,41 +75,51 @@ namespace Phyth {
     struct is_unit<Unit<DimT, Scale, TagT> > : std::true_type {
     };
 
-    /**
-     * @brief Convenience variable template for is_unit
-     *
-     * Example:
-     *   if constexpr (is_unit_v<T>) { ... }
-     */
     template<typename T>
     inline constexpr bool is_unit_v = is_unit<T>::value;
 
     template<typename U1, typename U2>
-    struct UnitMul {
-        using type = Unit<DimMulT<typename U1::DimensionT, typename U2::DimensionT>, std::ratio_multiply<typename
-            U1::ScaleT, typename U2::ScaleT> >;
+    struct UnitMulBin {
+        using type = Unit<
+            DimMulT<typename U1::DimensionT, typename U2::DimensionT>,
+            typename std::ratio_multiply<typename U1::ScaleT, typename U2::ScaleT>::type
+        >;
     };
 
     template<typename U1, typename U2>
-    using UnitMulT = typename UnitMul<U1, U2>::type;
-
-    template<typename U1, typename U2>
-    struct UnitDiv {
-        using type = Unit<DimDivT<typename U1::DimensionT, typename U2::DimensionT>, std::ratio_divide<typename
-            U1::ScaleT, typename U2::ScaleT> >;
+    struct UnitDivBin {
+        using type = Unit<
+            DimDivT<typename U1::DimensionT, typename U2::DimensionT>,
+            typename std::ratio_divide<typename U1::ScaleT, typename U2::ScaleT>::type
+        >;
     };
 
-    template<typename U1, typename U2>
-    using UnitDivT = typename UnitDiv<U1, U2>::type;
+    template<template<typename, typename> class F, typename... Ts>
+    struct FoldLeft;
 
-    template<typename U, typename Ratio = std::ratio<1> >
-    struct UnitRec {
-        using type = Unit<DimDivT<Dimensionless, typename U::DimensionT>, std::ratio_divide<Ratio, typename U::ScaleT> >
-        ;
+    template<template<typename, typename> class F, typename T>
+    struct FoldLeft<F, T> {
+        using type = T;
     };
 
-    template<typename U1, typename Ratio = std::ratio<1> >
-    using UnitRecT = typename UnitRec<U1, Ratio>::type;
+    template<template<typename, typename> class F,
+        typename T1, typename T2, typename... Rest>
+    struct FoldLeft<F, T1, T2, Rest...> {
+        using type = typename FoldLeft<
+            F,
+            typename F<T1, T2>::type,
+            Rest...
+        >::type;
+    };
+
+    template<template<typename, typename> class F, typename... Ts>
+    using FoldLeftT = typename FoldLeft<F, Ts...>::type;
+
+    template<typename... Us>
+    using UnitMulT = FoldLeftT<UnitMulBin, Us...>;
+
+    template<typename... Us>
+    using UnitDivT = FoldLeftT<UnitDivBin, Us...>;
 }
 
 #endif // PHYTH_UNIT_HPP
