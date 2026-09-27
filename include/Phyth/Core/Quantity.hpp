@@ -522,11 +522,7 @@ namespace Phyth {
      */
     template<typename U1, typename U2>
     constexpr auto operator*(Quantity<U1> a, Quantity<U2> b) {
-        using Dim1 = typename U1::DimensionT;
-        using Dim2 = typename U2::DimensionT;
-        using ResultDim = DimMulT<Dim1, Dim2>;
-        using ResultUnit = Unit<ResultDim>;
-        return Quantity<ResultUnit>(a.value * b.value);
+        return Quantity<UnitMulT<U1, U2> >(a.value * b.value);
     }
 
     /**
@@ -546,11 +542,7 @@ namespace Phyth {
      */
     template<typename U1, typename U2>
     constexpr auto operator/(Quantity<U1> a, Quantity<U2> b) {
-        using Dim1 = typename U1::DimensionT;
-        using Dim2 = typename U2::DimensionT;
-        using ResultDim = DimDivT<Dim1, Dim2>;
-        using ResultUnit = Unit<ResultDim>;
-        return Quantity<ResultUnit>(a.value / b.value);
+        return Quantity<UnitDivT<U1, U2> >(a.value / b.value);
     }
 
     /**
