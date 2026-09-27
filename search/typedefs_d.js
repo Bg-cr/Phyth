@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['unitdivt_0',['UnitDivT',['../namespacePhyth.html#adc4c18c9ae3c4d3cd5fcdfccd7345181',1,'Phyth']]],
-  ['unitmult_1',['UnitMulT',['../namespacePhyth.html#a884983cb43f9f06a6eaa4b7072814f78',1,'Phyth']]],
-  ['unitrect_2',['UnitRecT',['../namespacePhyth.html#afb1c509885b6434e775faa110192cf57',1,'Phyth']]]
+  ['unitdivt_0',['UnitDivT',['../namespacePhyth.html#a413af0a7d0ec1a40b6d6369eaaf937a6',1,'Phyth']]],
+  ['unitmult_1',['UnitMulT',['../namespacePhyth.html#a0c10c5f6f1a8f698b9bc63771436608a',1,'Phyth']]]
 ];

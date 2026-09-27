@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['g_0',['g',['../namespacePhyth_1_1Consts.html#a0239b3bae4efd9b632bc52ebdd664e18',1,'Phyth::Consts::G'],['../namespacePhyth_1_1Consts.html#a1a04734f2d2606e6a6d54809df1ccbbf',1,'Phyth::Consts::g']]],
+  ['g_0',['g',['../namespacePhyth_1_1Consts.html#a1a04734f2d2606e6a6d54809df1ccbbf',1,'Phyth::Consts::g'],['../namespacePhyth_1_1Consts.html#a0239b3bae4efd9b632bc52ebdd664e18',1,'Phyth::Consts::G']]],
   ['get_1',['Get',['../classPhyth_1_1Mechanics_1_1Material_1_1MaterialDatabase.html#a8f0068d24bba7669183af578eb079da8',1,'Phyth::Mechanics::Material::MaterialDatabase']]],
   ['getaccelerationatoffset_2',['getaccelerationatoffset',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#a3d5b8faffbbb16abd6447b3ca6473853',1,'Phyth::Electromagnetics::MagneticDipole::GetAccelerationAtOffset()'],['../classPhyth_1_1Electromagnetics_1_1PointCharge.html#a3e0c37b117f4c511c3b34f57ade2063e',1,'Phyth::Electromagnetics::PointCharge::GetAccelerationAtOffset()']]],
   ['getangularvelocity_3',['GetAngularVelocity',['../classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#a1804a0bfc0f60f09db92859a58c9b442',1,'Phyth::Electromagnetics::MagneticDipole']]],

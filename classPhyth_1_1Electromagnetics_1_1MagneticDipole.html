@@ -385,7 +385,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p>Magnetic dipole with full electromagnetic field and dynamics. </p>
 <p><a class="el" href="classPhyth_1_1Electromagnetics_1_1MagneticDipole.html" title="Magnetic dipole with full electromagnetic field and dynamics.">MagneticDipole</a> represents a moving magnetic dipole that produces both magnetic and electric fields. It inherits from Particle for dynamics, and implements both <a class="el" href="classPhyth_1_1Electromagnetics_1_1MagneticSource.html" title="Abstract base class for all magnetic field sources.">MagneticSource</a> and <a class="el" href="classPhyth_1_1Electromagnetics_1_1ChargeSource.html" title="Abstract base class for all charge distributions.">ChargeSource</a> interfaces.</p>
 <p>The magnetic dipole moment m can rotate (with moment of inertia) and the moving dipole produces a relativistic electric dipole moment p = -(gamma / c^2) * v x m.</p>
-<p>Example: auto dipole = std::make_shared&lt;MagneticDipole&gt;( 1.0_kg, <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">Vector3&lt;Quantity&lt;Meter&gt;&gt;(0_m, 0_m, 0_m)</a>, Vector3&lt;Quantity&lt;AmpereMeterSquared&gt;&gt;(1.0_Am2, 0_Am2, 0_Am2) );</p>
+<p>Example: auto dipole = std::make_shared&lt;MagneticDipole&gt;( 1.0_kg, <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">Vector3&lt;Quantity&lt;Meter&gt;&gt;(0_m, 0_m, 0_m)</a>, Vector3&lt;Quantity&lt;AmpereMeterSquared&gt;&gt;(1.0_Am2, 0_Am2, 0_Am2) );</p>
 <p>// Add a magnetic field source dipole-&gt;ApplyMagneticForce(magnetic_field);</p>
 <p>// In simulation loop: dipole-&gt;<a class="el" href="classPhyth_1_1Electromagnetics_1_1MagneticDipole.html#abd10ff4d777c3a951ff251486be32560" title="Integrate dynamics using velocity Verlet.">Integrate()</a>;</p>
 <dl class="section note"><dt>Note</dt><dd>: The field computation uses retarded potentials. The field diverges at the dipole location. </dd></dl>
@@ -510,7 +510,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Apply force from electric field gradient. </p>
-<p>F = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">grad(p dot E)</a></p>
+<p>F = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">grad(p dot E)</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">field_source</td><td>The electric field source </td></tr>
@@ -661,7 +661,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Apply force from magnetic field gradient. </p>
-<p>F = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">grad(m dot B)</a></p>
+<p>F = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">grad(m dot B)</a></p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">field_source</td><td>The magnetic field source </td></tr>
@@ -862,7 +862,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Compute electric gradient force using finite differences. </p>
-<p>F = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">grad(p dot E)</a></p>
+<p>F = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">grad(p dot E)</a></p>
 <p>Uses central differences with step epsilon_m. </p>
 
 <p class="definition">Definition at line <a class="el" href="MagneticDipole_8hpp_source.html#l00804">804</a> of file <a class="el" href="MagneticDipole_8hpp_source.html">MagneticDipole.hpp</a>.</p>
@@ -894,7 +894,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Compute magnetic gradient force using finite differences. </p>
-<p>F = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">grad(m dot B)</a></p>
+<p>F = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">grad(m dot B)</a></p>
 <p>Uses central differences with step epsilon_m. </p>
 
 <p class="definition">Definition at line <a class="el" href="MagneticDipole_8hpp_source.html#l00763">763</a> of file <a class="el" href="MagneticDipole_8hpp_source.html">MagneticDipole.hpp</a>.</p>
@@ -1761,7 +1761,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Solve for the retarded time offset using Newton's method. </p>
-<p>Solves <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">R(t_ret)</a> = c * (t - t_ret) for t_ret. Falls back to bisection if Newton fails. </p>
+<p>Solves <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">R(t_ret)</a> = c * (t - t_ret) for t_ret. Falls back to bisection if Newton fails. </p>
 
 <p class="definition">Definition at line <a class="el" href="MagneticDipole_8hpp_source.html#l00542">542</a> of file <a class="el" href="MagneticDipole_8hpp_source.html">MagneticDipole.hpp</a>.</p>
 

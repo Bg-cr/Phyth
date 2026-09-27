@@ -325,7 +325,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Compute strain tensor from stress tensor. </p>
-<p>Implements the inverse form of Hooke's law: epsilon_ij = (1 + nu) / E * sigma_ij - nu / E * <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">trace(sigma)</a> * delta_ij</p>
+<p>Implements the inverse form of Hooke's law: epsilon_ij = (1 + nu) / E * sigma_ij - nu / E * <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">trace(sigma)</a> * delta_ij</p>
 <p>This is the compliance form of the constitutive relationship, useful for displacement-based formulations.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -334,7 +334,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Strain tensor (dimensionless, symmetric)</dd></dl>
-<p>Example: Matrix3x3&lt;Quantity&lt;Pascal&gt;&gt; stress; <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">stress(0, 0)</a> = 100.0e6_Pa; // uniaxial tension auto strain = material.ComputeStrain(stress); </p>
+<p>Example: Matrix3x3&lt;Quantity&lt;Pascal&gt;&gt; stress; <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">stress(0, 0)</a> = 100.0e6_Pa; // uniaxial tension auto strain = material.ComputeStrain(stress); </p>
 
 <p class="definition">Definition at line <a class="el" href="IsotropicMaterial_8hpp_source.html#l00166">166</a> of file <a class="el" href="IsotropicMaterial_8hpp_source.html">IsotropicMaterial.hpp</a>.</p>
 
@@ -365,7 +365,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Compute stress tensor from strain tensor. </p>
-<p>Implements the generalized Hooke's law for isotropic materials: sigma_ij = lambda * <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">trace(epsilon)</a> * delta_ij + 2 * mu * epsilon_ij</p>
+<p>Implements the generalized Hooke's law for isotropic materials: sigma_ij = lambda * <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">trace(epsilon)</a> * delta_ij + 2 * mu * epsilon_ij</p>
 <p>The strain tensor is expected to represent infinitesimal strain (small deformation theory). For finite strain, use appropriate hyperelastic models instead.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -374,7 +374,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Stress tensor in pascals (symmetric)</dd></dl>
-<p>Example: Matrix3x3&lt;Scalar&gt; strain; <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">strain(0, 0)</a> = 0.001; // 0.1% axial strain auto stress = material.ComputeStress(strain); </p>
+<p>Example: Matrix3x3&lt;Scalar&gt; strain; <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">strain(0, 0)</a> = 0.001; // 0.1% axial strain auto stress = material.ComputeStress(strain); </p>
 
 <p class="definition">Definition at line <a class="el" href="IsotropicMaterial_8hpp_source.html#l00134">134</a> of file <a class="el" href="IsotropicMaterial_8hpp_source.html">IsotropicMaterial.hpp</a>.</p>
 

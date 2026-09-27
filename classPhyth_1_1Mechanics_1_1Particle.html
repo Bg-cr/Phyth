@@ -559,9 +559,9 @@ Friends</h2></td></tr>
 
 <p>Integrate equations of motion using velocity Verlet. </p>
 <p>The velocity Verlet algorithm consists of three steps:</p><ol type="1">
-<li>Update position: x(t+dt) = x(t) + <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">v(t)</a>*dt + 0.5*a(t)*dt^2</li>
+<li>Update position: x(t+dt) = x(t) + <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">v(t)</a>*dt + 0.5*a(t)*dt^2</li>
 <li>Compute new acceleration: a(t+dt) = F(t+dt) / m</li>
-<li>Update velocity: v(t+dt) = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">v(t)</a> + 0.5*(<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">a(t)</a> + a(t+dt))*dt</li>
+<li>Update velocity: v(t+dt) = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">v(t)</a> + 0.5*(<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">a(t)</a> + a(t+dt))*dt</li>
 </ol>
 <p>The user-defined force function is called twice per integration step:</p><ul>
 <li>Once before position update (using old forces)</li>

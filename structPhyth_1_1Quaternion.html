@@ -234,7 +234,7 @@ struct Phyth::Quaternion&lt; T &gt;</div><p><a class="el" href="structPhyth_1_1Q
   </dd>
 </dl>
 <p>Example: using Rotation = Quaternion&lt;Scalar&gt;;</p>
-<p>// Rotate a vector by 90 degrees around Z axis auto q = Rotation::FromAxisAngle(<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">Vector3&lt;Scalar&gt;(0, 0, 1)</a>, 90.0_deg); auto v = Vector3&lt;Quantity&lt;Meter&gt;&gt;(1.0_m, 0_m, 0_m); auto rotated = q.Rotated(v); // (0_m, 1_m, 0_m) </p>
+<p>// Rotate a vector by 90 degrees around Z axis auto q = Rotation::FromAxisAngle(<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">Vector3&lt;Scalar&gt;(0, 0, 1)</a>, 90.0_deg); auto v = Vector3&lt;Quantity&lt;Meter&gt;&gt;(1.0_m, 0_m, 0_m); auto rotated = q.Rotated(v); // (0_m, 1_m, 0_m) </p>
 
 <p class="definition">Definition at line <a class="el" href="Quaternion_8hpp_source.html#l00033">33</a> of file <a class="el" href="Quaternion_8hpp_source.html">Quaternion.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -585,7 +585,7 @@ template&lt;<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e86
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structPhyth_1_1Unit.html" title="Physical unit with dimension and scale factor relative to SI base.">Unit</a> quaternion representing the rotation</dd></dl>
-<p>Example: auto axis = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">Vector3&lt;Scalar&gt;(0, 0, 1)</a>; auto q = <a class="el" href="structPhyth_1_1Quaternion.html#ab39509884172a7cadc9d2a106ddd5956" title="Create a unit quaternion from axis and angle.">Quaternion&lt;Scalar&gt;::FromAxisAngle</a>(axis, 90.0_deg); </p>
+<p>Example: auto axis = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">Vector3&lt;Scalar&gt;(0, 0, 1)</a>; auto q = <a class="el" href="structPhyth_1_1Quaternion.html#ab39509884172a7cadc9d2a106ddd5956" title="Create a unit quaternion from axis and angle.">Quaternion&lt;Scalar&gt;::FromAxisAngle</a>(axis, 90.0_deg); </p>
 
 <p class="definition">Definition at line <a class="el" href="Quaternion_8hpp_source.html#l00094">94</a> of file <a class="el" href="Quaternion_8hpp_source.html">Quaternion.hpp</a>.</p>
 
@@ -1407,7 +1407,7 @@ template&lt;<a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e86
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Interpolated quaternion (unit quaternion)</dd></dl>
-<p>Example: auto q1 = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">Quaternion&lt;Scalar&gt;()</a>; // identity auto q2 = <a class="el" href="structPhyth_1_1Quaternion.html#ab39509884172a7cadc9d2a106ddd5956" title="Create a unit quaternion from axis and angle.">Quaternion&lt;Scalar&gt;::FromAxisAngle</a>(axis, 90.0_deg); auto q_mid = <a class="el" href="structPhyth_1_1Quaternion.html#a42eb97c277d656c98417c8c2d98e334a" title="Spherical linear interpolation between two quaternions.">Quaternion&lt;Scalar&gt;::Slerp</a>(q1, q2, 0.5); // 45-degree rotation </p>
+<p>Example: auto q1 = <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">Quaternion&lt;Scalar&gt;()</a>; // identity auto q2 = <a class="el" href="structPhyth_1_1Quaternion.html#ab39509884172a7cadc9d2a106ddd5956" title="Create a unit quaternion from axis and angle.">Quaternion&lt;Scalar&gt;::FromAxisAngle</a>(axis, 90.0_deg); auto q_mid = <a class="el" href="structPhyth_1_1Quaternion.html#a42eb97c277d656c98417c8c2d98e334a" title="Spherical linear interpolation between two quaternions.">Quaternion&lt;Scalar&gt;::Slerp</a>(q1, q2, 0.5); // 45-degree rotation </p>
 
 <p class="definition">Definition at line <a class="el" href="Quaternion_8hpp_source.html#l00378">378</a> of file <a class="el" href="Quaternion_8hpp_source.html">Quaternion.hpp</a>.</p>
 

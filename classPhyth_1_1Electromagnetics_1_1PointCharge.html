@@ -281,7 +281,7 @@ Additional Inherited Members</h2></td></tr>
 <li>Velocity field (Coulomb-like, falls as 1/r^2)</li>
 <li>Acceleration field (radiation, falls as 1/r)</li>
 </ul>
-<p>Example: auto charge = std::make_shared&lt;PointCharge&gt;( 1.0_kg, <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">Vector3&lt;Quantity&lt;Meter&gt;&gt;(0_m, 0_m, 0_m)</a>, 1.0_C );</p>
+<p>Example: auto charge = std::make_shared&lt;PointCharge&gt;( 1.0_kg, <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">Vector3&lt;Quantity&lt;Meter&gt;&gt;(0_m, 0_m, 0_m)</a>, 1.0_C );</p>
 <p>// Add a force function (e.g., Lorentz force) charge-&gt;SetComputeForcesFunction([](PointCharge* q) { Vector3&lt;Quantity&lt;NewtonPerCoulomb&gt;&gt; E(0_V/m, 0_V/m, -1.0_V/m); q-&gt;ApplyElectricFieldForce(E); });</p>
 <p>// In simulation loop: charge-&gt;<a class="el" href="classPhyth_1_1Electromagnetics_1_1PointCharge.html#af921cab73f69530e3410e0b6451cc24d" title="Integrate dynamics using velocity Verlet.">Integrate()</a>; auto E = charge-&gt;GetElectricFieldAt(point); auto B = charge-&gt;GetMagneticFieldAt(point);</p>
 <p>Note: The field and potential diverge at the charge location. Querying at the charge position throws an exception. </p>
@@ -858,7 +858,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Solve for the retarded time offset using Newton's method. </p>
-<p>Solves <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6" title="Convenience variable template for is_unit.">R(t_ret)</a> = c * (t - t_ret) for t_ret. Falls back to bisection if Newton fails. </p>
+<p>Solves <a class="el" href="namespacePhyth.html#ad2599e3c23f59c3dac3af397e8624fe6">R(t_ret)</a> = c * (t - t_ret) for t_ret. Falls back to bisection if Newton fails. </p>
 
 <p class="definition">Definition at line <a class="el" href="PointCharge_8hpp_source.html#l00323">323</a> of file <a class="el" href="PointCharge_8hpp_source.html">PointCharge.hpp</a>.</p>
 
