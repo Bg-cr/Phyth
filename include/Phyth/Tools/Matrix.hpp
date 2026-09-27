@@ -16,17 +16,22 @@ namespace Phyth {
         static_assert(is_quantity_v<T>, "Matrix only supports Quantity types");
         static_assert(Row > 0 && Col > 0, "Matrix dimensions must be positive");
 
+        static constexpr std::size_t row = Row;
+        static constexpr std::size_t col = Col;
+
         std::array<Vector<Row, T>, Col> datas;
 
         constexpr Matrix()
-            : Matrix(MakeZero(std::make_index_sequence<Col>{})) {}
+            : Matrix(MakeZero(std::make_index_sequence<Col>{})) {
+        }
 
         template<typename... Args,
             std::enable_if_t<
                 sizeof...(Args) == Col &&
                 std::conjunction_v<std::is_convertible<Args, Vector<Row, T> >...>,
                 int> = 0>
-        constexpr Matrix(Args... basics) : datas{basics...} {}
+        constexpr Matrix(Args... basics) : datas{basics...} {
+        }
 
         template<typename... Args,
             std::enable_if_t<
@@ -35,14 +40,15 @@ namespace Phyth {
                 int> = 0>
         constexpr Matrix(Args... elems)
             : Matrix(std::array<T, Row * Col>{static_cast<T>(elems)...},
-                     std::make_index_sequence<Col>{}) {}
+                     std::make_index_sequence<Col>{}) {
+        }
 
         static constexpr Matrix Identity() {
             static_assert(Row == Col, "Identity matrix requires a square matrix");
             return IdentityImpl(std::make_index_sequence<Col>{});
         }
 
-        [[nodiscard]] constexpr auto Transpose() const {
+        [[nodiscard]] constexpr Matrix<Col, Row, T> Transpose() const {
             return TransposeImpl(std::make_index_sequence<Row>{},
                                  std::make_index_sequence<Col>{});
         }
@@ -96,13 +102,23 @@ namespace Phyth {
             return NegImpl(std::make_index_sequence<Col>{});
         }
 
+    private:
+        template<typename , typename = void>
+        struct is_valid_scalar : std::true_type {};
+
         template<typename U>
+        struct is_valid_scalar<U, std::void_t<decltype(U::col)>>
+            : std::bool_constant<!std::is_same_v<U, Matrix<Col, U::col, U>>> {};
+
+    public:
+
+        template<typename U, typename = std::enable_if_t<!is_vector_v<U> && is_valid_scalar<U>::value> >
         constexpr auto operator*(U scalar) const {
             return ScaleImpl(scalar, std::make_index_sequence<Col>{});
         }
 
         template<typename U>
-        constexpr auto operator*(const Vector<Row, U> &v) const {
+        constexpr auto operator*(const Vector<Col, U> &v) const {
             using ResultVec = decltype(datas[0] * v[0]);
             ResultVec result = datas[0] * v[0];
             for (std::size_t c = 1; c < Col; ++c) {
@@ -113,7 +129,7 @@ namespace Phyth {
 
         template<typename U, std::size_t OtherCol>
         constexpr auto operator*(const Matrix<Col, OtherCol, U> &other) const {
-            using ResultMat = Matrix<Row, OtherCol, decltype(*this * other.datas[0])>;
+            using ResultMat = Matrix<Row, OtherCol, decltype(datas[0][0] * other.datas[0][0])>;
             ResultMat result;
             for (std::size_t c = 0; c < OtherCol; ++c) {
                 result.datas[c] = *this * other.datas[c];
@@ -200,7 +216,8 @@ namespace Phyth {
         template<std::size_t... Cs>
         constexpr Matrix(const std::array<T, Row * Col> &flat,
                          std::index_sequence<Cs...>)
-            : datas{MakeCol<Cs>(flat, std::make_index_sequence<Row>{})...} {}
+            : datas{MakeCol<Cs>(flat, std::make_index_sequence<Row>{})...} {
+        }
 
         template<std::size_t C, std::size_t... Rs>
         static constexpr Vector<Row, T>
@@ -209,7 +226,7 @@ namespace Phyth {
         }
 
         template<std::size_t... Rs, std::size_t... Cs>
-        constexpr auto TransposeImpl(std::index_sequence<Rs...>,
+        constexpr Matrix<Col, Row, T> TransposeImpl(std::index_sequence<Rs...>,
                                      std::index_sequence<Cs...>) const {
             return Matrix<Col, Row, T>(
                 MakeTransposeCol<Rs>(std::make_index_sequence<Col>{})...);
@@ -246,7 +263,7 @@ namespace Phyth {
 
         template<typename U, std::size_t... Cs>
         constexpr auto ScaleImpl(U scalar, std::index_sequence<Cs...>) const {
-            return Matrix<Row, Col, decltype(datas[0] * scalar)>(
+            return Matrix<Row, Col, decltype(datas[0][0] * scalar)>(
                 (datas[Cs] * scalar)...);
         }
 
