@@ -41,6 +41,7 @@ namespace Phyth {
     struct Unit {
         /** The dimension type of this unit */
         using DimensionT = DimT;
+        using ScaleT = Scale;
 
         /**
          * @brief Scale factor relative to the SI base unit
@@ -82,6 +83,33 @@ namespace Phyth {
      */
     template<typename T>
     inline constexpr bool is_unit_v = is_unit<T>::value;
-} // namespace Phyth
+
+    template<typename U1, typename U2>
+    struct UnitMul {
+        using type = Unit<DimMulT<typename U1::DimensionT, typename U1::DimensionT>, std::ratio_multiply<typename
+            U1::ScaleT, typename U2::ScaleT> >;
+    };
+
+    template<typename U1, typename U2>
+    using UnitMulT = typename UnitMul<U1, U2>::type;
+
+    template<typename U1, typename U2>
+    struct UnitDiv {
+        using type = Unit<DimDivT<typename U1::DimensionT, typename U1::DimensionT>, std::ratio_divide<typename
+            U1::ScaleT, typename U2::ScaleT> >;
+    };
+
+    template<typename U1, typename U2>
+    using UnitDivT = typename UnitDiv<U1, U2>::type;
+
+    template<typename U, typename Ratio = std::ratio<1> >
+    struct UnitRec {
+        using type = Unit<DimDivT<Dimensionless, typename U::DimensionT>, std::ratio_divide<Ratio, typename U::ScaleT> >
+        ;
+    };
+
+    template<typename U1, typename Ratio = std::ratio<1> >
+    using UnitRecT = typename UnitRec<U1, Ratio>::type;
+}
 
 #endif // PHYTH_UNIT_HPP
