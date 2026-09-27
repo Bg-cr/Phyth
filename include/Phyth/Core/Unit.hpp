@@ -120,6 +120,14 @@ namespace Phyth {
 
     template<typename... Us>
     using UnitDivT = FoldLeftT<UnitDivBin, Us...>;
+
+    template <typename U, typename Ratio>
+    struct UnitRec {
+        using type = Unit<
+            DimDivT<Dimensionless, typename U::DimensionT>,
+            std::ratio_multiply<typename U::ScaleT, Ratio>
+        >;
+    };
 }
 
 #endif // PHYTH_UNIT_HPP
