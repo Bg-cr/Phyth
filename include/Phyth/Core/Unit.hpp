@@ -128,6 +128,9 @@ namespace Phyth {
             std::ratio_multiply<typename U::ScaleT, Ratio>
         >;
     };
+
+    template <typename U, typename Ratio = std::ratio<1>>
+    using UnitRecT = typename UnitRec<U, Ratio>::type;
 }
 
 #endif // PHYTH_UNIT_HPP
