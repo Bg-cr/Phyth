@@ -86,7 +86,7 @@ namespace Phyth {
 
     template<typename U1, typename U2>
     struct UnitMul {
-        using type = Unit<DimMulT<typename U1::DimensionT, typename U1::DimensionT>, std::ratio_multiply<typename
+        using type = Unit<DimMulT<typename U1::DimensionT, typename U2::DimensionT>, std::ratio_multiply<typename
             U1::ScaleT, typename U2::ScaleT> >;
     };
 
@@ -95,7 +95,7 @@ namespace Phyth {
 
     template<typename U1, typename U2>
     struct UnitDiv {
-        using type = Unit<DimDivT<typename U1::DimensionT, typename U1::DimensionT>, std::ratio_divide<typename
+        using type = Unit<DimDivT<typename U1::DimensionT, typename U2::DimensionT>, std::ratio_divide<typename
             U1::ScaleT, typename U2::ScaleT> >;
     };
 
