@@ -4,6 +4,7 @@ var searchData=
   ['unitdivbin_1',['UnitDivBin',['../namespacePhyth.html#structPhyth_1_1UnitDivBin',1,'Phyth']]],
   ['unitinfo_2',['UnitInfo',['../namespacePhyth.html#structPhyth_1_1UnitInfo',1,'Phyth']]],
   ['unitmulbin_3',['UnitMulBin',['../namespacePhyth.html#structPhyth_1_1UnitMulBin',1,'Phyth']]],
-  ['unitregistrar_4',['UnitRegistrar',['../structPhyth_1_1UnitRegistrar.html',1,'Phyth']]],
-  ['unitregistry_5',['UnitRegistry',['../classPhyth_1_1UnitRegistry.html',1,'Phyth']]]
+  ['unitrec_4',['UnitRec',['../namespacePhyth.html#structPhyth_1_1UnitRec',1,'Phyth']]],
+  ['unitregistrar_5',['UnitRegistrar',['../structPhyth_1_1UnitRegistrar.html',1,'Phyth']]],
+  ['unitregistry_6',['UnitRegistry',['../classPhyth_1_1UnitRegistry.html',1,'Phyth']]]
 ];
