@@ -27,6 +27,12 @@ namespace Phyth::Mechanics {
         [[nodiscard]] Quantity<MeterCubed> GetVolume() const { return volume_; }
 
     private:
+        std::array<Vector3<Quantity<Meter> >, 4> coords_;
+        IsotropicMaterial material_;
+        Matrix<6, 12, Quantity<UnitRecT<Meter>>> B_;
+        Matrix<6, 6, Quantity<Pascal> > D_;
+        Quantity<MeterCubed> volume_;
+
         void ComputeGeometry() {
             const auto &p0 = coords_[0];
             const auto &p1 = coords_[1];
@@ -96,12 +102,6 @@ namespace Phyth::Mechanics {
             D_(4, 4) = mu;
             D_(5, 5) = mu;
         }
-
-        std::array<Vector3<Quantity<Meter> >, 4> coords_;
-        IsotropicMaterial material_;
-        Matrix<6, 12, Quantity<UnitRecT<Meter>>> B_;
-        Matrix<6, 6, Quantity<Pascal> > D_;
-        Quantity<MeterCubed> volume_;
     };
 }
 
