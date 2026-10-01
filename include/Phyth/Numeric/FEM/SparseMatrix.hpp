@@ -2,10 +2,11 @@
 #define PHYTH_SPARSE_MATRIX_HPP
 
 #include "Phyth/Core/Quantity.hpp"
-#include "../../Tools/VectorX.hpp"
+#include "Phyth/Tools/VectorX.hpp"
 
+#include <algorithm>
 #include <cstddef>
-#include <cstdint>
+#include <numeric>
 #include <stdexcept>
 #include <vector>
 
@@ -13,31 +14,21 @@ namespace Phyth {
     template<typename T>
     class SparseMatrix {
         static_assert(is_quantity_v<T>, "SparseMatrix only supports Quantity types");
+
     public:
-        SparseMatrix(const std::size_t rows, const std::size_t cols)
+        SparseMatrix(std::size_t rows, std::size_t cols)
             : rows_(rows), cols_(cols) {}
 
-        void Add(const std::size_t row, const std::size_t col, const T& value) {
-            if (row >= rows_)
-                throw std::out_of_range(
-                    "SparseMatrix::Add: row (witch is " + std::to_string(row) + ") >= rows_ (witch is " + std::to_string(rows_) + ")"
-                );
-            
-            if (col >= cols_)
-                throw std::out_of_range(
-                    "SparseMatrix::Add: col (witch is " + std::to_string(col) + ") >= cols_ (witch is " + std::to_string(cols_) + ")"
-                );
+        void Add(std::size_t row, std::size_t col, const T& value) {
+            if (row >= rows_ || col >= cols_)
+                throw std::out_of_range("SparseMatrix::Add");
             triplets_.push_back({row, col, value});
         }
 
         void Compress() {
             row_ptr_.assign(rows_ + 1, 0);
-            col_idx_.clear();
-            values_.clear();
-
             for (const auto& t : triplets_)
                 ++row_ptr_[t.row + 1];
-
             for (std::size_t i = 0; i < rows_; ++i)
                 row_ptr_[i + 1] += row_ptr_[i];
 
@@ -53,6 +44,57 @@ namespace Phyth {
 
             triplets_.clear();
             triplets_.shrink_to_fit();
+
+            std::vector<std::size_t> new_row_ptr(rows_ + 1, 0);
+            std::vector<std::size_t> new_col_idx;
+            std::vector<T> new_values;
+            new_col_idx.reserve(col_idx_.size());
+            new_values.reserve(values_.size());
+
+            for (std::size_t i = 0; i < rows_; ++i) {
+                const std::size_t begin = row_ptr_[i];
+                const std::size_t end = row_ptr_[i + 1];
+
+                if (begin == end) {
+                    new_row_ptr[i + 1] = new_row_ptr[i];
+                    continue;
+                }
+
+                std::vector<std::size_t> idx(end - begin);
+                std::iota(idx.begin(), idx.end(), begin);
+                std::sort(idx.begin(), idx.end(),
+                    [&](const std::size_t a, const std::size_t b) {
+                        return col_idx_[a] < col_idx_[b];
+                    });
+
+                std::size_t prev_col = static_cast<std::size_t>(-1);
+                T acc {0};
+                bool has_prev = false;
+
+                for (std::size_t k : idx) {
+                    if (has_prev && col_idx_[k] == prev_col) {
+                        acc += values_[k];
+                    } else {
+                        if (has_prev) {
+                            new_col_idx.push_back(prev_col);
+                            new_values.push_back(acc);
+                        }
+                        prev_col = col_idx_[k];
+                        acc = values_[k];
+                        has_prev = true;
+                    }
+                }
+                if (has_prev) {
+                    new_col_idx.push_back(prev_col);
+                    new_values.push_back(acc);
+                }
+
+                new_row_ptr[i + 1] = new_col_idx.size();
+            }
+
+            row_ptr_ = std::move(new_row_ptr);
+            col_idx_ = std::move(new_col_idx);
+            values_ = std::move(new_values);
         }
 
         [[nodiscard]] VectorX<T> Multiply(const VectorX<T>& x) const {
@@ -71,10 +113,11 @@ namespace Phyth {
 
         [[nodiscard]] std::size_t Rows() const { return rows_; }
         [[nodiscard]] std::size_t Cols() const { return cols_; }
+        [[nodiscard]] std::size_t NonZeros() const { return values_.size(); }
 
-        [[nodiscard]] std::size_t NonZeros() const {
-            return triplets_.empty() ? values_.size() : triplets_.size();
-        }
+        [[nodiscard]] const std::vector<std::size_t>& RowPtr() const { return row_ptr_; }
+        [[nodiscard]] const std::vector<std::size_t>& ColIdx() const { return col_idx_; }
+        [[nodiscard]] const std::vector<T>& Values() const { return values_; }
 
     private:
         struct Triplet {
